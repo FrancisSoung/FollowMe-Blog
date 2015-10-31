@@ -1,0 +1,21 @@
+/*header头部样式*/
+.head {background:url(../images/headbg.png) repeat-x;width:100%;height:72px;text-align:center}
+.headmain{width:960px;height:72px;margin:0px auto}
+.logo {float:left;background:url(../images/logo-a.png) no-repeat;width:217px;height:60px}
+.name {text-align:center;margin-left:20px;float:left;}
+.name a{color:#FFFFFF;text-decoration:none;padding:5px;height:60px}
+.name b:hover {color:#FFFFFF;text-decoration:none;background:url(../images/headh.png) no-repeat;}
+.name ul {height:72px;}
+.name li{list-style:none;line-height:72px;float:left;margin-left:20px;color:white;height:72px}
+.name li:hover {background:url(../images/headh.png) no-repeat;}
+.biao {width:200px;height:60px;float:right;margin-top:30px}
+.biao0 {float:left;background:url(../images/splita.png) 0px -101px;width:20px;height:14px;margin-right:10px}
+.biao1 {float:left;background:url(../images/header.png) 0px -100px;width:20px;height:14px;margin-right:10px}
+.biao2 {float:left;background:url(../images/header.png) -36px -100px;width:20px;height:14px;margin-right:10px}
+.biao3 {float:left;background:url(../images/header.png) -72px -100px;width:20px;height:14px;margin-right:10px}
+.biao4 {float:left;background:url(../images/header.png) -108px -100px;width:20px;height:14px;margin-right:10px}
+.biao0:hover {float:left;background:url(../images/splita.png) 0px -76px;width:20px;height:14px;margin-right:10px}
+.biao1:hover {float:left;background:url(../images/header.png) -0px -130px;width:20px;height:14px;margin-right:10px}
+.biao2:hover {float:left;background:url(../images/header.png) -36px -130px;width:20px;height:14px;margin-right:10px}
+.biao3:hover {float:left;background:url(../images/header.png) -72px -130px;width:20px;height:14px;margin-right:10px}
+.biao4:hover {float:left;background:url(../images/header.png) -108px -130px;width:20px;height:14px;margin-right:10px}

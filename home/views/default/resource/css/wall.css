@@ -1,0 +1,17 @@
+*{margin:0px;padding:0px;}
+body {background:url(../images/wbackground.png) repeat;}
+#container {width:100%;float:left;}
+.item {border:1px solid #DEDDDC;width:224px;float:left;margin-left:21px;margin-top:30px;background:#FFFFFF}
+.img {width:100%;background:#FFFFFF;float:left;}
+.user {width:100%;background:#FAFAFA;float:left;height:50px;border-top:1px solid #F5F2F2}
+.img div {width:200px;margin-left:12px;margin-top:12px;margin-bottom:12px;}
+.photo {float:left;margin-left:12px;margin-top:6px;}
+.u_name {float:left;height:50px;line-height:50px;margin-left:10px;overflow:hidden;font-size:14px;}
+.u_name a:hover {color:#0099bc;}
+.left{background:url(../images/sortleft.png);width:11px;height:29px;float:left}
+.center{background:url(../images/sort.png) repeat-x;height:29px;float:left}
+.center div{float:left;margin-top:5px;}
+.right{background:url(../images/sortright.png);height:29px;width:11px;float:left;}
+.sort {float:left;margin-left:6px;margin-top:8px;}
+.middle {float:left;margin-right:8px;}
+a {text-decoration:none;color:#999999;margin-top:5px;}

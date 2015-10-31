@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <link rel="stylesheet" type="text/css" href="<{$res}>/css/fancy.css">
+        <link rel="stylesheet" type="text/css" href="<{$res}>/css/image.css">
+        <script src="<{$res}>/js/jquery.js"></script>
+        <script src="<{$res}>/js/jquery.masonry.min.js"></script>
+        <script src="<{$res}>/js/jquery.infinitescroll.min.js"></script>
+        <script src="<{$res}>/js/ajax3.0.js"></script>
+	<script src="<{$res}>/js/jquery.fancybox-1.0.0.js"></script>
+</head>
+<body>
+    <!--主框体-->
+    <div class="imgmain">
+        <!--上部框体-->
+        <div class="titletab">
+            <!--左 操作模块-->
+            <div class="topleft">
+                <div class="title"><div class="linkimg"></div>图片管理</div>
+                <div class="option"><a href="">全部(<{$num}>)</a></div>
+                <div class="action">
+                    <label for="checkbox"><input type="checkbox" name="" class="checked" id="checkbox" /><a href="#" id="all">全选</a></label>/<a href="#" id="not">反选</a>
+                    　<a onclick="delimg()" title="删除"><img src="<{$res}>/images/delete.gif"></a>
+                 </div>
+
+            </div>
+            <!--右 操作模块-->
+            <div class="topright">
+                <div class="search">
+                    <input type="text" value="" /><div><a href="">搜索</a></div>
+                    <span><{$num}>张图片</span>
+                </div>
+            </div>
+        </div>
+        <!--下部框体-->
+        <div class="imgtab" id="container">
+		<{section loop=$data name="ls"}>
+                 <div class="showimg item" id="img<{$data[ls].con_id}>">
+                    <div class="imagestab">
+                        <div class="imgtitle"><{$data[ls].title}></div>
+                        <div class="images">                           
+                            <a href="" title="查看大图"><img src="<{$root}>/upload/microimg/<{$data[ls].image}>" /></a>
+                            <input type="checkbox" class="checkarr" value="<{$data[ls].con_id}>" />
+                        </div>
+                        <div class="tags">Tag: <{$data[ls].tags}></div>
+                        <div class="author">Author: <a href=""><{$data[ls].blogname}></a></div>
+                        <div class="time"><{$data[ls].time|date_format:"%Y-%m-%d %H:%M:%S" }></div>  
+                    </div>
+                </div>
+                <script>
+                    //删除图片
+                    function delimg(){
+                           var arr=$(".checkarr");
+                           var check = new Array();
+                           var j = 0;
+                            for(var i=0; i<arr.length; i++){
+                                if(arr.get(i).checked){
+                                    check[j++] = arr.get(i).value;
+                                }
+                            }                         
+                             var mess={con_id:check}
+                             Ajax().post('<{$url}>/delimg',mess,function(data){
+                                   switch(data){
+                                            case '1':
+                                             $('input:checked').parent().parent().parent().remove();
+                                            break;
+                                            case '2':
+                                            alert('删除失败!请稍候重试!');
+                                        }
+                                 });
+
+                        }
+                </script>
+				<{/section}>
+        </div>
+    </div>
+</body>
+<script>
+$(function(){
+  $('#container').masonry({
+    // options
+	  itemSelector : '.item',
+		  
+      columnWidth : 10,
+      isAnimated : true,
+          animationOptions:{
+            //jquery animate属性 渐变效果  Object { queue: false, duration: 500 }
+          },
+          gutterWidth:0,//列的间隙 Integer
+          isFitWidth:true,// 适应宽度   Boolean
+          isResizableL:true,// 是否可调整大小 Boolean
+          isRTL:false,//使用从右到左的布局 Boolean
+
+  });
+});
+var $container = $('#container');
+$container.imagesLoaded(function(){
+  $container.masonry({
+    itemSelector : '.item',
+    columnWidth : 0
+  });
+});
+		    
+</script>
+<script src="<{$res}>/js/review.js"></script>
+</html>

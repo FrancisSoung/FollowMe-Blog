@@ -1,0 +1,37 @@
+.main{width:100%;height:100%;float:left;}
+.top {width:100%;height:31px;height:115px;border-top:1px solid #cccccc;margin-top:8px;}
+.left{width:400px;height:115px;float:left}
+.right{width:250px;height:115px;float:right;}
+.tu {background:url(../images/icons32.png) -554px -7px no-repeat;width:30px;height:40px;float:left;margin-top:10px;}
+.top b {float:left;margin-top:7px;font-size:18px;margin-left:5px;margin-top:20px;}
+.batch {float:left;width:100%;float:left;}
+.batch a {font-size:13px;color:#21759B;text-decoration:none}
+.batch a:hover {font-size:13px}
+.all {width:100%;float:left;margin-top:15px;}
+.all select {width:80px;border:1px solid #DFDFDF}
+.all div {float:left;}
+.all a {color:black;text-decoration:none}
+.all .qxz {margin-left:15px;}
+.app {background:url(../images/bubg.png);width:42px;height:21px;border-style:none;margin-left:10px;}
+.app:hover {background:url(../images/bubgh.png);width:42px;height:21px;border-style:none;margin-left:10px;color:#21759B}
+#search {float:left;height:25px;margin-top:50px;}
+#search div {float:left;margin-left:10px;}
+.search {width:140px;border:1px solid #DFDFDF;}
+.searchb {background:url(../images/bubgl.png);width:66px;height:21px;border:0px;}
+.searchb:hover {background:url(../images/bubglh.png);width:66px;height:21px;border:0px;color:#21759B}
+.tablediv {width:100%;float:left;}
+.tablediv a {color:#21759B;text-decoration:none}
+.tablediv a:hover {color:#BC0B0B;text-decoration:none}
+.tablediv table{width:100%;float:left;border:1px solid #DFDFDF;border-collapse:collapse;border-top:0px}
+.tablediv table td{border:0px}
+.firsttr {background:url(../images/tabletopbg.png);height:32px;font-size:14px;color:#21759B;border-top-left-radius:5px;border-top-right-radius:5px;behavior:url(public/css/PIE.htc);}
+.firsttr th {text-align:left;border:0px}
+.contr {background:#F9F9F9;font-size:14px;border-bottom:1px solid #DFDFDF;}
+.fpagetr {background:#F0F0F0;text-align:right}
+.datatd {width:100%;float:left;font-size:12px}
+.datatd .ba{color:#777777;font-weight:normal}
+.datatd .bb{color:#21759B;font-weight:normal;margin-left:10px;}
+.contd {margin-top:5px;float:left;width:100%;}
+.actiontd {margin-top:10px;float:left;width:100%;font-size:12px;display:none}
+.actiontdhover {margin-top:10px;float:left;width:100%;font-size:12px;display:block}
+

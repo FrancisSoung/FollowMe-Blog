@@ -1,0 +1,159 @@
+        	<{include file="public/header.htm"}>
+		<link rel="stylesheet" href="<{$res}>/css/myfollowset.css" type="text/css" />
+		<link rel="stylesheet" href="<{$res}>/css/list.css" type="text/css" />
+		<script>var res="<{$res}>"</script>
+		<script src="<{$res}>/js/list.js"></script>
+		<style>
+			/*默认的状态样式*/
+			.one{
+				color:#aaa;
+			}
+			/*成功的状态样式*/
+			.two{
+				color:green;
+			}
+			/*失败的状态样式*/
+			.three{
+				color:red;
+			}
+		</style>
+		
+		<{include file="public/head.htm"}>
+		<div class="myfollowset_content">
+			<div class="myfollowset_content_left">
+				<div class="myfollowset_content_left_h4"></div>
+				<h4>博客设置</h4>
+				<div class="myfollowset_content_left_content">
+					<form action="<{$url}>/check" method="post" enctype="multipart/form-data" onsubmit="return yanz(true)">
+					<!-- 博客头像 -->
+					<div class="myfollowset_content_left_content_photo">
+						<div class="myfollowset_content_left_content_left">
+							博客头像：	
+						</div>
+						<div class="myfollowset_content_left_content_right">
+							
+							<div class="myfollowset_content_left_content_photo_pic">
+								<img src="<{$root}>/upload/normalico/<{$u_ico}>" alt="" />
+							</div>
+							<div class="myfollowset_content_left_content_photo_update">
+								<div class="myfollowset_content_left_content_photo_update_form">
+									<input id="file" type="file" name="pic" value="上传头像" />
+									
+								</div>
+								<a style="display:block;float:left;color:red;">不能大于1MB，尺寸不能小于215*162</a>
+							</div>
+							
+						</div>
+					</div>
+					<!-- 邮箱地址 -->
+					<div class="myfollowset_content_left_content_email">
+						<div class="myfollowset_content_left_content_left">
+							邮箱地址：
+						</div>
+						<div class="myfollowset_content_left_content_right">
+							<div id="emailold" style="float:left;"><{$data[0].email}></div>&nbsp;&nbsp;&nbsp;&nbsp;
+							<div id="emailnew" style="float:left;display:none">
+								<input id="text" type="text" name="email" value="<{$data[0].email}>">
+								<span></span>
+							</div>
+							
+							<a href="javascript:mod()">修改</a>
+						</div>
+					</div>
+					
+					<!-- 当前密码 -->
+					<div class="myfollowset_content_left_content_passwordnow">
+						<div class="myfollowset_content_left_content_left">
+							当前密码：
+						</div>
+						<div class="myfollowset_content_left_content_right">
+							<input id="text" type="password" name="pwdnow" class="pwdnow"  value="" />
+							<span id="pwdnowspan" style="color:red;">*</span>
+							<input type="hidden" name="pwdhidden" value="" />
+						</div>
+					</div>
+					<!-- 新密码 -->
+					<div class="myfollowset_content_left_content_passwordnew">
+						<div class="myfollowset_content_left_content_left">
+							新密码：
+						</div>
+						<div class="myfollowset_content_left_content_right">
+							<input id="text" type="password" name="pwdnew1" class="pwdnew1" /><span></span><br />
+							<input id="text" type="password" name="pwdnew2" class="pwdnew2" />
+							<span></span>
+						</div>
+					</div>
+					
+					<!-- 博客名称 -->
+					<div class="myfollowset_content_left_content_name">
+						<div class="myfollowset_content_left_content_left">
+							博客名称：	
+						</div>
+						<div class="myfollowset_content_left_content_right">
+							<input id="text" type="text" name="blogname" value="<{$data[0].blogname}>" />
+							<span><a style="color:red;">*</a></span>
+						</div>
+					</div>
+					<!-- 博客介绍 -->
+					<div class="myfollowset_content_left_content_intro">
+						<div class="myfollowset_content_left_content_left">
+							博客介绍：	
+						</div>
+						<div class="myfollowset_content_left_content_right">
+							<textarea rows="5" style="border:1px solid #E3E3E3" name="info" value="<{$data[0].info}>" ><{$data[0].info}></textarea>
+							<span></span>
+						</div>
+					</div>
+					<div class="myfollowset_content_left_content_button">
+						<div class="myfollowset_content_left_content_left">
+								
+						</div>
+						<div class="myfollowset_content_left_content_right">
+							<div style="color:#aaa;width:100px;float:left;margin-top:20px;"><a style="color:red;">*</a>为每次修改必填</div>
+                            				<a href="#"><input id="button" type="submit" name="sub" value="保存"></a>
+						</div>
+					</div>
+				</form>
+				<script>
+					/*修改邮箱*/
+					function mod() {
+						$('#emailold').css('display','none');
+						$('#emailnew').css('display','block');
+					}
+				function yanz() {
+					/*获取对象*/
+					var pwdnow = document.getElementsByName("pwdnow")[0];
+					var pwdhidden = document.getElementsByName("pwdhidden")[0];
+					var pwdnowspan = document.getElementById("pwdnowspan");
+					
+					pwdnow.onfocus=function(){
+						$("#pwdnowspan").html("请输入密码");			
+					}
+					pwdnow.onblur=function(){
+						var val=pwdnow.value;
+						mess = {pwdnow:val};
+						var url = "<{$url}>/check/pwdnow/";
+						Ajax().post(url,mess,function(data){
+							
+							if(data == 1){
+								pwdnowspan.innerHTML("ddddddddd");
+							}
+							
+						});
+						//pwdnowspan.innerHTML("ddddddddd");
+						//alert(pwdhidden.value);
+						//$("#pwdnowspan").html("dddd");
+					}
+					//return false;在这里写管用
+				}
+				yanz();
+				</script>
+				</div>
+			</div>
+			<!--右边列表部分 -->
+			<{ include file="public/list.htm" }>
+		</div>
+    </body>
+
+</html>
+

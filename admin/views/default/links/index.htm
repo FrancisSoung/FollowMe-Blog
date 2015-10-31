@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="<{$res}>/css/pushpage.css" />
+    <script src="<{$res}>/js/jquery.js"></script>
+    <script src="<{$res}>/js/ajax3.0.js"></script>
+    <script src="<{$res}>/js/review.js"defer></script>
+</head>
+<body onload="bg()">
+    <!--主框体-->
+    <div class="pagemain">
+        <!--左操作模块-->
+        <div class="titletab">
+            <div class="topleft">
+		    <div class="title">
+			    <div class="soundimg"></div>链接管理
+		    </div>
+		<div class="option">
+			<a href="<{$url}>">全部(<{$num}>)</a>　|　
+			<a href="javascript:shielded()">已屏蔽(<{$nnum}>)</a>　</div>
+        <div class="action">
+        <form name="frm">
+            <select name="year">
+                <option selected value="请选择年份">选择年份</option>
+                <{section loop=$year name="ls"}>
+                <option value="<{$year[ls]}>"><{$year[ls]}></option>
+                <{/section}>
+            </select>
+            <select name="month">
+                <option selected value="请选择月份">选择月份</option>
+                <{section loop=$month name="ls"}>
+                <option value="<{$month[ls]}>"><{$month[ls]}></option>
+                <{/section}>
+            </select>
+        </div>
+        <div class="actionok"><a href="#" onclick="send()">应用</a></div>
+        </form>
+        <script>
+            //ajax动态查询
+            function send() {
+                //获取表单时间对象
+                var yvalue = document.frm.year.value;
+                var mvalue = document.frm.month.value;
+                if(yvalue=="请选择年份"){
+                    alert("请选择年份");
+                }else if(mvalue=="请选择月份"){
+                    alert("请选择月份");
+                }else{
+                    var mess = {year:yvalue,month:mvalue};
+                    //ajax发送数据
+		    Ajax().post("<{$url}>/date",mess,function(data){
+			    if(data){
+				    $('#fpage').css('display','none');
+			    }
+                	document.getElementById("link").innerHTML=data;
+               	 	bg();
+                    });
+                }
+
+            }
+
+	    //显示已屏蔽的
+	    function shielded() {
+		    var url = '<{$url}>/shielded';
+		    Ajax().get(url,function(data){
+			if(data){
+				    $('#fpage').css('display','none');
+			    }
+			document.getElementById("link").innerHTML=data;
+                	bg();
+		    });
+	    }
+        </script>
+                <label for="checkbox"><input type="checkbox" name="" class="checked" id="checkbox" /><a href="#" id="all">全选</a></label>/<a href="#" id="not">反选</a>
+                    　<a href="#" onclick="del()" title="删除"><img src="<{$res}>/images/delete.gif"></a>
+            
+             </div>
+            <!--右 操作模块-->
+            <div class="topright">
+                <div class="search">
+                    <input type="text" value="" /><div><a href="">搜索</a></div>
+            <span><{$num}>首音乐</span>
+                </div>
+                
+            </div>
+        </div>
+        <!--文章主框体-->
+        <div class="contenttab" id="link">
+            <table cellspacing="0">
+                <tr>
+                    <th class="checkbox"><input type="checkbox" name="check" class="checked" /></th>
+                    <th class="titletabs">链接地址</th>
+                    <th class="author">博主</th>
+                    <th class="tags">标签</th>
+                    <th class="comment">评论</th>
+                    <th class="time">日期</th>
+                </tr>
+            <{*
+                遍历声音数据
+                title       链接名称
+                blogname    博主
+                tags        标签
+                total       评论总数
+                time        时间
+            *}>
+            <{section loop=$data name="ls"}>
+            <tr class="hh<{$data[ls].con_id}>" onmouseover="showbg(this)" onmouseout="hiddenbg(this)">
+            <td class="checkbox">
+                <form class="form">
+                    <input type="checkbox" name="chk[]" class="chk2" value="<{$data[ls].con_id}>" />
+                </form>
+            </td>
+            <td onmouseover="showmod(this)" onmouseout="hiddenmod(this)">
+                            <div>
+                    <{$data[ls].link}>
+                </div> 
+                <div class="modifi"> 
+                    <div class="showmod">
+			   <{if $data[ls].type eq 50 }>
+			    	<a href="#" onclick="shield(this,'type',<{$data[ls].con_id}>)" class="shield<{$data[ls].con_id}>">显示</a>
+			    <{else}>
+			    	<a href="#" onclick="shield(this,'type',<{$data[ls].con_id}>)" class="shield<{$data[ls].con_id}>">屏蔽</a>
+			    <{/if}>
+			    | 
+			    <a href="javascript:deletes('<{$data[ls].con_id}>')">删除</a>
+                    </div>
+                </div>
+                <script>
+                    //删除单个
+                    function deletes(cid) {
+                        if(confirm("确认删除？")){   
+                        Ajax().get("<{$url}>/deletes/conid/"+cid,function(data){
+                            if(data=="success"){
+                                //删除tr节点
+                                $('.hh'+cid).remove();
+                            }else{
+                                alert("删除失败");
+                            }
+                        });
+                        }
+                    }
+
+                    //多选删除
+                    function del() {
+                        if(confirm('是否要删除？')){
+
+                            var node = $(".chk2");
+                            var rd = new Array();
+                            var j = 0;
+                            for(var i=0; i<node.length; i++){
+                                if(node.get(i).checked){
+                                    rd[j++] = node.get(i).value;
+                                }
+                            }
+                            if(rd == ''){
+                                alert('请选择你要删除的数据！');
+                            }else{
+                                var url = '<{$url}>/checkdel/rd/'+rd;
+                                Ajax().get(url,function(data){
+                                    if(data = '1'){
+					//删除选中tr节点
+                                        $("input:checked").parents("tr").remove();
+                                
+                                    }else{
+                                        alert('删除失败！');
+                                    }
+
+                                });
+                            }
+                        }
+                        return false;
+			}
+			
+			//显示与屏蔽
+			function shield(obj,stat,conid) {
+				
+				if(obj.innerHTML=='屏蔽') {
+					var url = '<{$url}>/shield/s/'+stat+'/val/5/conid/'+conid+'/status/shield';
+					Ajax().get(url,function(data) {
+						//alert(data);
+						
+						if(data){
+							$(".shield"+conid).html('显示');
+						}else{
+							alert("屏蔽失败！");	
+						}
+						
+					});	
+				}else{
+					var url = '<{$url}>/shield/s/'+stat+'/val/50/conid/'+conid+'/status/display';
+					Ajax().get(url,function(data) {
+						//alert(data);
+												
+						if(!data){
+							$(".shield"+conid).html('屏蔽');
+						}else{
+							alert("显示失败！");
+						}
+						
+					});	
+				}
+			}
+                </script>
+            </td>
+            <td class="author">
+                <a href=""><{$data[ls].blogname}></a>
+            </td>
+            <td class="tags">
+                <{$data[ls].tags}>
+            </td>
+            <td class="comment">
+                <{$data[ls].total}>
+            </td>
+            <td class="time">
+                <{$data[ls].time|date_format:"%Y-%m-%d"}>
+            </td>
+                </tr>
+        <{/section}>
+            </table>
+    </div>
+    <span id="fpage" style="text-align:center;"><{$fpage}></span>
+    </div>
+
+</body>
+</html>

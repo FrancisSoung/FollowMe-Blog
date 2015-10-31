@@ -1,0 +1,138 @@
+        <div class="contenttabb" id="article">
+            <table cellspacing="0">
+                <tr>
+                    <th class="checkbox"><input type="checkbox" name="check" class="checked" /></th>
+                    <th class="titletabs">声音名称</th>
+                    <th class="author">作者</th>
+                    <th class="tags">标签</th>
+                    <th class="comment">评论</th>
+                    <th class="time">日期</th>
+                </tr>
+        <{**
+          * 循环遍历数组
+          * title       标题
+          * blogname        作者
+          * tags        标签
+          * total       评论的总数
+          *}>
+        <{if is_array($data)}>
+        <{section loop=$data name="ls"}>
+            <tr class="hh<{$data[ls].con_id}>" class="hhh" onmouseover="showbg(this)" onmouseout="hiddenbg(this)">
+            <td class="checkbox">
+                    <input type="checkbox" name="chk[]" class="chk2" value="<{$data[ls].con_id}>" />
+            </td>
+            <td onmouseover="showmod(this)" onmouseout="hiddenmod(this)">
+                            <div>
+                    <{$data[ls].sound}>
+                </div> 
+                <div class="modifi"> 
+                    <div class="showmod">
+			   <{if $data[ls].type eq 30 }>
+			    	<a href="#" onclick="shield(this,'type',<{$data[ls].con_id}>)" class="shield<{$data[ls].con_id}>">显示</a>
+			    <{else}>
+			    	<a href="#" onclick="shield(this,'type',<{$data[ls].con_id}>)" class="shield<{$data[ls].con_id}>">屏蔽</a>
+			    <{/if}>
+			    | 
+			    <a href="javascript:deletes('<{$data[ls].con_id}>')">删除</a>
+                    </div>
+                </div>
+                <script>
+                    //删除单个
+                    function deletes(cid) {
+                        if(confirm("确认删除？")){   
+                        Ajax().get("<{$url}>/deletes/conid/"+cid,function(data){
+                            if(data=="success"){
+                                //删除单个tr节点
+                                $('.hh'+cid).remove();
+                            }else{
+                                alert("删除失败");
+                            }
+                        });
+                        }
+                    }
+
+                    //多选删除
+                    function del() {
+                        
+                        if(confirm('是否要删除？')){
+
+                            var node = $(".chk2");
+                            var rd = new Array();
+                            var j = 0;
+                            for(var i=0; i<node.length; i++){
+                                if(node.get(i).checked){
+                                    rd[j++] = node.get(i).value;
+                                }
+                            }
+
+                            if(rd == ''){
+                                alert('请选择你要删除的数据！');
+			    }else{
+
+                                var url = '<{$url}>/checkdel/rd/'+rd;
+                                Ajax().get(url,function(data){
+
+				    if(data == '1'){
+					//删除选中tr的节点
+                                       $("input:checked").parents("tr").remove();
+                                
+                                    }else{
+                                        alert('删除失败！');
+                                    }
+
+                                });
+                            }
+		    	}
+		}
+	     	
+		//显示与屏蔽
+			function shield(obj,stat,conid) {
+				
+				if(obj.innerHTML=='屏蔽') {
+					var url = '<{$url}>/shield/s/'+stat+'/val/3/conid/'+conid+'/status/shield';
+					Ajax().get(url,function(data) {
+						
+						if(data){
+							$(".shield"+conid).html('显示');
+						}else{
+							alert("屏蔽失败！");	
+						}
+						
+					});	
+				}else{
+					var url = '<{$url}>/shield/s/'+stat+'/val/30/conid/'+conid+'/status/display';
+					Ajax().get(url,function(data) {
+												
+						if(!data){
+							$(".shield"+conid).html('屏蔽');
+						}else{
+							alert("显示失败！");
+						}
+						
+					});	
+				}
+			}	
+            </script>
+            </td>
+            <td class="author">
+                <a href=""><{$data[ls].blogname}></a>
+            </td>
+            <td class="tags">
+                <{$data[ls].tags}>
+            </td>
+            <td class="comment">
+                <{$data[ls].total}>
+            </td>
+            <td class="time">
+                <{$data[ls].time|date_format:"%Y-%m-%d"}>
+            </td>
+                </tr>
+        <{/section}>
+        <{else}>
+            <tr >
+                <td colspan="6" style="width:100%;font-weight:bold;text-indent:20px;"><{$data}></td>
+            </tr>
+        <{/if}>
+            </table>
+    </div>
+    <span style="text-align:center;margin-left:35%;"><{$fpage}></span>

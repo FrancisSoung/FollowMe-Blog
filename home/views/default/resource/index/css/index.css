@@ -1,0 +1,49 @@
+* {margin:0px;padding:0px;}
+img {border:0px;}
+a {color:#525252;text-decoration:none;}
+body {background:#e3e5e8;margin:0 auto;}
+/*main*/
+.main {width:1024px;margin:30px auto;}
+/*left list*/
+.lefttab {float:left;width:248px;background:#efefef;border-left:3px solid #0099cb;margin-right:22px;}
+.bico {width:150px;height:150px;margin:15px auto;}
+.bname {width:248px;height:30px;text-align:left;text-indent:25px;color:#525252;font-size:18px;font-weight:bold;overflow:hidden;border-bottom:1px solid #cccccc;}
+.bname a:hover {border-bottom:2px solid #0099cb;}
+.binfo {width:200px;margin:5px auto;color:#a9aaad;font-size:14px;margin:8 auto;}
+.binfo p {text-indent:4em;}
+.binfo:hover {color:#0099bc;}
+.count {width:200px;margin:5px auto;color:#a9aaad;font-size:14px;margin-top:10px;}
+.count:hover {color:#0099cb;}
+.back {width:200px;margin:5px auto;color:#a9aaad;font-size:14px;margin-top:10px;}
+.back a {color:#777777;font-size:14px;}
+.back a:hover {color:#0099cb;}
+/* right content*/
+.righttab {float:left;width:750px;}
+.outertab {float:left;width:748px;}
+.middletab {float:left;width:748px;background:#ffffff;padding-bottom:10px;}
+.middletab:hover {background:#eeeeee;}
+.contab {float:left;width:356px;height:276px;border-left:2px solid #0099cb;margin-top:10px;margin-left:10px;background:#eeeeee;overflow:hidden;}
+.contab p {text-indent:2em;padding:5px;}
+.contab:hover {background:#fbfbfb;border-left:2px solid #fbfbfb;}
+.content {width:356px;height:230px;border-bottom:2px solid #eeeeee;overflow:hidden;font-size:14px;color:#aaaaaa;}
+.content:hover {border-bottom:2px solid #0099cb;color:#525252;}
+.title {width:356px;height:20px;border-bottom:2px solid #eeeeee;overflow:hidden;font-size:14px;color:#aaaaaa;}
+.title:hover {border-bottom:2px solid #0099cb;color:#525252;}
+.time {width:356px;height:20px;border-bottom:2px solid #eeeeee;font-size:14px;color:#aaaaaa;}
+.time:hover {border-bottom:2px solid #0099cb;}
+/*article */
+.brighttab {float:left;width:750px;}
+.boutertab {float:left;width:750px;}
+.bmiddletab {float:left;width:750px;background:#ffffff;padding-bottom:10px;}
+.bmiddletab:hover {background:#eeeeee;}
+.bcontab {float:left;width:728px;border-left:2px solid #0099cb;margin-top:10px;margin-left:10px;background:#eeeeee;overflow:hidden;}
+.bcontab p {text-indent:2em;padding:5px;}
+.bcontab p a {color:#0099cb;}
+.bcontab p a:hover {background:#0099cb;color:#ffffff;}
+.bcontab:hover {background:#fbfbfb;border-left:2px solid #fbfbfb;}
+.bcontent {width:728px;border-bottom:2px solid #eeeeee;overflow:hidden;font-size:14px;color:#aaaaaa;text-indent:50px;}
+.bcontent:hover {border-bottom:2px solid #0099cb;color:#525252;}
+.btitle {width:728px;height:20px;border-bottom:2px solid #eeeeee;overflow:hidden;font-size:14px;color:#aaaaaa;text-align:center;}
+.btitle:hover {border-bottom:2px solid #0099cb;color:#525252;}
+.btime {width:728px;height:20px;border-bottom:2px solid #eeeeee;font-size:14px;color:#aaaaaa;}
+.btime:hover {border-bottom:2px solid #0099cb;}

@@ -1,0 +1,57 @@
+/************
+ * 全局样式**
+ ************/
+* {margin:0px;padding:0px;}
+li {list-style:none;}
+body {background:url("../images/htmlbg.png");}
+
+/*内容部分*/
+.myfollowset_content {width:900px;margin:0 auto;margin-top:20px;}
+
+/*左边内容部分*/
+.myfollowset_content_left {float:left;width:625px;border:1px solid #CCC;background:#E1E2E4;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;behavior: url(../public/css/PIE.htc);}
+.myfollowset_content_left a {color:#374C67;font-size:13px;}
+.myfollowset_content_left_h4 {float:left;width:18px;height:16px;background:url("../images/sidemenu.png") -302px -49px;margin-top:15px;margin-left:30px;}
+.myfollowset_content_left h4 {margin-left:15px;margin-top:15px;text-indent:5px;color:#144466;font-weight:bold;}
+.myfollowset_content_left_content {float:left;width:624px;margin-top:20px;background:white;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;behavior: url(../public/css/PIE.htc);}
+/*左边内容部分的全局样式*/
+.myfollowset_content_left_content_left {float:left;width:140px;text-indent:25px;margin-top:30px;margin-bottom:10px;font-size:13px;text-align:right;}
+.myfollowset_content_left_content_right {float:left;width:464px;margin-top:30px;margin-left:20px;margin-bottom:10px;font-size:13px;}
+.myfollowset_content_left_content_right span {height:30px;margin-right:20px;}
+/*邮箱地址*/
+.myfollowset_content_left_content_email {float:left;border-bottom:1px solid #CCC;}
+/*当前密码*/
+.myfollowset_content_left_content_passwordnow {float:left;border-bottom:1px solid #CCC;}
+/*新密码*/
+.myfollowset_content_left_content_passwordnew {float:left;border-bottom:1px solid #CCC;}
+/*动态设置*/
+.myfollowset_content_left_content_trendsset {float:left;border-bottom:1px solid #CCC;}
+/*通知*/
+.myfollowset_content_left_content_noticset {float:left;border-bottom:1px solid #CCC;}
+
+/*博客头像部分*/
+.myfollowset_content_left_content_photo {float:left;border-bottom:1px solid #CCC;}
+.myfollowset_content_left_content_photo_pic {float:left;width:60px;height:60px;}
+/*上传按钮*/
+.myfollowset_content_left_content_photo_update {float:left;height:65px;width:250px;margin-left:10px;}
+.myfollowset_content_left_content_photo_update_form {float:left;width:85px;height:30px;background:url("../images/button-bg.png") -20px 0px;background:url("../images/update.png");cursor:pointer;}
+.myfollowset_content_left_content_photo_update_form #file {float:left;width:70px;height:30px;cursor:pointer;opacity:0;filter:alpha(opacity=0);cursor:pointer;}
+/*调整缩略图*/
+.myfollowset_content_left_content_photo_update a {float:left;display:block;margin-top:20px;}
+/*博客名称*/
+.myfollowset_content_left_content_name {float:left;border-bottom:1px solid #CCC;}
+.myfollowset_content_left_content_right #text {width:290px;height:51px;background:url("../images/startpage-0410.png") -210px 0px;border:0px;line-height:51px;text-indent:10px;}
+/*博客介绍*/
+.myfollowset_content_left_content_intro {float:left;border-bottom:1px solid #CCC;}
+.myfollowset_content_left_content_intro textarea {overflow:hidden;font-size:13px;width:290px;}
+/*互动设置*/
+.myfollowset_content_left_content_set {float:left;border-bottom:1px solid #CCC;}
+/*原创内容授权*/
+.myfollowset_content_left_content_accredit {float:left;border-bottom:1px solid #CCC;}
+/*保存*/
+.myfollowset_content_left_content_right #button {float:right;margin-right:20px;width:110px;height:49px;font-size:16px;font-weight:bold;color:#FFFFFF;background:url("../images/startpage-button.png") -150px -64px;border:0px;}
+.myfollowset_content_left_content_right #button:hover {background:url("../images/startpage-button.png") -150px -129px;}
+
+
+
+

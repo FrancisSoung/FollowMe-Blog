@@ -1,0 +1,20 @@
+*{margin:0px;padding:0px;}
+body {background:url(../images/htmlbg.png) repeat}
+a {text-decoration:none;color:#888888;cursor:pointer;}
+li {list-style:none;}
+.tab {width:900px;margin:0 auto;}
+.main {float:left;width:600px;height:300px;margin:0px auto;margin-top:50px;border-radius:5px;behavior:url(../public/css/PIE.htc);background:#f6f6f6;}
+.title{width:100%;height:65px;border-bottom:1px solid #E1E1E1;line-height:65px;}
+.title b {font-size:22px;margin-left:30px;color:#124062}
+.content {width:530px;height:200px;margin-left:30px;margin-top:20px;}
+.content textarea{border:1px solid #C9CACC;border-radius:5px;behavior:url(../public/css/PIE.htc);overflow:auto;}
+.cancle {width:70px;height:37px;float:right;margin-right:20px;margin-top:10px;}
+.submit {width:70px;height:37px;float:right;margin-top:10px;}
+.submit1 {background:url(../images/button-bg.png);background-position:left -600px;height:38px;width:5px;float:left;}
+.submit2 {background:url(../images/button-bg.png);background-position:right -600px;height:38px;width:65px;line-height:38px;font-size:13px;text-align:center;float:left;border:none;color:#ffffff;}
+.cancle1 {background:url(../images/button-bg.png);background-position:left -800px;height:38px;width:23px;float:left;}
+.cancle2 {background:url(../images/button-bg.png);background-position:right -800px;height:38px;width:47px;float:left;line-height:37px;font-size:13px;color:#7C7C7C}
+.submit1hover {background:url(../images/button-bg.png);background-position:left -650px;height:38px;width:5px;float:left;}
+.submit2hover {background:url(../images/button-bg.png);background-position:right -650px;height:38px;width:65px;float:left;color:white}
+.cancle1hover {background:url(../images/button-bg.png);background-position:left -850px;height:38px;width:23px;float:left;}
+.cancle2hover {background:url(../images/button-bg.png);background-position:right -850px;height:38px;width:47px;float:left;}

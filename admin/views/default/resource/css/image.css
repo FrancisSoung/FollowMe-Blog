@@ -1,0 +1,29 @@
+/*全局样式*/
+a {text-decoration:none;color:#144466;}
+img {border:0px;}
+/*主框体*/
+.imgmain {float:left;width:100%;border-top:1px solid #cccccc;margin-top:8px;}
+/*框体上部操作模块*/
+.imgmain .titletab {float:left;width:100%;}
+.imgmain .titletab .topleft {border:1px solid #ffffff;float:left;width:50%;height:100px;}
+.imgmain .titletab .topleft .title {height:50px;line-height:50px;font-size:18px;color:#144466;font-weight:bold;}
+.imgmain .titletab .topleft .title .linkimg {width:45px;height:45px;float:left;background:url(../images/icons32-vs.png) -245px -0px;}
+.imgmain .titletab .topleft .option {height:25px;font-size:14px;color:#144466;}
+.imgmain .titletab .topleft .action {height:30px;float:left;width:295px;font-size:14px;margin-right:5px;}
+.imgmain .titletab .topright {float:right;width:40%;height:100px;}
+.imgmain .titletab .topright .search {float:right;margin-top:40px;height:25px;width:250px;margin-right:10px;text-align:center;}
+.imgmain .titletab .topright .search span {float:right;margin-top:10px;font-size:14px;color:#144466;font-weight:bold;}
+.imgmain .titletab .topright .search div {float:right;margin:0px 10px;width:66px;height:21px;text-align:center;line-height:21px;font-size:14px;background:url(../images/bubgl.png);}
+.imgmain .titletab .topright .search div:hover {background:url(../images/bubglh.png);} 
+.imgmain .titletab .topright .search input {border:1px solid #cccccc;border-radius:3px;behavior:url(../resource/css/PIE.htc);color:#21759B;}
+/*图片框体*/
+.imgtab {width:100%;border:1px solid #DFDFDF;float:left;border-radius:3px;behavior:url(../resource/css/PIE.htc);text-align:left;background:#F8F7F6}
+.imgtab .showimg {width:172px;float:left;background:#FFFFFF;margin:3px;border:1px solid #DEDDDC;}
+.imgtab .showimg:hover {border:1px solid #0099cb;}
+.imgtab .showimg a:hover {color:#00bfff;}
+.imgtab .showimg .imgtitle {width:172px;height:20px;line-height:20px;font-size:13px;float:left;overflow:hidden;color:#144466;}
+.imgtab .showimg .images {margin-left:11px;width:150px;float:left;border-bottom:1px solid #cccccc;}
+.imgtab .showimg .tags {width:172px;height:20px;line-height:20px;font-size:13px;float:left;overflow:hidden;color:#144466;border-bottom:1px solid #cccccc;}
+.imgtab .showimg .author {width:172px;height:20px;line-height:20px;font-size:13px;float:left;overflow:hidden;color:#144466;border-bottom:1px solid #cccccc;}
+.imgtab .showimg .time {width:172px;height:20px;line-height:20px;font-size:13px;color:#144466;float:left;}
+.imgtab .showimg input {position:relative;top:-20px;}

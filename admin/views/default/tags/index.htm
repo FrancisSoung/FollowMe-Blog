@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+        <head>
+                <meta http-equiv="content-type" content="text/html; charset=utf-8">
+                <title>Right</title>
+                <link rel="stylesheet" href="<{$res}>/css/tags.css" type="text/css"  charset="utf-8">
+                <script src="<{$res}>/js/jquery.js"></script>
+        </head>
+        <body id="body">
+                <div class="main"> 
+                        <div class="top">
+                                <div class="left">
+                                        <div class="tu"></div>
+                                        <b>系统标签</b>
+                                        <!--显示全部div-->
+                                        <div class="batch"><a href="">全部</a>(0)&nbsp;|&nbsp;<a href="">全部</a>&nbsp;|&nbsp;<a href="">全部</a>&nbsp;|&nbsp;<a href="<{$url}>/add">添加新标签</a></div>
+                                        <!--批量操作的div-->
+                                        <div class="all">
+                                                <form action="" method="">
+                                                        <div>
+                                                                <select>
+                                                                        <option value="">选择年份</option>
+                                                                        
+                                                                        <option value=""></option>
+                                                                        
+                                                                </select>
+                                                                <select>
+                                                                        <option value="">选择月份</option>
+                                                                        
+                                                                        <option value=""></option>
+                                                                        
+                                                                </select>
+                                                        </div>
+                                                        <div><input type="submit" class="app" name="" value="应用"></div>
+                                                        <div class="qxz"><input type="checkbox" value="" class="qx" onclick="qx()"><a href="javascript:;" onclick="qx()">全选</a>&nbsp;/&nbsp;<a href="javascript:;" onclick="fx()">反选</a>&nbsp;&nbsp;<a href="javascript:;" title="删除所选选项"><img src="<{$res}>/images/delete.gif"></a></div>
+                                                </form>
+                                        </div>
+                                </div>
+                                <div class="right">
+                                        <form action="" method="">
+                                                <div id="search">
+                                                        <div><input type="text" class="search" name="" value=""></div>
+                                                        <div><input type="submit" class="searchb" name="" value="搜索标签"></div>
+                                                </div>
+                                        </form>
+                                </div>
+                        </div>
+                        <div class="tablediv">
+                                <table class="table" cellspacing=0px border='1px'>
+                                        <tr class="firsttr"><th width=30px style="text-align:center"><input class="qx" onclick="qx()" type="checkbox" name="" value="qx"></th><th width=70px>名称</th><th>描述</th><th width=50px;>排序</th><th width=50px>统计</th></tr>
+                                        <{section loop=$data name="ls"}>
+                                        <tr class="contr">
+                                                <td style="text-align:center"><input type="checkbox" name="id[]" value=""></td>
+                                                <td><a href=""><{$data[ls].systag_name}></a></td>
+                                                <td>
+                                                        <div class="datatd">
+                                                                <b class="ba">提交于</b>
+                                                                <b class="bb"><{$data[ls].time}></b>
+                                                        </div>
+                                                        <div class="contd"><{$data[ls].seque}></div>
+                                                        <div style="width:100%;height:30px;float:left;">
+                                                                <div class="actiontd">
+                                                                        <a onclick="return confirm('你确定要删除这个<{$data[ls].name}>商品吗?')" href="<{$url}>/delete/id/<{$data[ls].systag_id}>">删除</a> | <a href="<{$url}>/mod/id/<{$data[ls].systag_id}>">编辑</a>
+                                                                </div>
+                                                        </div>
+                                                </td>
+                                                <td><a href=""><{$data[ls].sort}></a></td>
+                                                <td><a href="">10</a></td>
+                                        </tr>
+                                        <{/section}>
+                                        <tr class="fpagetr"><td colspan=5><{$fpage}></td></tr>
+                                    </table>
+                            </div>
+                    </div>
+                    <div class="1background"></div>
+        </body>
+        <script>
+                $(".contr").hover(
+                        function () {
+                                $(this).children("td").children("div").children(".actiontd").addClass("actiontdhover");
+                        },
+                        function () {
+                                $(this).children("td").children("div").children(".actiontd").removeClass("actiontdhover");
+                        }
+                );
+                var ids=document.getElementsByName('id[]');
+                function qx() {
+                        if($(".qx").attr("checked")=="checked"){
+        		        for(var i=0; i<ids.length; i++)
+                                        ids[i].checked=true;
+                        }else{
+                                for(var i=0; i<ids.length; i++)
+                                        ids[i].checked=false;
+                        }
+
+                };
+                function fx() {
+                        for(var i=0; i<ids.length; i++){
+                                if(ids[i].checked==true){
+                                        ids[i].checked=false;
+                                }else{
+                                        ids[i].checked=true;
+                                }
+                        }
+
+                };
+                $(document).ready(function () {                       
+                        $('tr:even').css('background', '#F9F9F9'); // 偶数行颜色
+                        $('tr:odd').css('background', 'white'); // 奇数行颜色
+                        $('tr:eq(0)').css('background', 'url(<{$res}>/images/tabletopbg.png)');
+                });
+
+            </script>
+</html>

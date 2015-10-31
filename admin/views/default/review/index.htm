@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>review</title>
+<link rel="stylesheet" type="text/css" href="<{$res}>/css/review.css">
+<script src="<{$res}>/js/jquery.js"></script>
+<script src="<{$res}>/js/ajax3.0.js"></script>
+<script src="<{$res}>/js/review.js"></script>
+</head>
+<body onload="bg()">
+	<div class="review_content">
+		<form action="" method="post">
+		<!--用户操作的部分-->
+		<div class="review_content_action">
+			<div class="review_content_action_left">
+				<!--标题-->
+				<div class="review_content_action_title">
+					<div class="review_content_action_title_icon"></div><span>评论管理</span>
+				</div>
+				<!--查看链接-->
+				<div class="review_content_action_link">
+					<a href="<{$url}>">全部(<{$num}>)</a>
+				</div>
+				<!--批量操作表单-->
+				<div class="review_content_action_form">
+					<div class="review_content_action_select">
+						<{*<form name="frm">*}>
+							<select id="year">
+								<option selected value="请选择年份">选择年份</option>
+								<{section loop=$year name="ls"}>
+								<option value="<{$year[ls]}>"><{$year[ls]}></option>
+								<{/section}>
+							</select>
+							<select id="month">
+								<option selected value="请选择月份">选择月份</option>
+								<{section loop=$month name="ls"}>
+								<option value="<{$month[ls]}>"><{$month[ls]}></option>
+								<{/section}>
+							</select>
+					</div>
+				<div class="review_content_action_button">
+					<input id="review_content_action_button" type="button" name="button" value="应用" onclick="send()"/>
+				</div>
+						<{*</form>*}>
+				<script>
+
+
+					//ajax动态查询
+					function send() {
+					//获取表单时间对象
+						var yvalue = $("#year").val();
+						var mvalue = $("#month").val();
+						if(yvalue=="请选择年份"){
+							alert("请选择年份");
+						}else if(mvalue=="请选择月份"){
+							alert("请选择月份");
+						}else{
+							var mess = {year:yvalue,month:mvalue};
+							//ajax发送数据
+							Ajax().post("<{$url}>/date",mess,function(data){
+								/*
+								if(data){
+									$("#fpage").css("display","none");
+								}
+								*/
+								document.getElementById("review").innerHTML=data;
+								bg();
+							});
+						}
+					}
+
+				</script>
+				<label for="checkbox">
+					<input type="checkbox" name="" class="checked" id="checkbox" />
+					<a href="#" id="all">全选</a>
+				</label>/
+					<a href="#" id="not">反选</a>
+					<a href="javascript:del()" title="删除"><img src="<{$res}>/images/delete.gif" /></a>
+				</div>
+			</div>
+			<!--搜索部分-->
+			<div class="review_content_action_right">
+				<div class="review_content_action_right_form">
+					<div class="review_content_action_right_text">
+						<input id="review_content_action_right_text" type="text" name="text" value="" />
+					</div>
+					<div class="review_content_action_right_button">
+						<input id="review_content_action_right_button" type="button" name="button" value="搜索" />
+					</div>
+					<!--显示评论总数-->
+					<span><{$num}>条评论</span>
+				</div>
+			</div>
+		</div>
+		<!--评论列表部分-->
+		<div class="review_content_list" id="review">
+			<table cellspacing="0" border="0">
+				<tr>
+					<th class="review_content_list_checkbox">
+						<input type="checkbox" class="checked" name="id[]" value="" />
+					</th>
+					<th class="review_content_list_author">博主</th>
+					<th class="review_content_list_review">评论</th>
+					<th class="review_content_list_responses">回应给</th>
+				</tr>
+				<{*	
+					遍历评论列表
+					u_name	发表评论者
+					email 	发表评论者的邮箱
+					ip 	发表评论者的IP
+					time 	发表的时间
+					bu_name	被评论者
+					content 评论的内容
+				*}>
+				<{section loop=$data name='ls'}>
+				<tr class="hh<{$data[ls].rev_id}>" onmouseover="showbg(this)" onmouseout="hiddenbg(this)">
+					<!--复选框部分-->
+					<td class="review_content_list_checkbox">
+							<input type="checkbox" name="chk[]" class="chk2" value="<{$data[ls].rev_id}>" />
+					</td>
+					<!--作者部分-->
+					<td class="review_content_list_author">
+						<div class="review_content_photo">
+							<img src="<{$root}>/upload/littleico/<{$data[ls].u_ico}>" />
+						</div>
+						<div class="review_content_info">
+							<div class="review_content_username"><{$data[ls].u_name}></span><br />
+							<div class="review_content_email"><{$data[ls].email}></div><br />
+							<div class="review_content_ip"><{$data[ls].ip}></div>
+						</div>
+					</td>
+					<!--评论部分-->
+					<td class="review_content_list_review"   onmouseover="review_show(this)" onmouseout="review_hidden(this)">
+						<div class="review_content_list_time">
+							提交于  <a style="color:green;"><{$data[ls].time|date_format:'%Y-%m-%d %I:%M:%S %p'}></a> | 回复给博主  <a href="#" style="color:green;"><{$data[ls].bu_name}></a>
+						</div>
+						<div class="review_content_list_details">
+							<{$data[ls].content}>
+						</div>
+						<div class="review_content_list_action">
+							<span class="review_content_list_action_span">
+								<a href="javascript:deletes('<{$data[ls].rev_id}>')">删除</a>
+							</span>
+						</div>
+						<script>
+							
+							//删除单个
+							function deletes(revid) {
+								if(confirm("确认删除？")){   
+									Ajax().get("<{$url}>/deletes/revid/"+revid,function(data){
+										//alert(data);
+										if(data=="success"){
+										//删除tr节点
+											$('.hh'+revid).remove();
+										}else{
+											alert("删除失败");
+										}
+									});
+								}
+							}
+							
+							
+							//多选删除
+							function del() {
+								if(confirm('是否要删除？')){
+									var node = $(".chk2");
+									//alert(node.length);
+									var rd = new Array();
+									var j = 0;
+									for(var i=0; i<node.length; i++){
+										if(node.get(i).checked){
+											rd[j++] = node.get(i).value;
+										}
+									}
+									if(rd == ''){
+										alert('请选择你要删除的数据！');
+									}else{
+										var url = '<{$url}>/checkdel/rd/'+rd;
+										Ajax().get(url,function(data){
+											if(data = '1'){
+												//删除选中tr节点
+												$("input:checked").parents("tr").remove();
+											}else{
+												alert('删除失败！');
+											}
+										});
+									}
+								}
+							}
+
+						
+						</script>
+					</td>
+					<!--回应给部分-->
+					<td class="review_content_list_responses">
+						<{$data[ls].title}>
+					</td>
+				</tr>
+				<{/section}>
+				
+			</table>
+			</div>
+			<!--分页-->
+		<span id="fpage" style="text-align:center;margin-left:35%;"><{$fpage}></span>
+		</div>
+
+</body>
+</html>

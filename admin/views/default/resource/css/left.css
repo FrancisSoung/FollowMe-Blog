@@ -1,0 +1,19 @@
+*{margin:0px;padding:0px}
+.main{width:156px;background:url(../images/background1.png);height:800px}
+h4 {display:block;text-indent:10px;height:30px;border-bottom:1px solid #DFDFDF;border-top:1px solid #F9F9F9;width:147px;line-height:35px;cursor:pointer;background:url(../images/libg.png);color:white;font-size:15px;}
+li {list-style:none}
+ul li ul {text-indent:60px;background:url(../images/background.png);font-size:14px;line-height:20px;text-decoration:none}
+li ul {display:none}
+li a{text-decoration:none;color:#21759B;font-weight:bold}
+li a:hover {color:red;color:black}
+.menudiv {float:left;width:80px;height:20px;}
+.menudiv:hover {color:#144466;}
+.h40div1{float:left;margin-top:5px;margin-left:5px;background:url(../images/menu.png) -65px -37px;width:20px;height:20px}
+.h40hover {float:left;margin-top:5px;margin-left:5px;background:url(../images/menu.png) -65px -5px;width:20px;height:20px}
+.h41div1{float:left;margin-top:5px;margin-left:5px;background:url(../images/menu.png) -155px -37px;width:20px;height:20px}
+.h41hover {float:left;margin-top:5px;margin-left:5px;background:url(../images/menu.png) -155px -5px;width:20px;height:20px}
+.h4right{float:right;margin-top:5px;margin-right:10px;background:url(../images/arrows-dark.png) 0px 0px;width:15px;height:15px;}
+.h42div1{float:left;margin-top:5px;margin-left:5px;background:url(../images/menu.png) -305px -37px;width:20px;height:20px}
+.h42hover {float:left;margin-top:5px;margin-left:5px;background:url(../images/menu.png) -305px -5px;width:20px;height:20px}
+.h43div1{float:left;margin-top:5px;margin-left:5px;background:url(../images/menu.png) -215px -37px;width:20px;height:20px}
+.h43hover {float:left;margin-top:5px;margin-left:5px;background:url(../images/menu.png) -215px -5px;width:20px;height:20px}

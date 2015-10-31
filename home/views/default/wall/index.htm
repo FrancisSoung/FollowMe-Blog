@@ -1,0 +1,62 @@
+<{include file="public/header.htm"}>
+<link rel="stylesheet" type="text/css" href="<{$res}>/css/wall.css">
+<link rel="stylesheet" type="text/css" href="<{$res}>/css/fancy.css">
+
+<script src="<{$root}>/public/js/ajax3.0.js" type="text/javascript" charset="utf-8"></script>
+<script src="<{$res}>/js/jquery.infinitescroll.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="<{$res}>/js/jquery.masonry.min.js" type="text/javascript" charset="utf-8"></script>
+
+
+<{include file="public/head.htm"}>
+<body id="body">
+        <div id="container" style="display:none"> 
+                <div class="item">
+                        
+                        <div class="middle">
+                                <div class="sort"><div class="left"></div><div class="center"><div><a href="<{$url}>">全部</a></div></div><div class="right"></div></div>
+                                <{section loop=$tags name="ls"}>
+                                <div class="sort"><div class="left"></div><div class="center"><div><a href="<{$url}>/index/tag_id/<{$tags[ls].systag_id}>"><{$tags[ls].systag_name}></a></div></div><div class="right"></div></div>
+                                <{/section}>
+                        </div>
+                </div>
+                <{section loop=$data name="ls"}>
+                <div class="item">
+                        <div class="img">
+                                <div class="wall<{$data[ls].con_id}>"><a href="<{$app}>/user/index/conid/<{$data[ls].con_id}>"><img src="<{$root}>/upload/wallimg/<{$data[ls].image}>"></a></div>
+                        </div>
+                        <div class="user"> 
+                                <div class="photo"><a href="<{$app}>/user/index/uid/<{$data[ls].u_id}>"><img src="<{$root}>/upload/littleico/<{$data[ls].u_ico}>"></a></div>
+                                <div class="u_name"><a href="<{$app}>/user/index/uid/<{$data[ls].u_id}>"><{$data[ls].u_name}></a></div>
+                        </div>
+                </div>
+                <{/section}>
+        </div>
+</body>
+<script>
+        $("#container").fadeIn("slow");
+        $(function(){
+  $('#container').masonry({
+    // options
+	  itemSelector : '.item',
+		  
+columnWidth : 10,
+isAnimated : true,
+          animationOptions:{
+            //jquery animate属性 渐变效果  Object { queue: false, duration: 500 }
+          },
+          gutterWidth:0,//列的间隙 Integer
+          isFitWidth:true,// 适应宽度   Boolean
+          isResizableL:true,// 是否可调整大小 Boolean
+          isRTL:false,//使用从右到左的布局 Boolean
+
+  });
+});
+var $container = $('#container');
+$container.imagesLoaded(function(){
+  $container.masonry({
+    itemSelector : '.item',
+    columnWidth : 0
+  });
+});			    
+</script>
+</html>

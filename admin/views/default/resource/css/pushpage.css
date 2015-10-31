@@ -1,0 +1,75 @@
+/*全局样式*/
+* {margin:0px;padding:0px;}
+a {text-decoration:none;color:#144466;}
+img {border:0px;}
+/*主框体*/
+.pagemain {float:left;width:99%;border-top:1px solid #cccccc;margin-top:8px;}
+/*框体上部操作模块*/
+.pagemain .titletab {float:left;width:100%;border:0px;}
+.pagemain .titletab .topleft {float:left;width:50%;height:100px;}
+.pagemain .titletab .topleft .title {height:50px;line-height:50px;font-size:18px;color:#144466;font-weight:bold;}
+/*文章*/
+.pagemain .titletab .topleft .title .articleimg {width:45px;height:45px;float:left;background:url(../images/icons32-vs.png) -305px -0px;}
+/*声音*/
+.pagemain .titletab .topleft .title .soundimg {width:45px;height:45px;float:left;background:url(../images/icons32-vs.png) -245px -0px;}
+/*链接*/
+.pagemain .titletab .topleft .title .linkimg {width:45px;height:45px;float:left;background:url(../images/icons32-vs.png) -185px -0px;}
+
+.pagemain .titletab .topleft .option {height:25px;font-size:14px;color:#144466;}
+.pagemain .titletab .topleft .action {height:30px;float:left;width:180px;margin-right:3px;}
+.pagemain .titletab .topleft .action select {width:83px;}
+.pagemain .titletab .topleft .actionok {float:left;width:42px;height:21px;font-size:13px;margin-right:13px;background:url(../images/bubg.png);text-align:center;line-height:21px;}
+.pagemain .titletab .topleft .actionok:hover {background:url(../images/bubgh.png);text-align:center;line-height:21px;color:#21759B;}
+.pagemain .titletab .topright {float:right;width:40%;height:100px;}
+.pagemain .titletab .topright .search {float:right;margin-top:40px;height:60px;width:250px;margin-right:10px;text-align:center;}
+.pagemain .titletab .topright .search span {float:right;margin-top:10px;font-size:14px;color:#144466;font-weight:bold;}
+.pagemain .titletab .topright .search div {float:right;margin:0px 10px;width:66px;height:21px;color:#000000;text-align:center;line-height:21px;font-size:14px;background:url(../images/bubgl.png);}
+.pagemain .titletab .topright .search div a {color:#000000;}
+.pagemain .titletab .topright .search div a:hover {color:#144466;}
+.pagemain .titletab .topright .search div:hover {background:url(../images/bubglh.png);} 
+.pagemain .titletab .topright .search input {float:left;border:1px solid #cccccc;border-radius:3px;behavior:url(../resource/css/PIE.htc);color:#21759B;}
+/*内容模块*/
+.pagemain .contenttab {float:left;width:100%;border:1px solid #cccccc;border-radius:3px;behavior:url(../resource/css/PIE.htc);}
+.pagemain .contenttabb {float:left;width:100%;border-radius:3px;behavior:url(../resource/css/PIE.htc);}
+.pagemain .contenttab table {width:100%;text-align:left;}
+.pagemain .contenttab table th {height:32px;background:url(../images/tabletopbg.png);text-align:left;color:#144466;font-size:16px;}
+.pagemain .contenttab table tr td {height:60px;border-bottom:1px solid #cccccc;font-size:14px;}
+.pagemain .contenttab table tr td a:hover {color:#bc0b0b;}
+
+.pagemain .contenttab .checkbox {width:3%;text-align:center;}
+.pagemain .contenttab .titletabs {width:55%;}
+.pagemain .contenttab .author {width:12%;}
+.pagemain .contenttab .tags {width:15%;}
+.pagemain .contenttab .comment {width:5%;text-align:center;}
+.pagemain .contenttab .time {width:10%;text-align:center;}
+.pagemain .contenttab .showmod {width:140px;height:20px;font-size:12px;line-height:20px;display:none;}
+.pagemain .contenttab .modifi {height:20px;}
+
+/*文章查看页*/
+.white_content {position:absolute;top:20%;left:25%;width:400px;height:315px;border:7px solid lightblue;background-color:white;overflow:visible;}
+.close {height:30px;text-align:right;cursor:default;}
+.close span {font-size:16px;font-weight:bold;cursor:pointer;}
+.article_infro {float:left;width:386px;height:62px;font-size:14px;}
+.article_infro .photo {float:left;width:60px;height:60px;background:#CCC;margin-left:10px;border:1px solid black;}
+.article_infro .infro {float:left;width:304px;height:62px;}
+.article_infro .title {float:left;width:304px;height:20px;line-height:20px;overflow:hidden;text-indent:20px;border-bottom:1px dotted black;}
+.article_infro .author {float:left;width:304px;height:20px;line-height:20px;overflow:hidden;text-indent:20px;border-bottom:1px dotted black;}
+.article_infro .time {float:left;width:304px;height:20px;line-height:20px;overflow:hidden;text-indent:20px;border-bottom:1px dotted black;}
+.article_content {float:left;width:386px;height:200px;font-size:14px;margin-top:20px;}
+.article_content textarea {width:370px;height:195px;font-size:13px;word-spacing:20px;letter-spacing:2px;overflow:auto;margin-left:10px;}
+
+/*弹出层*/
+/*黑背景*/
+.black_overlay {display:none;position:absolute;top:0px; left:0px; width:100%; height:100%; background-color:black; z-index:1001;-moz-opacity:0.5;opacity:0.5;filter:alpha(opacity=50);}
+/*内容*/
+.white_content {display:none;position:absolute;top:25%;left:30%;width:400px;height:315px;border:7px solid lightblue;background-color:white;z-index:1002;overflow:visible;}
+.close {height:30px;text-align:right;cursor:default;}
+.close span {font-size:16px;font-weight:bold;cursor:pointer;}
+.article_infro {float:left;width:386px;height:62px;font-size:14px;}
+.article_infro .photo {float:left;width:60px;height:60px;background:#CCC;margin-left:10px;border:1px solid black;}
+.article_infro .infro {float:left;width:304px;height:62px;}
+.article_infro .title {float:left;width:304px;height:20px;line-height:20px;overflow:hidden;text-indent:20px;border-bottom:1px dotted black;}
+.article_infro .author {float:left;width:304px;height:20px;line-height:20px;overflow:hidden;text-indent:20px;border-bottom:1px dotted black;}
+.article_infro .time {float:left;width:304px;height:20px;line-height:20px;overflow:hidden;text-indent:20px;border-bottom:1px dotted black;}
+.article_content {float:left;width:386px;height:200px;font-size:14px;margin-top:20px;}
+.article_content textarea {width:370px;height:195px;font-size:13px;word-spacing:20px;letter-spacing:2px;overflow:auto;margin-left:10px;}

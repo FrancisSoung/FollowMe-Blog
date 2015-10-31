@@ -1,0 +1,49 @@
+/*全局样式*/
+* {margin:0px;padding:0px;}
+ a {text-decoration:none;color:#144466;}
+ img {border:0px;}
+ /*内容部分*/
+.review_content {float:left;width:99%;border-top:1px solid #cccccc;margin-top:8px;}
+/*评论选项部分*/
+.review_content_action {width:100%;height:100px;}
+.review_content_action_left {float:left;width:50%;height:100px;}
+.review_content_action_title {float:left;width:100%;height:50px;margin-left:5px;}
+.review_content_action_title_icon {float:left;width:30px;height:37px;background:url("../images/icons32-vs.png") -75px 0px;}
+.review_content_action_title  span{float:left;width:100px;height:37px;color:#144466;line-height:40px;font-size:18px;font-weight:bold;margin-left:10px;margin-top:4px;}
+.review_content_action_link {float:left;width:100%;height:25px;font-size:14px;}
+.review_content_action_form {float:left;width:100%;height:25px;}
+.review_content_action_select {float:left;}
+#review_content_action_button {float:left;width:42px;height:21px;border:0px;margin-left:13px;margin-right:13px;background:url("../images/bubg.png");}
+#review_content_action_button:hover {background:url("../images/bubgh.png");color:#21759B;}
+/*评论搜索部分按钮的*/
+.review_content_action_right {float:right;width:50%;height:100px;}
+.review_content_action_right_form {float:right;width:240px;height:60px;margin-top:30px;}
+#review_content_action_right_text {float:left;width:140px;}
+.review_content_action_right_button {float:left;width:66px;height:21px;margin-left:15px;}
+#review_content_action_right_button {float:left;width:66px;height:21px;border:0px;background:url("../images/bubgl.png");}
+#review_content_action_right_button:hover {background:url("../images/bubglh.png");color:#21759B;}
+.review_content_action_right_form span {float:left;font-weight:bold;font-size:14px;color:#144466;margin-top:15px;margin-left:90px;}
+/*评论列表部分*/
+.review_content_list {width:100%;border:1px solid #CCCCCC;}
+.review_content_list table {width:100%;}
+.review_content_list th {height:32px;color:#144466;background:url("../images/tabletopbg.png");}
+.review_content_list td {height:70px;font-size:14px;border-bottom:1px solid #CCCCCC;}
+/*复选框部分*/
+.review_content_list_checkbox {width:3%;text-align:left;text-align:center;}
+/*作者部分*/
+.review_content_list_author {width:30%;text-align:left;}
+.review_content_photo {float:left;width:38px;height:38px;margin-left:20px;}
+.review_content_info {float:right;width:79%;height:60px;}
+.review_content_username{float:right;width:100%;height:20px;}
+.review_content_email{float:right;width:100%;height:20px;}
+.review_content_ip{float:right;width:100%;height:20px;}
+/*评论部分*/
+.review_content_list_review {width:47%;text-align:left;}
+.review_content_list_time {width:100%;height:15px;font-size:12px;}
+.review_content_list_details {width:100%;height:15px;margin-top:5px;}
+.review_content_list_action {width:100%;height:15px;margin-top:10px;font-size:13px;line-height:15px;}
+.review_content_list_action_span {display:none;}
+/*回应给*/
+.review_content_list_responses {width:20%;text-align:left;}
+
+

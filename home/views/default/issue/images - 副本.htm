@@ -1,0 +1,62 @@
+<{include file="public/header.htm"}>
+		<link rel="stylesheet" type="text/css" href="<{$res}>/css/issue_images.css">
+<{include file="public/head.htm"}>
+	<body id="body">
+		<div class="main">
+			<div class="right">
+				<div class="right_top"></div>
+				<div class="right_middle">
+					<div class="wenzi"><b>发表图片</b></div>
+					<div class="form">
+                                                <form class="formt" action="<{$url}>/insert" method="post" enctype="multipart/form-data">
+                                                        <div class="upload"><div class="uploadleft"></div><div class="uploadcenter"><input type='file' name='pic' value='' class='uploadfile'><div class="uploadzi"></div></div><div class="uploadright"></div><b>JPG,GIF或PNG不超过20MB,一次可上传多张，<a href="">支持文件拖拽</a></b></div>
+                                                        <input type="hidden" class="systagval" name="systag_id" value="">
+                                                        <input type="hidden" name="type" value="2">
+                                                        <input type="hidden" name="tags" class="stags" value="">
+							<div class="content"><b class="b1">描述</b><b class="b2">(可不填)</b></div>
+                                                        <div class="textarea">
+                                                        
+                                                        	<textarea name="content" class="contenttext" value="" rows="5" cols="30"></textarea><br>
+	                                                	<{$editor}>
+                                                        
+                                                        </div>
+							<div class="button">
+								<div class="cancle"></div>
+								<div class="submit"><input type="submit"  name="" value=""></div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="right_bottom"></div>
+			</div>
+			<div class="left">
+				<div class="left_top"></div>
+				<div class="left_middle">
+					<div class="tag">
+						<div class="taga" onclick="xitag()"><button></button></div>
+						<div class="tagb">
+							<ul class="ul">
+							</ul>
+							<div style="width:200px;float:left;"><input class="tags" type="text" name="" value="请输入标签，输入完后回车"></div>
+						</div>
+						
+                                        </div>
+                                        <div class="tagsval" style="display:none"></div>
+                                        <div class="xitag">
+                                                <{section loop=$data name="ls"}>
+                                                        <a href="javascript:;" onclick="systag(<{$data[ls].systag_id}>)" class="systag"><{$data[ls].systag_name}></a>
+                                                <{/section}>
+                                        </div>	
+				</div>
+				<div class="left_bottom"></div>
+			</div>
+		</div>
+		<div class="tandi"></div>
+		<div class="tanshang">
+			<div class="divcontent" style="margin-left:20px;margin-top:20px;"></div>
+			<div onclick="none()" class="close" ></div>
+		</div>	
+	</body>
+<script src="<{$res}>/js/image.js"></script>
+</html>
+

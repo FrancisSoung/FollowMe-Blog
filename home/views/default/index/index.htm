@@ -1,0 +1,416 @@
+    <{ include file="public/header.htm"}><!--顶部--> 
+    <link rel="stylesheet" type="text/css" href="<{$res}>/css/index.css"> 
+    <link rel="stylesheet" type="text/css" href="<{$res}>/css/fancy.css">
+    <script> var res="<{$res}>" </script>
+    <script src="<{$res}>/js/index.js"></script>
+    <script src="<{$res}>/js/ajax3.0.js"></script>
+    <script src="<{$res}>/js/jquery-1.2.3.pack.js"></script>
+	<script src="<{$res}>/js/jquery.fancybox-1.0.0.js"></script>
+    <{ include file="public/head.htm"}> <!--头部--> 
+	<!--首页内容主题框-->
+	<div class="indexmain">
+		<!--左侧内容框-->
+        <div class="lefttab">
+            <!--发表框体-->
+            <{if $session.isLogin==1 }>
+            <div class="pubtab">
+                	<!--用户头像-->
+				<div class="userico">
+                    <img src="<{$root}>/upload/normalico/<{$pushico}>" />      
+                </div>
+                <div class="arrows"></div>
+                <!--发表-->
+                <div class="top"></div>
+                <div class="ucontent">
+                    <a href="<{$app}>/issue"><li class="text"></li></a>
+                    <a href="<{$app}>/issue/images"><li class="img"></li></a>
+                    <a href="<{$app}>/issue/music"><li class="music"></li></a>
+                    <a href="<{$app}>/issue/video"><li class="move"></li></a>
+                    <a href="<{$app}>/issue/link"><li class="link"></li></a>
+                </div>
+                <div class="bottom"></div>
+            </div>
+            <{/if}>
+        <{section loop=$udata name="ls" }>
+        <{section loop=$udata[ls] name=als }>
+            <!--博文内容框体-->
+            <div class="usertab">
+                <!--用户头像-->
+
+                <{if $session.isLogin==1 }>
+				<div class="userico" onmouseover="showinfo(this)" onmouseout="showico(this)">
+                    <div class="imgtab"><a href="<{$app}>/user/index/uid/<{$udata[ls][als].u_id}>" target="_blank" title="<{$udata[ls][als].u_name}>"><img src="<{$root}>/upload/normalico/<{$udata[ls][als].u_ico}>" /></a></div>
+                    <div class="showinfo" onclick="showmessage(this)"></div>
+                    <div class="showtab" onmouseout="hiddenall(this)"></div>
+                        <!--用户信息/私信/关注-->
+                        <div class="message" onmouseover="showself(this)" onmouseout="hiddenself(this)">
+                            <div class="topico"></div>
+                            <div class="messtab">
+                                <a href="<{$app}>/message/index/uid/<{$session.u_id}>/guid/<{$udata[ls][als].u_id}>/blogname/<{$udata[ls][als].blogname}>">发私信</a>
+                                <hr/>
+                                <a onclick="add('<{$udata[ls][als].u_id}>,<{$session.u_id}>',this)">加关注</a>
+            
+                                 <script>
+                                        //添加关注
+                                    function add(id,obj){
+                                            var mess={id:id};
+                                            Ajax().post('<{$url}>/addblog',mess,function(data){
+                                                //循环弹出消息
+                                                    switch(data){
+                                                        case 'a':
+                                                        alert('加关注成功!');
+                                                        obj.innerHTML="已关注";
+                                                            break;
+                                                        case 'b':
+                                                            alert('加关注失败!');
+                                                            break;
+                                                        case 'c':
+                                                        alert('取消关注成功!');
+                                                        obj.innerHTML="加关注";
+                                                            break;
+                                                        case 'd':
+                                                        alert('取消关注失败!');
+                                                    }
+                                            });
+                                        }
+                                    </script>
+
+                            </div>
+                        </div>        
+                </div> 
+                <{else}>
+	            <div class="userico">
+                    <div class="imgtab"><a href="<{$app}>/user/index/uid/<{$udata[ls][als].u_id}>" title="<{$udata[ls][als].u_name}>"><img src="<{$root}>/upload/normalico/<{$udata[ls][als].u_ico}>" /></a></div>
+                </div> 
+                <{/if}>
+				<!--用户博文-->
+				<div class="ucontent" onmouseover="sico(this)" onmouseout="hico(this)">
+					<!--博文title-->
+                    <div class="contitle">
+                        <span><{$udata[ls][als].blogname}></span>
+                        
+                    </div>
+                    <div class="moreico"><a href="<{$app}>/user/index/conid/<{$udata[ls][als].con_id}>" target="_blank">　　</a></div>
+					<!--博文内容-->
+					<div class="contenttab">
+                        <div class="content">
+                            <!--title不为空显示-->
+                            <{if $udata[ls][als].title!=""}>
+                            <div class="cont">
+                                <b><{$udata[ls][als].title}></b>
+                            </div>
+                            <{/if}>
+                            <!--判断内容类型 显示-->
+                                <{if $udata[ls][als].type=='1' }>
+                                <{$udata[ls][als].content}>
+                                <{elseif $udata[ls][als].type=='2' }>
+                                <p id="<{$udata[ls][als].con_id}>"><a href="<{$root}>/upload/bigimg/<{$udata[ls][als].image}>"><img src="<{$root}>/upload/normalimg/<{$udata[ls][als].image}>"></a><p/><br/>
+                                    <{$udata[ls][als].content}>
+                                    <{elseif $udata[ls][als].type=='3' }>
+                                    <embed height="33" width="257" wmode="transparent" type="application/x-shockwave-flash" src="http://www.xiami.com/widget/0_<{$udata[ls][als].sound}>/singlePlayer.swf">
+                                    <br/><br/>
+                                    <{$udata[ls][als].content}>
+                                <{elseif $udata[ls][als].type=='4' }>
+                                    <{$udata[ls][als].video.title}><br>
+                                    
+                                    <{$udata[ls][als].video.object}><br/>
+                                    <{$udata[ls][als].content}>    
+                                    <{else}>
+                                    <a class="links" href="<{$udata[ls][als].link}>"><{$udata[ls][als].link}></a><br/><br/>
+                                    <{$udata[ls][als].content}>
+                                    <{/if}>
+                            <!--showimg-->
+                                    <script>
+                                        $(document).ready(function() {
+                                            //Activate FancyBox
+                                            $("p#<{$udata[ls][als].con_id}> a").fancybox({
+                                                'hideOnContentClick': true
+                                            });
+                                        });
+                                </script>
+
+						</div>
+					</div>
+					<!--博文底栏-->
+					<div class="conbottom">
+						<!--博文标签-->
+						<div class="contag">
+                            <div class="tagleft"></div><div class="tags"><a href="<{$app}>/actioned/attention/id/<{$udata[ls][als].systag_id}>">#<{$udata[ls][als].systag_name}></a></div><div class="tagright"></div>
+                            <{section loop=$udata[ls][als].tags name=bls }>
+                            <tt><a onclick="showtag(this)">#<{$udata[ls][als].tags[bls]}></a></tt>
+                            <{/section}>
+                            <script>
+                                function showtag(obj){
+                                    var body=document.body;
+                                    //alert(body);
+                                    var tag=obj.innerHTML;
+                                        //返回从下表1开始的字符串 -去掉#
+                                    var tag=tag.substring(1);
+                                    var mess={tag:tag};
+                                    Ajax().post('<{$url}>/index',mess,function(data){
+                                        
+                                        body.innerHTML=data;
+                                    
+                                    });
+                                }
+                                </script>
+						</div>
+						<!--博文热度,回应,转载,喜欢-->
+						<div class="conhot">
+                            <a onclick="showhot(this)">热度(<{$udata[ls][als].hotnum}>)</a>
+                            <a onclick="showcomm(this)">回应(<{$udata[ls][als].revnum}>)</a>
+                            <{if $session.isLogin==1 }>
+                            <a onclick="rep()">转载</a>
+                            <i><a onclick="addlike('<{$udata[ls][als].con_id}>,<{$session.u_id}>',this)">　　</a></i>
+                <script>
+                    //
+                    function rep(){
+                         
+                    }
+                //添加喜欢
+                function addlike(id,obj){           
+                    var mess={id:id};
+                    Ajax().post('<{$url}>/addlike',mess,function(data){
+                        //循环弹出消息
+                            switch(data){
+                                case 'a':
+                                
+                                $(obj).css('background','url(<{$res}>/images/feed-icons.png) -90px -60px');
+                                    break;
+                                case 'b':
+                                    alert('噢!喜欢未遂!别灰心,稍后再上!');
+                                    break;
+                                case 'c':
+                                $(obj).css('background','url(<{$res}>/images/sidemenu.png) -70px -50px');
+                                    break;
+                                case 'd':
+                                alert('它在笑!您未成功甩掉它!');
+                            }
+                    });
+                }
+
+            </script>
+
+                            <{else}>
+                            <div></div>
+                            <{/if}>
+						</div>
+					</div>
+					<!--内容框底栏-->
+					<div class="confooter">
+                    </div>
+                    <!--热度-->
+
+                    <div class="hottab">
+                        <{if $udata[ls][als].hotnum!=0 }>
+                        <{section loop=$udata[ls][als].arr name=bls }>
+                        <{if $udata[ls][als].arr[bls].type==""  }>                         
+                            <div class="comtab">
+                                <div class="commentico">
+                                    <img src="<{$root}>/upload/microico/<{$udata[ls][als].arr[bls].u_ico}>">
+                                </div>
+                                <div class="commenter">
+                                    <span><a href="<{$udata[ls][als].arr[bls].u_id}>"><{$udata[ls][als].arr[bls].blogname}></a></span>　回应了一条!
+                                    <tt><{$udata[ls][als].arr[bls].time|date_format:"%Y-%m-%d %H:%M:%S" }></tt>
+                                </div>
+                                <div class="ico">
+                                    <span class="revico">　　</span>
+                                </div>
+                            </div>                    
+                        <{elseif $udata[ls][als].arr[bls].type==2 }>
+                            <div class="comtab">
+                                <div class="commentico">
+                                    <img src="<{$root}>/upload/microico/<{$udata[ls][als].arr[bls].u_ico}>">
+                                </div>
+                                <div class="commenter">
+                                    <span><a href="<{$udata[ls][als].arr[bls].u_id}>"><{$udata[ls][als].arr[bls].blogname}></a></span>　转载了一次!
+                                    <tt><{$udata[ls][als].arr[bls].time|date_format:"%Y-%m-%d %H:%M:%S" }></tt>
+                                </div>
+                                <div class="ico">
+                                    <span class="repico">　　</span>
+                                </div>
+                            </div>
+                             <{elseif $udata[ls][als].arr[bls].type==3 }>
+                            <div class="comtab">
+                                <div class="commentico">
+                                    <img src="<{$root}>/upload/microico/<{$udata[ls][als].arr[bls].u_ico}>">
+                                </div>
+                                <div class="commenter">
+                                    <span><a href="<{$udata[ls][als].arr[bls].u_id}>"><{$udata[ls][als].arr[bls].blogname}></a></span>　标注为喜欢!
+                                    <tt><{$udata[ls][als].arr[bls].time|date_format:"%Y-%m-%d %H:%M:%S" }></tt>
+                                </div>
+                                <div class="ico">
+                                    <span class="likico">　　</span>
+                                </div>
+                            </div>
+                            <{/if}>
+                            <{/section}>
+                            <{/if}>
+                            <div class="combottom">
+                                <div class="morehot"><span>　　</span><a>更多热度</a></div>
+                                <div class="packup"><span>　　</span><a onclick="upshow(this)">收起</a></div>
+                            </div>
+                    </div>
+                    <!--回应-->
+                    <div class="commenttab">
+                        <{if $udata[ls][als].revnum!=0 }>
+                        <{section loop=$udata[ls][als].arr name=bls }>
+                        <{if $udata[ls][als].arr[bls].type=="" }>
+                            <div class="comtab">
+                                <div class="commentico">
+                                    <img src="<{$root}>/upload/microico/<{$udata[ls][als].arr[bls].u_ico}>">
+                                </div>
+                                <div class="commenter">
+                                    <span><a href="<{$udata[ls][als].review[bls].u_id}>"><{$udata[ls][als].arr[bls].blogname}></a></span> : 
+                                    <{$udata[ls][als].arr[bls].content}>
+                                </div>
+                                <div class="ico">
+                                     <a><{$udata[ls][als].arr[bls].time|date_format:"%Y-%m-%d %H:%M:%S" }></a>
+                                 </div>
+                             </div>
+
+                             <{/if}>
+                             <{/section}>
+                              <div class="reviewtab_a">
+                                <div class="blogico_a"></div>
+                                <div class="intext_a"><tt><a>待俺回应它!</a></tt></div>
+                                <div></div>
+                            </div> 
+                            <{else}>
+                            <div class="reviewtab_a">
+                                <div class="blogico_a"></div>
+                                <div class="intext_a"><tt>我了个去!还木有回应!　　<a>待俺来回应它!</a></tt></div>
+                                <div></div>
+                            </div>
+                            <{/if}>
+                                                        
+                            <{if $session.isLogin==1 }>
+                            <div class="reviewtab">
+                                <div class="blogico"><img src="<{$root}>/upload/microico/<{$session.u_ico}>" /></div>
+                                <form id="<{$udata[ls][als].con_id}>" name="f<{$udata[ls][als].con_id}>">
+                                    <div class="intext">
+                                        <input id="con<{$udata[ls][als].con_id}>" type="text" />    
+                                    </div>
+                                    <div class="send"><a onclick="send('<{$udata[ls][als].con_id}>',this)"><img src="<{$res}>/images/send.png" title="<{$udata[ls][als].con_id}>"/></a></div>
+                                </form>
+                    <script>
+                        //添加回应 
+                        function send(id,obj){
+                            var revcon=document.getElementById('con'+id).value
+                            var uid='<{$session.u_id}>'
+                            var mess={con_id:id,u_id:uid,content:revcon};
+                                function times(){
+                                   var d, s = "";
+                                   var c = ":";
+                                   d = new Date();
+                                   s += d.getHours() + c;
+                                   s += d.getMinutes() + c;
+                                   s += d.getSeconds() + c;
+                                   s += d.getMilliseconds();
+                                   return(s);
+                                }                         
+                            Ajax().post('<{$url}>/addrev',mess,function(data){
+                                switch(data){
+                                    case '1':                                       
+                                        break;
+                                    case '2':
+                                        alert('回应未遂,未知错误 待会再试吧!');
+                                        break;
+                                    case '3':
+                                        alert('你填的内容多了点吧? 删逑!');
+                                        break;
+                                    case '4':
+                                        alert('我去!不填内容你也敢提交?!!!逑也拦不成!');
+                                        break;
+                                    case '5':
+                                        alert('噢!你已经被拉黑!暂时不能回应了! 想回应? 等待吧!');
+                                }
+                                $('.reviewtab_a').before('<div class="comtab"><div class="commentico"><img src="<{$root}>/upload/microico/<{$session.u_ico}>"></div><div class="commenter"><span><a>您回应说</a></span> :'+revcon+'</div><div class="ico"><a>Time : '+times()+'</a></div></div>');
+
+                            $(obj).parent().parent().parent().slideUp("400");
+                            });
+
+                        }
+                    </script>
+                            </div>
+                            <{else}>
+                            <div class="reviewtab">
+                                <div class="blogico"></div>
+                                <div class="intext"><tt>您需要<a href="<{$app}>/login/">登录</a>后才能回应; 还不是followme用户? 来<a href="<{$app}>/login/">这里</a>解决你的out!</tt></div>
+                                <div></div>
+                            </div>
+                            <{/if}>
+                            <div class="combottom">
+                                <div class="morehot"><span>　　</span><a>更多回应</a></div>
+                                <div class="packup"><span>　　</span><a onclick="upshow(this)">收起</a></div>
+                            </div>
+                    </div>
+                    <div class="close" onclick="closed(this)">
+                    </div>
+                </div>
+            </div>
+
+        <{/section}>
+    <{/section}>
+
+		</div>
+		<!--右侧栏目-->
+		<div class="righttab">
+            <!--登录注册-->
+            <{if $session.isLogin!=1 }>
+			<div class="loginreg">
+                <a href="<{$app}>/login/"><li>登录/注册</li></a>
+            </div>
+            <{/if}>
+            <!--关注,发现博客-->
+                <{if $session.isLogin==1 }>
+                <div class="findblog">
+                    <a href="<{$app}>/actioned/index/id/<{$session.u_id}>"><li class="attention"><span>　　</span>我关注的博客</li></a>
+                    <a href="<{$app}>/find"><li class="findmore"><span>　　</span>发现更多好博客</li></a>
+                </div>
+                <{/if}>
+			<!--系统标签-->
+			<div class="systag">
+				<div class="search">
+						<li>
+							<a href="">　</a>
+							<input type="text" name="searchtag" value=""/>
+						</li>
+				</div>
+                <div class="tag">
+                    <{section loop=$systag name=ls }>
+                        <{section loop=$systag[ls] name=als }>
+                        <a href="<{$app}>/actioned/attention/id/<{$systag[ls][als].systag_id}>"><li><span>　　</span><{$systag[ls][als].systag_name}></li></a>
+                <{/section}>
+             <{/section}>
+				</div>
+					<a href="<{$app}>/actioned/attention"><li id="moretag"><span>　　</span>更多热门标签</li></a>
+			</div>
+			<!--推荐博客-->
+            <div class="recblog">
+                <{section loop=$blog name=ls }>
+                <a href="<{$app}>/user/index/uid/<{$blog[ls].u_id}>" target="_blank">
+				    <div class="blogtab">
+					    <div class="blogimg">
+                            <img src="<{$root}>/upload/littleico/<{$blog[ls].u_ico}>" />
+					    </div>
+					    <div class="bloglink">
+                            <{$blog[ls].blogname}><br/><div><{$blog[ls].info}></div>
+					    </div>
+                    </div>
+                </a>
+                <{/section}>
+                <a href="<{$app}>/find"><li><span>　　</span>更多推荐博客</li></a>
+			</div>
+		</div>
+    </div>
+</body>
+<script>
+        $(".indexmain").fadeIn("slow");
+    //页面定时刷新
+    function myrefresh(){
+        window.location.reload();
+    } 
+    setTimeout('myrefresh()',99999999);
+   </script>
+</html>

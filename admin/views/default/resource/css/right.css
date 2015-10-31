@@ -1,0 +1,37 @@
+.*{margin:0px;padding:0px}
+.main{width:100%;height:100%;float:left;}
+.top {width:100%;height:31px;}
+.tu {background:url(../images/icons32-vs.png) -140px -6px;width:30px;height:30px;float:left;}
+.top b {float:left;margin-top:7px;font-size:22px;margin-left:5px;}
+.help {margin-top:-9px;float:right;width:60px;height:25px;margin-right:20px;background:url(../images/gray-grad.png) repeat-x;}
+.help b {font-size:15px;color:#777777;margin-top:4px;margin-left:5px;float:left;}
+.help div{background:url(../images/arrows-dark.png) 0px 0px;width:15px;height:15px;float:right;margin-top:4px;}
+.helpt {width:100%;height:300px;background:#F1F1F1;border:1px solid #DFDFDF;display:none;}
+.survey {width:100%;height:200px;border:1px solid #DFDFDF;border-top:0px;background:whiteSmoke;float:left;margin-top:10px;}
+.surtop {float:left;width:100%;height:31px;background:url(../images/tabletopbg.png) repeat-x}
+.surtop b {float:left;font-weight:normal;margin-left:10px;margin-top:7px;}
+.survey1 {width:100%;border:1px solid #DFDFDF;border-top:0px;background:whiteSmoke;float:left;margin-top:10px;}
+.ksfb {width:100%;float:left;margin-top:10px;}
+.ksfb1 {float:left;}
+.survey2 {display:none;width:80%;height:200px;border:1px solid #DFDFDF;border-top:0px;background:whiteSmoke;float:right;}
+.title {margin-left:20px;margin-top:10px;float:left;}
+.content {margin-left:20px;margin-top:5px;float:left;text-align:middle}
+.survey2 table {margin-left:10px;margin-top:10px;float:left;}
+.survey2 input {border:1px solid #CCCCCC}
+.survey2 textarea {border:1px solid #CCCCCC}
+.survey2 td {font-size:15px;}
+.admin {width:45%;height:150px;float:left;margin-top:10px;margin-left:20px;}
+.server {width:45%;height:150px;float:right;margin-top:10px;margin-right:20px;}
+.admin b{font-size:15px;font-weight:normal;color:#8F8F8F}
+.server b {font-size:15px;font-weight:normal;color:#8F8F8F}
+.admin table tr {height:30px;font-size:13px;color:#21759B}
+.admin table {border-top:1px solid #ECECEC}
+.server table tr {height:25px;font-size:13px;color:#21759B}
+.server table {border-top:1px solid #ECECEC}
+.server a{text-decoration:none;color:#21759B}
+.server a:hover {text-decoration:none;color:red}
+#container {width:99%;float:left;}
+.item {height:22px;width:120px;float:left;margin:10px;margin-left:10px;overflow:hidden;}
+.img {border:1px solid #DDDDDD}
+.photo {width:22px;height:22px;float:left;}
+.name {font-size:14px;color:#5D5D5D;height:22px;text-align:center;}

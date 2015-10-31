@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+        <link rel="stylesheet" href="<{$res}>/css/left.css" type="text/css"  charset="utf-8">
+        <script src="<{$res}>/js/jquery.js"></script>
+    </head>
+    <body>
+        <div class="main">
+            <ul>
+                <li>
+                <h4 class="h40"><div class="h40div1"></div><div class="menudiv">控制板</div><div class="h40div2"></div></h4>
+                    <ul class="ul0">
+                        <a href="<{$app}>/index/right" onclick="fx(this)" name="id[]" target="right"><li>首页</li></a>
+                    </ul>
+                </li>
+                <li>
+                <h4 class="h41"><div class="h41div1"></div><div class="menudiv">内容管理</div><div class="h41div2"></div></h4>
+                    <ul class="ul1">
+                        <a href="<{$app}>/article" onclick="fx(this)" name="id[]" target="right"><li>文章</li></a>
+                        <a href="<{$app}>/image" onclick="fx(this)" name="id[]" target="right"><li>图片</li></a>
+                        <a href="<{$app}>/sound" onclick="fx(this)" name="id[]" target="right"><li>声音</li></a>
+                        <a href="<{$app}>/video" onclick="fx(this)" name="id[]" target="right"><li>视频</li></a>
+                        <a href="<{$app}>/links" onclick="fx(this)" name="id[]" target="right"><li>链接</li></a>
+                        <a href="<{$app}>/review" onclick="fx(this)" name="id[]" target="right"><li>评论</li></a>
+                        <a href="<{$app}>/tags" onclick="fx(this)" name="id[]" target="right"><li>标签</li></a>
+                        <a href="<{$app}>/message" onclick="fx(this)" name="id[]" target="right"><li>私信</li></a>
+                    </ul>
+                </li>
+                <li>
+                    <h4 class="h42"><div class="h42div1"></div><div class="menudiv">用户管理</div><div class="h42div2"></div></h4>
+                    <ul class="ul2">
+                        <a href="<{$app}>/user" onclick="fx(this)" name="id[]" target="right"><li>用户管理</li></a>
+                    </ul>
+                </li>
+                <li>
+                    <h4 class="h43"><div class="h43div1"></div><div class="menudiv">系统管理</div><div class="h43div2"></div></h4>
+                    <ul class="ul3">
+                        <a href="<{$app}>/" onclick="fx(this)" name="id[]" target="right"><li>常规设置</li></a>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </body>
+    <script type="text/javascript" charset="utf-8">
+        var ids=document.getElementsByName('id[]');
+        $(".h40").click( function () {
+                $(".ul0").slideToggle("normal");
+        });
+        $(".h41").click( function () {
+                $(".ul1").slideToggle("normal");
+        });
+        $(".h42").click( function () {
+                $(".ul2").slideToggle("normal");
+        });
+        $(".h43").click( function () {
+                $(".ul3").slideToggle("normal");
+                });
+        $(".h40").hover(
+                function () {
+                        $(".h40div1").addClass("h40hover");
+                        $(".h40div2").addClass("h4right");
+                },
+                function () {
+                        $(".h40div1").removeClass("h40hover");
+                        $(".h40div2").removeClass("h4right");
+                }
+                );
+        $(".h41").hover(
+                function () {
+                        $(".h41div1").addClass("h41hover");
+                        $(".h41div2").addClass("h4right");
+                },
+                function () {
+                        $(".h41div1").removeClass("h41hover");
+                        $(".h41div2").removeClass("h4right");
+                }
+                );
+        $(".h42").hover(
+                function () {
+                        $(".h42div1").addClass("h42hover");
+                        $(".h42div2").addClass("h4right");
+                },
+                function () {
+                        $(".h42div1").removeClass("h42hover");
+                        $(".h42div2").removeClass("h4right");
+                }
+         );
+        $(".h43").hover(
+                function () {
+                        $(".h43div1").addClass("h43hover");
+                        $(".h43div2").addClass("h4right");
+                },
+                function () {
+                        $(".h43div1").removeClass("h43hover");
+                        $(".h43div2").removeClass("h4right");
+                }
+        );
+        function fx(obj) {            
+     		for(var i=0; i<ids.length; i++) {
+	     		if(ids[i].style.color=="black") {
+		    		ids[i].style.color="#21759B";
+                }
+
+            }
+            obj.style.color="black";
+
+    	}
+    </script>
+</html>

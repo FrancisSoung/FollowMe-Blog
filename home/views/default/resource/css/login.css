@@ -1,0 +1,29 @@
+*{margin:0px;padding:0px}
+#body{
+	background:url(../images/htmlbg.png) repeat;
+}
+#main{
+	margin-top:130px;
+}
+.bgpic {text-align:center;margin:0px auto;width:100%;height:100%}
+.main {width:100%;text-align:center;position:absolute;left:0px;top:0px;}
+.main1 {display:none;width:100%;text-align:center;position:absolute;left:0px;top:0px}
+.logo {background:url(../images/login-logo.png) 0px 0px no-repeat;margin-top:100px;margin-left:150px;width:424;height:100px;float:left}
+.logo1 {background:url(../images/login-logo.png) 0px 0px no-repeat;margin-top:100px;margin-left:73px;width:424;height:100px;float:left;}
+.input {margin-top:50px;height:52px;float:left;width:720px;}
+.input2 {margin-top:50px;height:52px;float:left;width:558px;}
+.input1 {margin:0px auto;height:52px;text-align:center;width:800px;}
+.unr {background:url(../images/login.png) 0px -110px;width:273px;height:50px;border-style:none;color:#A6AAAF;font-weight:bold;font-size:20px;line-height:45px;}
+.pwr {background:url(../images/login.png) 0px -110px;margin-left:10px;width:273px;height:50px;border-style:none;color:#A6AAAF;font-weight:bold;font-size:20px;line-height:45px;}
+.button {background:url(../images/login.png) -284px -110px;width:137px;height:52px;border-style:none;margin-left:20px;}
+.button1 {background:url(../images/register.png) ;width:137px;height:52px;border-style:none;margin-left:20px;}
+.hover {background:url(../images/login.png) -284px -172px;width:137px;height:52px;border-style:none;margin-left:20px;}
+.hover1 {background:url(../images/registerh.png);width:137px;height:52px;border-style:none;margin-left:20px;}
+.about {background:url(../images/startpage-button.png) 0px 0px;width:112px;height:50px;border:0px;font-size:16px}
+.registb {background:url(../images/startpage-button.png) 0px 0px;width:112px;height:50px;border:0px;font-size:18px}
+.loginb {background:url(../images/startpage-button.png) 0px 0px;width:112px;height:50px;border:0px;font-size:18px}
+.hoverb {background:url(../images/startpage-button.png) 0px -64px;width:112px;height:50px;border:0px;font-size:18px}
+.shang {margin-left:20px;margin-top:10px;float:left;background:url(../images/login.png) -382px -408px;width:40px;height:40px;border:0px}
+.input1bg {width:100%;height:115px;background:url(../images/top.png) repeat-x;float:left}
+.spanerror {background:url(../images/startpage-0410.png) -200px -450px;width:287px;height:40px;float:left;margin-left:130px;margin-top:30px;}
+.spanerror b {font-size:13px;font-weight:normal;margin-top:10px;}

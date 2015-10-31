@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <title>Right</title>
+        <link rel="stylesheet" href="<{$res}>/css/message.css" type="text/css"  charset="utf-8">
+        <script src="<{$res}>/js/jquery.js"></script>
+        <script src="<{$res}>/js/review.js"></script>
+    </head>
+    <body>
+        <div class="main"> 
+            <div class="top">
+                    <div class="left">
+                        <div class="tu"></div>
+                        <b>私信</b>
+                        <!--显示全部div-->
+                        <div class="batch"><a href="">全部</a>(0)&nbsp;|&nbsp;<a href="">全部</a>&nbsp;|&nbsp;<a href="">全部</a>&nbsp;|&nbsp;<a href="">全部</a></div>
+                        <!--批量操作的div-->
+                        <div class="all">
+                                <form action="" method="">
+                                <div>
+                                        <select>
+                                                <option value="">批量操作</option>
+                                                <option value="">批量操作</option>
+                                        </select>
+                                </div>
+                                <div><input type="submit" class="app" name="" value="应用"></div>
+                                </form>
+                        </div>
+                    </div>
+                    <div class="right">
+                            <form action="" method="">
+                                    <div id="search">
+                                            <div><input type="text" class="search" name="" value=""></div>
+                                            <div><input type="submit" class="searchb" name="" value="搜索私信"></div>
+                                    </div>
+                            </form>
+                    </div>
+            </div>
+            <div class="tablediv">
+                    <table class="table" cellspacing=0px border='1px'>
+                            <tr class="firsttr"><th width="30px" style="text-align:center"><input class="qx" onclick="qx()" type="checkbox" name="" value="qx"></th><th width="100px">发送者</th><th width="100px">接收者</th><th>内容</th></tr>
+                            <tr class="contr"><td style="text-align:center"><input type="checkbox" name="id[]" value=""></td><td><a href="">杨航</a></td><td><a href="">杨航</a></td><td><div class="datatd"><b class="ba">提交于</b><b class="bb">2012-12-12 12:12:12</b></div><div class="contd">嗨，这是一条评论。要删除一条评论，请先登录，然后再查看这篇文章的评论。在那里，您可以看到编辑或者删除评论的选项在那里，您可以看到编辑或者删除评论的选项在那里，您可以看到编辑或者删除评论的选项嗨，这是一条评论。要删除一条评论，请先登录，然后再查看这篇文章的评论。在那里，您可以看到编辑或者删除评论的选项在那里，您可以看到编辑或者删除评论的选项在那里，您可以看到编辑或者删除评论的选项</div><div style="width:100%;height:30px;float:left;"><div class="actiontd"><a href="" title="删除这条私信">删除</a></div></div></td></tr>
+                            <tr class="fpagetr"><td colspan=4>用于显示分页</td></tr>
+                    </table>
+            </div>
+            
+        </div>
+</body>
+        <script>
+                $(".contr").hover(
+                        function () {
+                                $(this).children("td").children("div").children(".actiontd").addClass("actiontdhover");
+                        },
+                        function () {
+                                $(this).children("td").children("div").children(".actiontd").removeClass("actiontdhover");
+                        }
+                );
+                var ids=document.getElementsByName('id[]');
+                function qx() {
+                        if($(".qx").attr("checked")=="checked"){
+        		        for(var i=0; i<ids.length; i++)
+                                        ids[i].checked=true;
+                        }else{
+                                for(var i=0; i<ids.length; i++)
+                                        ids[i].checked=false;
+                        }
+                };
+                $(document).ready(function () {                       
+                        $('tr:even').css('background', '#F9F9F9'); // 偶数行颜色
+                        $('tr:odd').css('background', 'white'); // 奇数行颜色
+                        $('tr:eq(0)').css('background', 'url(<{$res}>/images/tabletopbg.png)');
+                });
+        </script>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <link rel="stylesheet" type="text/css" href="<{$res}>/index/css/index.css">
+            <link rel="stylesheet" type="text/css" href="<{$res}>/css/fancy.css">
+            <script src="<{$res}>/js/jquery-1.2.3.pack.js"></script>
+            <script src="<{$res}>/js/jquery.fancybox-1.0.0.js"></script>
+        <title><{$blog[0].blogname}><{$personal[0].blogname}></title>
+    </head>
+    <body>
+        <!--主框体-->
+        <div class="main">
+            <!--左 info-->
+            <div class="lefttab">
+                <!--bloginfo-->
+                <div class="bico"><img src="<{$root}>/upload/bigico/<{$blog[0].u_ico}><{$personal[0].u_ico}>" /></div>
+                <div class="bname"><span>博主:<a href="<{$app}>/user/index/uid/<{$blog[0].user_u_id}>" title="<{$blog[0].blogname}>"><{$blog[0].blogname}></a><a href="<{$app}>/user/index/uid/<{$personal[0].u_id}>"><{$personal[0].blogname}></a></span></div>
+                <div class="binfo"><tt>自我介绍:</tt><p><{$blog[0].info}><{$personal[0].info}></p></div>
+                <div class="count"><p>访问量:<{$blog[0].count}><{$personal[0].count}></p></div>
+                <div class="back"><a href="<{$app}>">返回FollowMe首页</a></div>
+            </div>
+            <!--右 content-->
+            <{if $blog[0].article!=yes }>
+            <div class="righttab">
+                <!--content outer tab-->
+                <div class="outertab">
+                    <!--content tab-->
+                    <div class="middletab">
+                        <!--content / section-->
+                        <{section loop=$personal name=ls }>
+                            <{if $personal[ls].type==1 }>
+                        <div class="contab">
+                            <div class="content">
+                                <p>
+                                <{$personal[ls].content}>
+                                </p>
+                            </div>
+                            <div class="title">
+                                <a href="<{$app}>/user/index/conid/<{$personal[ls].con_id}>"><{$personal[ls].title}></a>
+                            </div>
+                            <div class="time">
+                                Time:<{$personal[ls].time|date_format:"%Y-%m-%d %H:%M:%S" }>
+                            </div>
+                        </div>
+                        <{elseif $personal[ls].type==2 }>
+                        <div class="contab">
+                            <div class="content">
+                                <p id="<{$personal[ls].con_id}>">
+                                <a href="<{$root}>/upload/bigimg/<{$personal[ls].image}>"><img src="<{$root}>/upload/microimg/<{$personal[ls].image}>" /></a>
+                                <br/>
+                                <{$personal[ls].content}>
+                                </p>
+                            </div>
+                            <div class="title">
+                                <a href="<{$app}>/user/index/conid/<{$personal[ls].con_id}>"><{$personal[ls].title}></a>
+                            </div>
+                            <div class="time">
+                                Time:<{$personal[ls].time|date_format:"%Y-%m-%d %H:%M:%S" }>
+                            </div>
+                        </div>
+                        <!--showimg-->
+                                    <script>
+                                        $(document).ready(function() {
+                                            //Activate FancyBox
+                                            $("p#<{$personal[ls].con_id}> a").fancybox({
+                                                'hideOnContentClick': true
+                                            });
+                                        });
+                                    </script>
+                        <{elseif $personal[ls].type==3}>
+                        <div class="contab">
+                            <div class="content">
+                                <p>
+                                <{$personal[ls].sound}>
+                                <br/>
+                                <{$personal[ls].content}>
+                                </p>
+                            </div>
+                            <div class="title">
+                                <a href="<{$app}>/user/index/conid/<{$personal[ls].con_id}>"><{$personal[ls].title}></a>
+                            </div>
+                            <div class="time">
+                                Time:<{$personal[ls].time|date_format:"%Y-%m-%d %H:%M:%S" }>
+                            </div>
+                        </div>
+                        <{elseif $personal[ls].type==4 }>
+                        <div class="contab">
+                            <div class="content">
+                                <p>
+                                <a><{$personal[ls].video}></a>
+                                <br/>
+                                <{$personal[ls].content}>
+                                </p>
+                            </div>
+                            <div class="title">
+                                <{$personal[ls].title}>
+                            </div>
+                            <div class="time">
+                                Time:<{$personal[ls].time|date_format:"%Y-%m-%d %H:%M:%S" }>
+                            </div>
+                        </div>
+                        <{else}>
+                        <div class="contab">
+                            <div class="content">
+                                <p>
+                                <a><{$personal[ls].link}></a>
+                                <br/>
+                                <{$personal[ls].content}>
+                                </p>
+                            </div>
+                            <div class="title">
+                                <a href="<{$app}>/user/index/conid/<{$personal[ls].con_id}>"><{$personal[ls].title}></a>
+                            </div>
+                            <div class="time">
+                                Time:<{$personal[ls].time|date_format:"%Y-%m-%d %H:%M:%S" }>
+                            </div>
+                        </div>
+                        <{/if}>
+                        <{/section}>
+                        <!--section-->
+                    </div>               
+                </div>
+            </div>
+            <{else}>
+         <!--article-->
+ <div class="brighttab">
+                <!--content outer tab-->
+                <div class="boutertab">
+                    <!--content tab-->
+                    <div class="bmiddletab">
+                        <div class="bcontab">
+                            <div class="bcontent">
+                                <{if $blog[0].type==1 }>
+                                <p>
+                                <{$blog[0].content}>
+                                </p>
+                                <{elseif $blog[0].type==2 }>
+                                <p>
+                                <img src="<{$root}>/upload/normalimg/<{$blog[0].image}>" />
+                                <br/>
+                                <{$blog[0].content}>
+                                </p>
+                                <{elseif $blog[0].type==3 }>
+                                <p>
+                                <{$blog[0].sound}>
+                                <br/>
+                                <{$blog[0].content}>
+                                </p>
+                                <{elseif $blog[0].type==4 }>
+                                <p>
+                                <{$blog[0].video}>
+                                <br/>
+                                <{$blog[0].content}>
+                                </p>
+                                <{elseif $blog[0].type==5 }>
+                                <p>
+                                <a href="<{$blog[0].link}>"><{$blog[0].link}></a>
+                                <br/>
+                                <{$blog[0].content}>
+                                </p>
+                                <{/if}>
+                            </div>
+                            <div class="btitle">
+                                <{if $blog[0].title!="" }>
+                                <{ $blog[0].title }>
+                                <{else}>
+                                    暂时没有标题!
+                                <{/if}>
+                            </div>
+                            <div class="btime">
+                                Time:<{ $blog[0].time|date_format:"%Y-%m-%d %H:%M:%S" }>
+                            </div>
+                        </div>
+                    </div>               
+                </div>
+            </div>
+            <{/if}>
+        </div>
+    </body>
+</html>
+

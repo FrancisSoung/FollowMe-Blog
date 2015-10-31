@@ -1,0 +1,89 @@
+    <{ include file="public/header.htm" }>
+    <link rel="stylesheet" href="<{$res}>/css/sixin.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="<{$res}>/css/list.css" type="text/css" charset="utf-8">
+    <script src="<{$res}>/js/ajax3.0.js"></script>
+    <{ include file="public/head.htm" }>
+    <div class="tab">
+    <div class="main">
+            <div class="title">
+                <b><{$action}>给<{$user}></b>
+            </div>
+            <div class="content">
+                <form name="frm">
+                    <textarea class="messcon" rows="7" cols="62"></textarea>
+                    <div class="submit">
+                        <div class="submit1">
+                        </div>
+                        <div>
+                             <a onclick="send()"><div class="submit2">发送</div></a>
+                           
+                        </div>
+                    </div>
+                    <div class="cancle">
+                        <div class="cancle1"></div>
+                        <a href="<{$app}>/index">
+                            <div class="cancle2">取消</div>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <{ include file="public/list.htm" }>
+        </div>
+    </body>
+    <script>
+      //message
+        function send(){
+            var content=$('.messcon').val();
+            var uid='<{$uid}>';
+            var guid='<{$guid}>';
+            var mess={content:content,su_id:uid,gu_id:guid};
+            Ajax().post('<{$url}>/send',mess,function(data){
+                switch(data){
+                    case 'a':
+                            alert('发送成功!等待回信吧');
+                            location.href='<{$app}>';
+                            break;
+                    case 'b':
+                            alert('不幸的消息!未发送成功! 待会再来试吧!');
+                            location.href='<{$app}>';
+                            break;
+                    case 'c':
+                        alert('木有写内容 你就发?!!!重来! 逑也拦不成!');
+                        break;
+                    case 'd':
+                        alert('被设置黑名单啦!发不了喽!');
+                        location.href='<{$app}>';
+                    case 'f':
+                        alert('疯啦你?给你自己发私信?');
+
+                        }
+
+                    });
+        }
+
+        $(".submit").hover(
+              function () {
+              $(".submit1").addClass("submit1hover");
+              $(".submit2").addClass("submit2hover");
+              },
+              function () {
+              $(".submit1").removeClass("submit1hover");
+              $(".submit2").removeClass("submit2hover");
+              }
+                
+              );
+        $(".cancle").hover(
+              function () {
+              $(".cancle1").addClass("cancle1hover");
+              $(".cancle2").addClass("cancle2hover");
+              },
+              function () {
+              $(".cancle1").removeClass("cancle1hover");
+              $(".cancle2").removeClass("cancle2hover");
+              }
+                
+        );
+    </script>
+</html>
+

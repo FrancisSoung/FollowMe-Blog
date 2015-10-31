@@ -1,0 +1,35 @@
+			<div class="list_content_right">
+				<div class="list_content_right_top">
+					<ul>
+						<a href="<{$app}>/userset/"><li onclick="show(this)"><div class="list_content_right_top_set" id="id0"></div>博客设置</li></a>
+						<a href=""><li onclick="show(this)"><div class="list_content_right_top_template" id="id1"></div>自定义模板</li></a>
+					</ul>
+				</div>
+				<div class="list_content_right_center">
+					<div class="list_content_right_center_button"><input id="button" type="button" name="button" value=""></div>
+					<div class="list_content_right_center_text"><input id="list_content_right_center_text" type="text" name="text" value="搜索标签"></div>
+					<div id="list_content_right_center_select"></div>
+					<div id="list_content_right_center_select_bg"></div>
+					<div id="list_content_right_center_select_tc">
+						<ul>
+							<li>搜索所有标签</li>
+							<li>搜索我关注的文章</li>
+							<li>搜索我发布的文章</li>
+							<li>搜索我的喜欢</li>
+						</ul>
+					</div>
+				</div>
+				<div class="list_content_right_down">
+					<ul>
+						<a href="<{$app}>/article/"><li onclick="show(this)"><div class="list_content_right_down_article" id="id2"></div>文章<span><{$session.article_num}></span></li></a>
+					
+						<a href="<{$app}>/userset/attentionnum"><li onclick="show(this)"><div class="list_content_right_down_attentionnum" id="id3"></div>关注量<span><{$session.attention_num}></span></li></a>
+					
+						<a href="<{$app}>/userset/visited"><li onclick="show(this)"><div class="list_content_right_down_total" id="id4"></div>访问统计<span><{$session.visited_num}></span></li></a>
+					
+						<a href="<{$app}>/message/mess/uid/<{$session.u_id}>"><li onclick="show(this)"><div class="list_content_right_down_mess" id="id5"></div>消息<span><{$session.number}></span></li></a>
+			<a href="<{$app}>/blacklist"><li onclick="show(this)"><div class="list_content_right_down_blacklist" id="id6"></div>黑名单<span><{$session.blacklist_num}></span></li></a>
+					</ul>
+				</div>
+			</div>
+

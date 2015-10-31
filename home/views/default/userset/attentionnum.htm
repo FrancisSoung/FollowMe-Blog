@@ -1,0 +1,59 @@
+		<{include file="public/header.htm"}>
+		<link rel="stylesheet" href="<{$res}>/css/attentionnum.css" type="text/css" />
+		<link rel="stylesheet" href="<{$res}>/css/list.css" type="text/css" />
+		<script>var res="<{$res}>";</script>
+		<script src="<{$res}>/js/list.js"></script>
+		<{include file="public/head.htm"}>
+	</head>
+	<body>
+		<!--内容部分-->
+		<div class="attentionnum_content">
+			<!--内容左边部分-->
+			<div class="attentionnum_content_left">
+				<!--标题部分-->
+				<div class="attentionnum_content_left_search">
+					<div class="attentionnum_content_left_search_word">
+						<div class="attentionnum_content_left_search_word_title"><span></span>关注量</div><br>
+						<div class="attentionnum_content_left_search_word_content"><{$session.attention_num}>人关注了我的博客</div>
+					</div>
+					<!--搜索表单部分-->
+					<div class="attentionnum_content_left_search_form">
+						<div class="attentionnum_content_left_search_form_button">
+							<input id="attentionnum_content_left_search_form_button" type="button" name="button" value="">
+						</div>
+						<div class="attentionnum_content_left_search_form_text">
+							<input id="attentionnum_content_left_search_form_text" type="text" name="text" value="">
+						</div>
+					</div>
+					<{if !empty($data)}>
+					<{ section loop=$data name="ls" }>
+					<div class="attentionnum_content_left_search_attention">
+						<div class="attentionnum_user">
+							<div class="user_left">
+								<div class="user_ico"><a href="<{$app}>/user/index/uid/<{$data[ls].u_id}>" target="_blank"><img src="<{$root}>/upload/normalico/<{$data[ls].u_ico}>" alt="" /></a></div>
+								<div class="user_name"><{$data[ls].blogname}></div>
+								<div class="user_info"><{$data[ls].info}></div>
+							</div>
+							<div class="user_right">
+								<{*
+								<span>关注您 <a style="color:#144466;font-size:18px;font-weight:bold;"><{$num}></a> 次</span>
+								*}>
+							</div>
+							
+						</div>
+					</div>
+					<{/section}>
+					<{else}>
+						<div class="" style="float:left;width:180px;margin:50px 250px;" >
+							<img src="<{$res}>/images/null.png" alt="" />
+							<div style="float:left;font-size:14px;font-weigth:bold;color:#144466;margin-top:10px;">哦NO!还没有好友关注您哦~~</div>
+						</div> 
+					<{/if}>
+				</div>
+			</div>
+			<!--右边列表部分-->
+			<{include file="public/list.htm"}>
+		</div>
+	</body>
+</html>
+

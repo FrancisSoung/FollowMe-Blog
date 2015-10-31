@@ -1,0 +1,74 @@
+	<{ include file="public/header.htm" }><!--顶部-->
+	<link rel="stylesheet" href="<{$res}>/css/article.css" type="text/css" />
+	<link rel="stylesheet" href="<{$res}>/css/list.css" type="text/css" />
+	<script src="<{$res}>/js/list.js"></script>
+	<{ include file="public/head.htm"}> <!--头部--> 
+	<div class="article_content">
+		
+		<div class="article_left">
+			<div class="article_nav">
+				<div class="article_ico">
+					<img src="<{$root}>/upload/normalico/<{$data[0].u_ico}>" alt="" />
+				</div>
+				<div class="article_triangle"></div>
+				<div class="article_menu">
+					<div class="article_menu_li">
+						<a href="<{$app}>/issue/index"><li class="text"></li></a>
+						<a href="<{$app}>/issue/images"><li class="img"></li></a>
+						<a href="<{$app}>/issue/music"><li class="sound"></li></a>
+						<a href="<{$app}>/issue/video/"><li class="vedio"></li></a>
+						<a href="<{$app}>/issue/link"><li class="link"></li></a>
+					</div>	
+				</div>
+			</div>
+			<{if !empty($data)}>
+			<{section loop=$data name="ls"}>
+			<div class="article_list" id="article_list<{$data[ls].con_id}>">
+				<div class="title">
+					<{$data[ls].title}>
+					
+				</div>
+				<div class="content">
+					<{$data[ls].content}>
+					
+				</div>
+				<div class="action">
+					<div class="tags">
+						<span class="systag"><a href="<{$app}>/actioned/attention/id/<{$data[ls].systag_id}>">#<{$data[ls].systag_name}></a></span>
+						<{section loop=$data[ls].tags name="ll"}>
+						<span><a href="<{$app}>/index/index/tag/<{$data[ls].tags[ll]}>">#<{$data[ls].tags[ll]}></a></span>
+						<{/section}>
+						
+					</div>
+					<div class="link">
+						<span><a href="<{$app}>/issue/index/conid/<{$data[ls].con_id}>">编辑</a></span>
+						<span><a href="javascript:del('<{$data[ls].con_id}>')" onclick="return " >删除</a></span>
+					</div>
+					<script>
+						function del(conid) {
+							if(confirm("确认删除？")){
+
+								var url = '<{$url}>/del/con_id/'+conid;
+								Ajax().get(url,function(data){
+									if(data==1){
+										$('#article_list'+conid).remove();
+									}
+								});
+								
+							}
+						}
+					</script>
+				</div>
+			</div>
+			<{/section}>
+			<{else}>
+			<div class="" style="float:left;width:150px;margin:50px 250px;" >
+				<img src="<{$res}>/images/null.png" alt="" />
+				<div style="float:left;font-size:14px;font-weigth:bold;color:#144466;margin-top:10px;">您还未发表过文章哦！</div>
+			</div> 
+			<{/if}>
+		</div>
+		<{ include file="public/list.htm" }>
+	</div>
+    </body>
+</html>

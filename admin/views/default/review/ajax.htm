@@ -1,0 +1,107 @@
+		<!--评论列表部分-->
+		<div class="review_content_list" id="review">
+			<table cellspacing="0" border="0">
+				<tr>
+					<th class="review_content_list_checkbox"><input type="checkbox" class="checked" name="id[]" value="" /></th><th class="review_content_list_author">博主</th><th class="review_content_list_review">评论</th><th class="review_content_list_responses">回应给</th>
+				</tr>
+				<{*	
+					遍历评论列表
+					u_name	发表评论者
+					email 	发表评论者的邮箱
+					ip 		发表评论者的IP
+					time 	发表的时间
+					bu_name	被评论者
+					content 评论的内容
+				*}>
+				<{if is_array($data)}>
+				<{section loop=$data name='ls'}>
+				<tr class="hh<{$data[ls].rev_id}>" onmouseover="showbg(this)" onmouseout="hiddenbg(this)">
+					<!--复选框部分-->
+					<td class="review_content_list_checkbox">
+							<input type="checkbox" name="chk[]" class="chk2" value="<{$data[ls].rev_id}>" />
+					</td>
+					<!--作者部分-->
+					<td class="review_content_list_author">
+						<div class="review_content_photo">
+							<img src="<{$root}>/upload/littleico/<{$data[ls].u_ico}>" />
+						</div>
+						<div class="review_content_info">
+							<div class="review_content_username"><{$data[ls].u_name}></span><br />
+							<div class="review_content_email"><{$data[ls].email}></div><br />
+							<div class="review_content_ip"><{$data[ls].ip}></div>
+						</div>
+					</td>
+					<!--评论部分-->
+					<td class="review_content_list_review"   onmouseover="review_show(this)" onmouseout="review_hidden(this)">
+						<div class="review_content_list_time">
+							提交于  <a style="color:green;"><{$data[ls].time|date_format:'%Y-%m-%d %I:%M:%S %p'}></a> | 回复给博主  <a href="#" style="color:green;"><{$data[ls].bu_name}></a>
+						</div>
+						<div class="review_content_list_details">
+							<{$data[ls].content}>
+						</div>
+						<div class="review_content_list_action">
+							<span class="review_content_list_action_span"><a href="javascript:deletes('<{$data[ls].rev_id}>')">删除</a> | <a href="#">屏蔽</a></span>
+						</div>
+						<script>
+							
+							//删除单个
+							function deletes(revid) {
+								if(confirm("确认删除？")){   
+									Ajax().get("<{$url}>/deletes/revid/"+revid,function(data){
+										//alert(data);
+										if(data=="success"){
+										//删除tr节点
+											$('.hh'+revid).remove();
+										}else{
+											alert("删除失败");
+										}
+									});
+								}
+							}
+								
+							//多选删除
+							function del() {
+								if(confirm('是否要删除？')){
+									var node = $(".chk2");
+									//alert(node.length);
+									var rd = new Array();
+									var j = 0;
+									for(var i=0; i<node.length; i++){
+										if(node.get(i).checked){
+											rd[j++] = node.get(i).value;
+										}
+									}
+									if(rd == ''){
+										alert('请选择你要删除的数据！');
+									}else{
+										var url = '<{$url}>/checkdel/rd/'+rd;
+										Ajax().get(url,function(data){
+											if(data = '1'){
+												//删除选中tr节点
+												$("input:checked").parents("tr").remove();
+											}else{
+												alert('删除失败！');
+											}
+										});
+									}
+								}
+							} 
+						</script>
+					</td>
+					<!--回应给部分-->
+					<td class="review_content_list_responses">
+						<{$data[ls].title}>
+					</td>
+				</tr>
+				<{/section}>
+				<{else}>
+					<tr>
+						<td colspan="4" style="width:100%;font-weight:bold;text-indent:20px;"><{$data}></td>
+					</tr>
+						
+				<{/if}>
+				
+			</table>
+	</div>
+	<!--分页-->
+	<span style="text-align:center;margin-left:40%;"><{$fpage}></span>

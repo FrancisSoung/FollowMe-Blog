@@ -1,0 +1,300 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="<{$res}>/css/pushpage.css" />
+    <script src="<{$res}>/js/jquery.js"></script>
+    <script src="<{$res}>/js/ajax3.0.js"></script>
+    <script src="<{$res}>/js/review.js"></script>
+</head>
+<body onload="bg()">
+    <!--主框体-->
+    <div class="pagemain" id="page">
+        <!--左操作模块-->
+        <div class="titletab">
+            <div class="topleft">
+                <div class="title"><div class="soundimg"></div>文章管理</div>
+        		<div class="option">
+				<a href="<{$url}>">全部(<{$num}>)</a>　|　
+				<a href="javascript:shielded()">已屏蔽(<{$nnum}>)</a>　
+			</div>
+        <div class="action">
+            <select id="year">
+                <option selected value="请选择年份">选择年份</option>
+                <{section loop=$year name="ls"}>
+                <option value="<{$year[ls]}>"><{$year[ls]}></option>
+                <{/section}>
+            </select>
+            <select id="month">
+                <option selected value="请选择月份">选择月份</option>
+                <{section loop=$month name="ls"}>
+                <option value="<{$month[ls]}>"><{$month[ls]}></option>
+                <{/section}>
+            </select>
+        </div>
+        <div class="actionok"><a href="#" onclick="send()">应用</a></div>
+        <script>
+            //ajax动态查询
+            function send() {
+                //获取表单时间对象
+		var yvalue = $("#year").val();
+                var mvalue = $("#month").val();
+                if(yvalue=="请选择年份"){
+                    alert("请选择年份");
+                }else if(mvalue=="请选择月份"){
+                    alert("请选择月份");
+                }else{
+                    var mess = {year:yvalue,month:mvalue};
+                    //ajax发送数据
+		    Ajax().post("<{$url}>/date",mess,function(data){
+			    if(data){
+				    $('#fpage').css('display','none');
+			    }
+    			    document.getElementById("article").innerHTML=data;
+                		bg();
+                    });
+                }
+
+            }
+
+	    //显示已屏蔽的
+	    function shielded() {
+		    var url = '<{$url}>/shielded';
+		    Ajax().get(url,function(data){
+
+			if(data){
+
+				$('#fpage').css('display','none');
+			}
+			document.getElementById("article").innerHTML=data;
+                	bg();
+		    });
+	    }
+        </script>
+	<label for="checkbox">
+		<input type="checkbox" name="" class="checked" id="checkbox" />
+		<a href="#" id="all">全选</a>
+	</label>/
+		<a href="#" id="not">反选</a>
+		<a href="#" onclick="del()" title="删除"><img src="<{$res}>/images/delete.gif"></a>
+        </div>
+            <!--右 操作模块-->
+            <div class="topright">
+                <div class="search">
+			<input type="text" value="" />
+			<div><a href="">搜索</a></div>
+			<span><{$num}>首音乐</span>
+                </div>
+            </div>
+        </div>
+        <!--文章主框体-->
+        <div class="contenttab" id="article">
+            <table cellspacing="0">
+                <tr>
+                    <th class="checkbox"><input type="checkbox" name="check" class="checked" /></th>
+                    <th class="titletabs">文章名称</th>
+                    <th class="author">作者</th>
+                    <th class="tags">标签</th>
+                    <th class="comment">评论</th>
+                    <th class="time">日期</th>
+                </tr>
+            <{*
+                遍历声音数据
+                title       文章名称
+                blogname    作者
+                tags        标签
+                total       评论总数
+                time        时间
+            *}>
+            <{section loop=$data name="ls"}>
+            <tr class="hh<{$data[ls].con_id}>" onmouseover="showbg(this)" onmouseout="hiddenbg(this)" id="art">
+            <td class="checkbox">
+                    <input type="checkbox" name="chk[]" class="chk2" value="<{$data[ls].con_id}>" />
+            </td>
+            <td onmouseover="showmod(this)" onmouseout="hiddenmod(this)">
+		<div>
+			<a href="<{$root}>/index.php/article/" target="_blank"><{$data[ls].title}></a>
+                </div> 
+            <div class="modifi"> 
+		    <div class="showmod">
+			    <a href="javascript:ShowDiv('MyDiv','fade','<{$data[ls].con_id}>')">查看</a> |
+			    <{if $data[ls].type eq 10 }>
+			    <a href="#" onclick="shield(this,'type',<{$data[ls].con_id}>)" class="shield<{$data[ls].con_id}>">显示</a>
+			    <{else}>
+			    	<a href="#" onclick="shield(this,'type',<{$data[ls].con_id}>)" class="shield<{$data[ls].con_id}>">屏蔽</a>
+			    <{/if}>
+			       	|
+			    <a href="javascript:deletes('<{$data[ls].con_id}>')">删除</a>
+					</div>
+            </div>
+                <script>
+                    //删除单个
+                    function deletes(cid) {
+                        if(confirm("确认删除？")){   
+                        Ajax().get("<{$url}>/deletes/conid/"+cid,function(data){
+                            if(data=="success"){
+                                //删除tr节点
+                                $('.hh'+cid).remove();
+                            }else{
+                                alert("删除失败");
+                            }
+                        });
+                        }
+                    }
+
+                    //多选删除
+                    function del() {
+                        if(confirm('是否要删除？')){
+
+                            var node = $(".chk2");
+                            var rd = new Array();
+                            var j = 0;
+                            for(var i=0; i<node.length; i++){
+                                if(node.get(i).checked){
+                                    rd[j++] = node.get(i).value;
+                                }
+                            }
+                            if(rd == ''){
+                                alert('请选择你要删除的数据！');
+                            }else{
+                                var url = '<{$url}>/checkdel/rd/'+rd;
+                                Ajax().get(url,function(data){
+                                    if(data = '1'){
+					$("input:checked").parents("tr").remove();
+               
+     					}else{
+                                        	alert('删除失败！');
+                                    	}
+
+                                });
+                            }
+                        }
+                        return false;
+			}
+			
+			//显示与屏蔽
+			function shield(obj,stat,conid) {
+				
+				if(obj.innerHTML=='屏蔽') {
+					var url = '<{$url}>/shield/s/'+stat+'/val/1/conid/'+conid+'/status/shield';
+					var obj = obj;
+					Ajax().get(url,function(data) {
+						//alert(data);
+						
+						if(data){
+							$(".shield"+conid).html('显示');
+							
+						}else{
+							alert("屏蔽失败！");	
+						}
+						
+					});	
+				}else{
+				var url = '<{$url}>/shield/s/'+stat+'/val/10/conid/'+conid+'/status/display';
+				var obj = obj;
+					Ajax().get(url,function(data) {
+						//alert(data);
+												
+						if(!data){
+							$(".shield"+conid).html('屏蔽');
+							//$(".hh<{$data[ls].con_id}>").remove();
+							
+						}else{
+							alert("显示失败！");
+						}
+						
+					});	
+				}
+			}
+
+			//弹出隐藏层
+			function ShowDiv(show_div, bg_div,conid) {
+
+				var url = '<{$url}>/look/id/'+conid;
+				Ajax().get(url,function(data){
+
+					var obj=eval('('+data+')');
+					//设置弹出框的内容
+					$("#img").attr('src','<{$root}>/upload/normalico/'+obj.uico);
+					$(".title").html("标题："+obj.title);
+					$(".author").html("博主："+obj.blogname);
+					$(".time").html("发布时间："+obj.time);
+					$(".content").html(obj.content);
+
+				});
+					//弹出隐藏的DIV
+           	 			document.getElementById(show_div).style.display = 'block';
+            				document.getElementById(bg_div).style.display = 'block';
+          				var bgdiv = document.getElementById(bg_div);
+					bgdiv.style.width = document.body.scrollWidth;
+					bgdiv.style.height = document.body.scrollHeight;
+
+			};
+
+        		//关闭弹出层
+        		function CloseDiv(show_div, bg_div) {
+            			document.getElementById(show_div).style.display = 'none';
+            			document.getElementById(bg_div).style.display = 'none';
+			};
+
+			/*ajax分页
+			function getPage(url){
+				var cache=new Array();
+				var page=document.getElementById("article");
+
+				if(typeof(cache[url])=="undefined") {
+					Ajax().get(url, function(data){
+						page.innerHTML=data;
+						cache[url]=data;
+
+						//alert(url);	
+					})
+				}else{
+					page.innerHTML=cache[url];
+				}
+			}
+			*/
+
+                </script>
+            </td>
+            <td class="author">
+                <a href=""><{$data[ls].blogname}></a>
+            </td>
+            <td class="tags">
+                <{$data[ls].tags}>
+            </td>
+            <td class="comment">
+                <{$data[ls].total}>
+            </td>
+            <td class="time">
+                <{$data[ls].time|date_format:"%Y-%m-%d"}>
+            </td>
+        </tr>
+	<{/section}>
+	</table>
+	</div>
+    	<span id="fpage" style="text-align:center;margin-left:30%;"><{$fpage}></span>
+
+	<{*弹出层效果*}>
+		<div id="fade" class="black_overlay"></div>
+		<div id="MyDiv" class="white_content">
+          		<div class="close">
+				<span onclick="CloseDiv('MyDiv','fade')">关闭</span>
+			</div>
+			<div class="article_infro">
+				<div class="photo"><img id="img" src="" /></div>
+				<div class="infro">
+					<div class="title"></div>
+					<div class="author"></div>
+					<div class="time"></div>
+				</div>
+			</div>
+			<div class="article_content">
+				<textarea readonly class="content"></textarea>
+			</div>
+		</div>
+
+    </div>
+</body>
+</html>

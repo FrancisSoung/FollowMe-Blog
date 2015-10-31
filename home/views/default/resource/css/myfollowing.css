@@ -1,0 +1,73 @@
+/***********
+ * 全局样式*
+ ***********/
+* {margin:0px;padding:0px}	
+body {background:url("../images/htmlbg.png");}
+a {text-decoration:none;}
+li {list-style-type:none;}
+img {border:0px;}
+/*******
+ * 内容*
+ *******/
+.myfollowing_content {width:900px;margin:0 auto;margin-top:20px;}
+/**************
+ *内容左边部分*
+ **************/
+.myfollowing_left {float:left;width:630px;border:1px solid #D6D9DC;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;behavior: url("ie-css3.htc");}
+.myfollowing_left_top {float:left;width:628px;height:50px;background:#C6C8CB;border:1px solid #B3B6BA;color:#68869B;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;behavior: url(../public/css/PIE.htc);}
+.myfollowing_left_top a {color:#68869B;}
+.myfollowing_left_top_word1 {float:left;margin-left:20px;}
+.myfollowing_left_top_word1_photo {float:left;width:16px;height:35px;background:url("../images/sidemenu.png") 0px -45px;margin-top:12px;}
+.myfollowing_left_top_word1 span {float:left;height:35px;line-height:50px;margin-left:10px;font-size:14px;}
+.myfollowing_left_top_word2 {float:right;margin-right:10px;margin-top:18px;font-size:13px;}
+.myfollowing_left_top_word2 span {margin-right:50px;font-size:14px;}
+/*搜索表单部分*/
+.myfollowing_left_seach {float:left;width:630px;height:75px;background:#F6F6F6;border-bottom:1px solid #cccccc;}
+.myfollowing_left_seach_form {padding-left:30px;}
+.myfollowing_left_seach_form #text {float:left;background:#E3E3E3;width:400px;height:37px;border:0px;display:block;margin-top:19px;line-height:37px;font-size:14px;text-indent:10px;color:#144466;}
+.myfollowing_left_seach_form #button {float:left;background:url("../images/startpage-0410.png") -400px -200px;width:98px;height:46px;border:0px;display:block;margin-top:15px;margin-left:10px;}
+.myfollowing_left_seach_form #button:hover {background:url("../images/startpage-0410.png") -400px -245px;width:98px;height:46px;}
+/*关注的用户部分*/
+.myfollowing_left_user {float:left;width:630px;height:100px;background:white;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;behavior: url(../public/css/PIE.htc);border-bottom:1px solid #cccccc;}
+.myfollowing_left_user_left {float:left;width:480px;height:100px;margin-left:10px;}
+.myfollowing_left_user_photo {float:left;margin-top:15px;}
+.myfollowing_left_user_name {float:left;height:40px;width:300px;line-height:60px;margin-left:10px;overflow:hidden;font-size:14px;}
+.myfollowing_left_user_name a {color:#144466;font-size:14px;}
+.myfollowing_left_user_name a:hover {background:#dddddd;color:#144466;}
+.myfollowing_left_user_time {float:left;height:45px;width:400px;font-size:14px;line-height:45px;margin-left:10px;color:#A7A39E;overflow:hidden;}
+.myfollowing_left_user_right {cursor:pointer;float:right;width:113px;height:50px;line-height:50px;text-align:center;margin-top:30px;margin-right:20px;color:#144466;font-size:14px;font-weight:bold;background:url(../images/startpage-button.png) 0px 0px;}
+
+/***************
+ * 内容右边部分*
+ **************/
+.myfollowing_right {float:left;margin-left:17px;width:250px;}
+/*内容右边部分的链接部分*/
+.myfollowing_right_one {width:250px;height:65px;background:white;border:1px solid #B3B6BA;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;behavior: url("PIE.htc");}
+.myfollowing_right_one_top {width:250px;height:35px;background:#103C5D;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;behavior: url(../public/css/PIE.htc);}
+.myfollowing_right_one_top_photo {float:left;width:16px;height:25px;background:url("../images/sidemenu.png")  0px -95px;margin-left:10px;}
+.myfollowing_right_one_top span {float:left;margin-left:10px;height:35px;line-height:35px;}
+.myfollowing_right_one_top span a {color:#ffffff;font-size:14px;}
+.myfollowing_right_one_down {width:250px;height:30px;float:left;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;behavior: url(../public/css/PIE.htc);}
+.myfollowing_right_one_down:hover {background:#eeeeee;}
+.myfollowing_right_one_down_photo {float:left;width:18px;height:16px;background:url("../images/sidemenu.png")  -34px -49px;margin-left:10px;margin-top:8px;}
+.myfollowing_right_one_down span {float:left;margin-left:8px;height:35px;line-height:35px;}
+.myfollowing_right_one_down span a {color:#B2ABAE;font-size:14px;}
+/*内容右边部分的搜索部分*/
+.myfollowing_right_two {width:250px;height:70px;background:white;border:1px solid #B3B6BA;margin-top:25px;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;behavior: url(../public/css/PIE.htc);}
+.myfollowing_right_two_top {width:250px;height:35px;background:white;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;behavior: url(../public/css/PIE.htc);position:relative;}
+.myfollowing_right_two_top_left {float:left;height:35px;}
+.myfollowing_right_two_top_center {float:left;}
+.myfollowing_right_two_top #button {background:url("../images/sidemenu.png") -1154px -50px;width:25px;height:30px;display:block;margin-left:10px;margin-top:8px;border:0px;}
+.myfollowing_right_two_top #seach_tag {width:170px;height:30px;line-height:30px;border:0px;color:#B2ABAE;}
+#myfollowing_right_two_right {float:right;margin-top:10px;background:url("../images/sidemenu.png") no-repeat -1176px -53px;width:20px;height:13px;}
+#myfollowing_right_two_right_select {display:none;width:130px;height:110px;position:absolute;top:35px;right:-60px;z-index:100;border:1px solid #ccc;background:#fff;cursor:pointer;-moz-border-radius:10px;-webkit-border-radius:10px;border-radius:10px;behavior: url(../public/css/PIE.htc);}
+#myfollowing_right_two_right_select_bg{display:none;position:fixed;top:0px;left:0px;z-index:10;opacity:0;filter:alpha(opacity=0);background:white;}
+#myfollowing_right_two_right_select li {display:block;margin-top:10px;width:130px;height:15px;text-indent:10px;color:#8F8F8F;font-size:12px;}
+.myfollowing_right_two_down {width:250px;height:35px;background:#D6D9DC;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;behavior: url(../public/css/PIE.htc);}
+.myfollowing_right_two_down:hover {background:#eeeeee;}
+.myfollowing_right_two_down_photo {float:left;background:url("../images/sidemenu.png") -134px -47px;width:18px;height:18px;margin-left:10px;margin-top:8px;}
+.myfollowing_right_two_down span {float:left;margin-left:10px;height:35px;line-height:35px;}
+.myfollowing_right_two_down span a {color:#B2ABAE;font-size:14px;}
+.null {float:left;width:630px;height:180px;margin:30px auto;text-align:center;font-size:14px;}
+.null a {color:#144466;}
+.null a:hover {background:#144466;color:#ffffff;}

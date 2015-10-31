@@ -1,0 +1,137 @@
+		<{ include file="public/header.htm" }>
+		<link rel="stylesheet" href="<{$res}>/css/myfollowing.css" type="text/css" />
+        <script>var res="<{$res}>";</script>
+         <script src="<{$res}>/js/ajax3.0.js"></script>
+		<script src="<{$res}>/js/myfollowing.js"></script>
+		<{ include file="public/head.htm" }>
+	</head>
+	<body>
+		<!--内容部分-->
+		<div class="myfollowing_content">
+			<!--左边内容部分-->
+			<div class="myfollowing_left">
+				<!--标题部分-->
+				<div class="myfollowing_left_top">
+						<div class="myfollowing_left_top_word1">
+							<div class="myfollowing_left_top_word1_photo">
+							</div>
+							<span>
+                                <a>我关注的博客</a>
+							</span>
+						</div>
+						<div class="myfollowing_left_top_word2">
+							<span>
+                                <a href="<{$app}>/userset/blacklist">黑名单</a>
+							</span>
+						</div>
+				</div>
+				<!--搜索部分-->
+				<div class="myfollowing_left_seach">
+					<div class="myfollowing_left_seach_form">
+						<form action="" method="post">
+							<input id="text" type="text" name="seach" value="通过博客名搜索">
+							<input id="button" type="button" value="搜索">
+						</form>
+					</div>
+                </div>
+
+                <!--用户信息部分-->
+                <{if $blog.0!="" }>
+                <{section loop=$blog name=ls }>
+                <div class="myfollowing_left_user">
+					<div class="myfollowing_left_user_left">
+						<div class="myfollowing_left_user_photo">
+                            <a href="<{$blog[ls].u_id}>"><img src="<{$root}>/upload/normalico/<{$blog[ls].u_ico}>" border=0 /></a>
+						</div>
+						<div class="myfollowing_left_user_name">
+                            <a href="<{$blog[ls].u_id}>"><{$blog[ls].blogname}></a>
+						</div>
+						<div class="myfollowing_left_user_time">
+						    <{$blog[ls].info}>
+						</div>
+                    </div>
+
+					<div class="myfollowing_left_user_right">
+                        <div class="myfollowing_left_user_right_a" onclick="add('<{$blog[ls].u_id}>,1',this)" >已关注</div>
+                    </div>
+                </div>
+                 <script>
+                //添加关注
+                function add(id,obj){
+                    var mess={id:id};
+                    Ajax().post('<{$url}>/addblog',mess,function(data){
+                        //循环弹出消息
+                            switch(data){
+                                case 'a':
+                                alert('加关注成功!');
+                                obj.innerHTML="已关注";
+                                    break;
+                                case 'b':
+                                    alert('加关注失败!');
+                                    break;
+                                case 'c':
+                                alert('取消关注成功!');
+                                obj.innerHTML="加关注";
+                                    break;
+                                case 'd':
+                                alert('取消关注失败!');
+                            }
+                    });
+                }
+            </script>
+            <{/section}>
+            <{else}>
+
+            <div class="null">
+                <img src="<{$res}>/images/null.png" />
+                <p>噢! 你还木有添加关注!<br/><br/><a href="<{$url}>/attention">让这里的传送门带你去!</a></p>
+            </div>
+
+            <{/if}>
+
+			</div>
+			<!--右边列表部分-->
+			<div class="myfollowing_right">
+				<div class="myfollowing_right_one">
+					<div class="myfollowing_right_one_top">
+						<div class="myfollowing_right_one_top_photo"></div>
+                        <span><a>您当前关注了<{$num}>个博客</a></span>
+					</div>
+					<div class="myfollowing_right_one_down">
+						<div class="myfollowing_right_one_down_photo"></div>
+                        <span><a href="<{$app}>/find">发现更多好博客</a></span>
+					</div>
+				</div>
+				<div class="myfollowing_right_two">
+					<div class="myfollowing_right_two_top">
+						<form action="" method="post">
+							<div class="myfollowing_right_two_top_left">
+								<input id="button" type="button" name="button" value="">
+							</div>
+							<div class="myfollowing_right_two_top_center">
+								<input id="seach_tag" type="text" name="seach_tag" value="搜索标签">
+							</div>
+							<a href="#" id="myfollowing_right_two_right"></a>
+							<div id="myfollowing_right_two_right_select_bg"></div>
+							<div id="myfollowing_right_two_right_select">
+								<ul>
+									<li>搜索所有标签</li><hr />
+									<li>搜索我关注的文章</li><hr />
+									<li>搜索我发布的文章</li><hr />
+									<li>搜索我的喜欢</li>
+								</ul>
+							</div>
+						</form>
+					</div>
+					<div class="myfollowing_right_two_down">
+						<div class="myfollowing_right_two_down_photo">
+
+						</div>
+                        <span><a href="<{$app}>/actioned/attention">标签分类博客页</a></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

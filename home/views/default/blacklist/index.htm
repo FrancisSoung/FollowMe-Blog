@@ -1,0 +1,89 @@
+	<{include file="public/header.htm"}>
+        <link rel="stylesheet" href="<{$res}>/css/blacklist.css" type="text/css" />
+        <link rel="stylesheet" href="<{$res}>/css/list.css" type="text/css" />
+        <script src="<{$res}>/js/list.js"></script>
+	<{include file="public/head.htm"}>
+	<!--内容部分-->
+        <div class="blacklist_content">
+            <div class="blacklist_content_left">
+		<!--标题-->
+		<h1>黑名单</h1>
+		<!--描述-->
+            	<div class="blacklist_content_info"><span>把某博客加入黑名单之后将自动解除对他/她的关注，再也不会收到他/她给你发送的系统消息，他/她也不能够再评论你的博客内容；黑名单可以由你设置解除。<br/>鼠标指向你要设置黑名单的用户头像,查看状态栏最后一位的ID 把ID填入下栏确认即可把这位用户设置到您的黑名单中</span></div>
+		<!--添加表单部分-->
+		<div class="blacklist_content_form">
+			<span>输入要加入黑名单的博主ID</span></br>
+			<form action="" method="post">
+				<div class="blacklist_content_form_input">
+					<div class="blacklist_content_form_text">
+						<input id="blacklist_content_form_text" type="text" name="text" />
+					</div>
+					<div class="blacklist_content_form_button">
+						<input id="blacklist_content_form_button" onclick="add('<{$data[ls].u_id}>','<{$data[ls].u_ico}>','<{$data[ls].blogname}>','<{$data[ls].info}>','<{$data[ls].list_id}>')" type="button" name="button" value="">
+					</div>
+				</div>
+			</form>
+		</div>
+		<{if $data!="" }>
+                <{section loop=$data name=ls }>
+		<div class="blacklist_content_bname<{$data[ls].list_id}>"  id="blacklist">
+			<div class="bname_left">
+				<div class="bname_photo">
+                            		<a href="<{$data[ls].u_id}>"><img src="<{$root}>/upload/normalico/<{$data[ls].u_ico}>" border=0 /></a>
+				</div>
+				<div class="bname_name">
+					<a href="#"><{$data[ls].blogname}></a>
+				</div>
+				<div class="bname_info">
+				    	<{$data[ls].info}>
+				</div>
+                    	</div>
+			<div class="bname_right">
+                        	<div class="bname_remove" onclick="remove(<{$data[ls].list_id}>)" >解除</div>
+                    	</div>
+                </div>
+		<{/section}>
+		<{else}>
+            		您的黑名单列表为空！
+		<{/if}>
+		<script>
+			//ajax解除黑名单
+			function remove(listid) {
+
+				var url = '<{$url}>/remove/list_id/'+listid;
+				Ajax().get(url,function(data){
+
+					if(data==1){
+						$(".blacklist_content_bname"+listid).remove();
+					}else{
+						alert('解除失败！');
+					}
+				});
+			}
+
+			//添加黑名单
+			function add(uid,uico,blogname,info,listid) {
+				var suid = $('#blacklist_content_form_text').val();
+				//alert(suid);
+				var url = '<{$url}>/add/su_id/'+suid;
+				//alert(url);
+				Ajax().get(url,function(data){
+					
+					if(data==1){
+						location.href ='<{$url}>';
+					}else{
+						alert(data);
+					}
+					
+				});
+			}
+			
+		</script>
+        </div>
+        <!--右边列表-->
+        <div class="blacklist_content_right">
+            <{ include file="public/list.htm"}>
+        </div>
+    </div>
+	</body>
+</html>

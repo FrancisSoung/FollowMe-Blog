@@ -1,0 +1,90 @@
+		<{ include file="public/header.htm" }>
+		<link rel="stylesheet" href="<{$res}>/css/attention.css" type="text/css" />
+        <script src="<{$res}>/js/attention.js"></script>
+        <script src="<{$res}>/js/ajax3.0.js"></script>
+		<{ include file="public/head.htm" }>
+		<!--关注内容部分-->
+		<div class="attention_content">
+			<!--顶部标签部分-->
+			<div class="attention_content_top">
+                <ul>
+                    <{section loop=$systag name=ls }>
+                    <li><a href="<{$app}>/actioned/attention/id/<{$systag[ls].systag_id}>" title="<{$systag[ls].seque}>"><{$systag[ls].systag_name}></a></li>
+                    <{/section}>
+				</ul>
+            </div>
+
+			<!--用户详情部分-->
+			<div class="attention_content_down">
+                <div class="attention_content_down_person">
+                    <{if !empty($blogs) }>
+                    <{section loop=$blogs name=ls }>
+                        
+				        <div class="attention_content_down_personleft">
+					    <!--用户头像-->
+					            <div class="attention_content_down_photo">
+                                    <a href="<{$app}>/user/index/uid/<{$blogs[ls].u_id}>"><img src="<{$root}>/upload/systagico/<{$blogs[ls].u_ico}>" /></a>
+					            </div>
+					<!--用户基本信息-->
+					            <div class="attention_content_down_infro">
+						    <!--用户名-->
+                            <span><a href="<{$app}>/user/index/uid/<{$blogs[ls].u_id}>"><{$blogs[ls].blogname}></a></span>
+						    <!--用户简介-->
+						            <div class="attention_content_down_infro_intro">
+                                        <{$blogs[ls].info}>
+						            </div>
+                            <!--加关注按钮-->
+                            
+                            <div class="attention_content_down_infro_image">
+                                <{if $session.isLogin==1 }>
+                                    <{if $blogs[ls].actions_u_id== $session.u_id and $blogs[ls].type==1 }>  
+                                    <div class="attention" onclick="add('<{$blogs[ls].u_id}>,1',this)">已关注</div>
+             
+          
+                                        <{else}>
+                                        <div class="attention"  onclick="add('<{$blogs[ls].u_id}>,<{$session.u_id}>',this)">加关注</div>
+                                 
+                                        <{/if}>
+                                <{/if}>
+						            </div>
+					            </div>
+                            </div>
+                                    <script>
+                                        //添加关注
+                                    function add(id,obj){
+                                            var mess={id:id};
+                                            Ajax().post('<{$url}>/addblog',mess,function(data){
+                                                //循环弹出消息
+                                                    switch(data){
+                                                        case 'a':                                                    
+                                                        obj.innerHTML="已关注";
+                                                            break;
+                                                        case 'b':
+                                                            alert('加关注失败!');
+                                                            break;
+                                                        case 'c':
+                                                        obj.innerHTML="加关注";
+                                                            break;
+                                                        case 'd':
+                                                        alert('取消关注失败!');
+                                                        break;
+                                                        case 'e':
+                                                        alert('自己不能对自己加关注!');
+                                                    }
+                                            });
+                                        }
+                                    </script>
+                          
+                            <{/section}>
+                        <{else}>
+                        <div class="attention_content_down_person_b">
+                            <img src="<{$res}>/images/null.png" />
+                            <p>本标签下 暂时还没有博主!<br/><br/>请您查看其他标签</p>
+                        </div> 
+                        <{/if}>
+                            
+                    </div>
+            </div>            
+    </div>
+</body>
+</html>

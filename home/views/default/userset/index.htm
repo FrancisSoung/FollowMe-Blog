@@ -1,0 +1,263 @@
+        	<{include file="public/header.htm"}>
+		<link rel="stylesheet" href="<{$res}>/css/myfollowset.css" type="text/css" />
+		<link rel="stylesheet" href="<{$res}>/css/list.css" type="text/css" />
+		<script>var res="<{$res}>"</script>
+		<script src="<{$res}>/js/list.js"></script>
+		<style>
+			/*默认的状态样式*/
+			.one{
+				color:#aaa;
+			}
+			/*成功的状态样式*/
+			.two{
+				color:green;
+			}
+			/*失败的状态样式*/
+			.three{
+				color:red;
+			}
+		</style>
+		<{include file="public/head.htm"}>
+		<div class="myfollowset_content">
+			<div class="myfollowset_content_left">
+				<div class="myfollowset_content_left_h4"></div>
+				<h4>博客设置</h4>
+				<div class="myfollowset_content_left_content">
+					<form action="<{$url}>/check" method="post" enctype="multipart/form-data" onsubmit="return yanz(true)">
+					<!-- 博客头像 -->
+					<div class="myfollowset_content_left_content_photo">
+						<div class="myfollowset_content_left_content_left">
+							博客头像：	
+						</div>
+						<div class="myfollowset_content_left_content_right">
+							
+							<div class="myfollowset_content_left_content_photo_pic">
+								<img src="<{$root}>/upload/normalico/<{$u_ico}>" alt="" />
+							</div>
+							<div class="myfollowset_content_left_content_photo_update">
+								<div class="myfollowset_content_left_content_photo_update_form">
+									<input id="file" type="file" name="pic" value="上传头像" />
+									
+								</div>
+								<a style="display:block;float:left;color:red;">不能大于1MB，尺寸不能小于215*162</a>
+							</div>
+							
+						</div>
+					</div>
+					<!-- 邮箱地址 -->
+					<div class="myfollowset_content_left_content_email">
+						<div class="myfollowset_content_left_content_left">
+							邮箱地址：
+						</div>
+						<div class="myfollowset_content_left_content_right">
+							<div id="emailold" style="float:left;"><{$data[0].email}></div>&nbsp;&nbsp;&nbsp;&nbsp;
+							<div id="emailnew" style="float:left;display:none">
+								<input id="text" type="text" name="email" value="<{$data[0].email}>">
+								<span></span>
+							</div>
+							
+							<a href="javascript:mod()">修改</a>
+						</div>
+					</div>
+					
+					<!-- 当前密码 -->
+					<div class="myfollowset_content_left_content_passwordnow">
+						<div class="myfollowset_content_left_content_left">
+							当前密码：
+						</div>
+						<div class="myfollowset_content_left_content_right">
+							<input id="text" type="password" name="pwdnow" value="" />
+							<span style="color:red;">*</span>
+							<input type="hidden" name="pwdhidden" value="" />
+						</div>
+					</div>
+					<!-- 新密码 -->
+					<div class="myfollowset_content_left_content_passwordnew">
+						<div class="myfollowset_content_left_content_left">
+							新密码：
+						</div>
+						<div class="myfollowset_content_left_content_right">
+							<input id="text" type="password" name="pwdnew1" class="pwdnew1" /><span></span><br />
+							<input id="text" type="password" name="pwdnew2" class="pwdnew2" />
+							<span></span>
+						</div>
+					</div>
+					
+					<!-- 博客名称 -->
+					<div class="myfollowset_content_left_content_name">
+						<div class="myfollowset_content_left_content_left">
+							博客名称：	
+						</div>
+						<div class="myfollowset_content_left_content_right">
+							<input id="text" type="text" name="blogname" value="<{$data[0].blogname}>" />
+							<span></span>
+						</div>
+					</div>
+					<!-- 博客介绍 -->
+					<div class="myfollowset_content_left_content_intro">
+						<div class="myfollowset_content_left_content_left">
+							博客介绍：	
+						</div>
+						<div class="myfollowset_content_left_content_right">
+							<textarea rows="5" style="border:1px solid #E3E3E3" name="info" value="<{$data[0].info}>" ><{$data[0].info}></textarea>
+							<span></span>
+						</div>
+					</div>
+					<div class="myfollowset_content_left_content_button">
+						<div class="myfollowset_content_left_content_left">
+								
+						</div>
+						<div class="myfollowset_content_left_content_right">
+							<div style="color:#aaa;width:100px;float:left;margin-top:20px;"><a style="color:red;">*</a>为每次修改必填</div>
+                            				<a href="#"><input id="button" type="submit" name="sub" value="保存"></a>
+						</div>
+					</div>
+				</form>
+				<script>
+					/*修改邮箱*/
+					function mod() {
+						$('#emailold').css('display','none');
+						$('#emailnew').css('display','block');
+					}
+					/*该方法用来判断下一个标签是否是span，主要是解决兼容性问题*/	
+					function next(obj){
+						while(true){
+							if(obj.nextSibling.tagName=="SPAN"){
+								return obj.nextSibling;
+							}else{
+								obj=obj.nextSibling;
+							}
+						}
+					}
+
+					var bbj;	//声明bbj全局变量，并赋初值
+
+					/**
+					 *以下方法用来检查用户输入内容的合法性
+					 * obj	表单对象名称
+					 * mess	提示信息
+					 * fun	验证合法性的函数
+					 */
+					function check(obj,mess,fun){
+						var bg=true;
+						var span=next(obj);	//调用next函数，赋给一个变量，可以简化下面的代码
+					/*获取焦点事件，并设置显示信息和信息的状态样式为默认的*/
+					obj.onfocus=function(){
+						span.innerHTML=mess;
+						span.className="one";
+
+					}
+					/*失去焦点事件，验证输入*/
+					obj.onblur=function(){
+
+						if(!fun(obj.value)){	//输入错误时输出提示信息和相应的样式，这里的函数是一个参数，是下面调用时传过来的
+							span.innerHTML='<img src="<{$res}>/images/error.png" alt="" />';
+							span.className="three";
+							bg=false;
+					
+						}else{
+							span.innerHTML='<img src="<{$res}>/images/right.png" alt="" />';	//输入正确时的提示信息和相应的样式
+							span.className="two";
+							bg=true;
+					
+						}
+						
+				
+					}	
+					/*当bbj为真的时候调用obj.onblur事件函数，因为提交的时候是点击，不自动调用失去焦点事件，所以需要调用一下*/
+					if(bbj){
+						obj.onblur();
+					}
+					return bg;
+					}	
+		
+					
+					/*获取blogname对象*/
+					var blogname=document.getElementsByName("blogname")[0];
+					/*获取info对象*/
+					var info=document.getElementsByName("info")[0];
+					/*获取email对象*/
+					var email=document.getElementsByName("email")[0];
+					/*获取当前密码*/
+					var pwdnow=document.getElementsByName('pwdnow')[0];
+
+					var pwdhidden=document.getElementsByName('pwdhidden')[0];
+				
+					
+
+					/*以下方法是用在form表单中，确定是否跳转的，如果方法返回假说明了表单不合法就不跳转，否则跳转*/
+					function yanz(bj){
+
+						bbj=bj;	//把传进来的参数赋给bbj变量，以便于上面的check函数调用
+
+						/** 
+						 * 调用check方法，实现表单对象的各自提示信息和验证方法
+						 * 第一个参数是表单对象名称
+						 * 第二个参数是提示信息
+						 * 第三个参数是验证的方法
+						 * 参数value是表单中输入的值
+						 * 函数执行后有返回值，把返回值赋值给一个变量（one等），以便于函数最后返回一个真假值，用于form表单中的onsubmit事件
+						 */
+
+						var one=check(blogname,"不超过八个字，并不为空",function(value){
+							
+							if(value.length>8){
+								return false;
+							}else if(value==''){
+								return false;
+							}else{
+								return true;
+							}
+						});
+
+						var two=check(info,"不能超过五十个字",function(value){
+							if(value.length>50){
+								return false;
+							}else{
+								return true;
+							}
+						});
+
+						var three=check(email,"必须是E-mail格式",function(value){
+							if(value.match(/^[0-9a-zA-Z_\-\.]+@[0-9a-zA-Z_\-]+(\.[0-9a-zA-Z_\-]+)*$/)){
+								return true;
+							}else{
+								return false;
+							}
+						});
+
+						var four=check(pwdnow,"请输入密码哦~",function(value){
+							//ajax处理验证密码
+							var pwdval=pwdnow.value;
+							var val={pwdnow:pwdval};
+							var url='<{$url}>/check/pwdnow';
+							Ajax().post(url,val,function(data){
+								
+
+								pwdhidden.value=data;
+
+								
+							});
+							if(pwdhidden.value==1){
+								return true;
+							}else{
+								return false;
+							}
+							
+						});
+
+
+						return one && two && three && four;
+
+					}
+					yanz();
+				</script>
+				</div>
+			</div>
+			<!--右边列表部分 -->
+			<{ include file="public/list.htm" }>
+		</div>
+    </body>
+
+</html>
+

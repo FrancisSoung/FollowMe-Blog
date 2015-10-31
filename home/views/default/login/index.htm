@@ -1,0 +1,237 @@
+<html>
+	<head>
+		<script src="<{$res}>/js/jquery.js"></script>
+		<script src="<{$res}>/js/login.js"></script>
+	        <meta http-equiv="content-type" content="text/html" charset='utf-8'>
+	        <link rel="stylesheet" type="text/css" href="<{$res}>/css/login.css">     
+	</head>
+	<body id="body" >
+	
+	<div class="div" style="width:100%;height:100%;display:none" >
+			
+		<div class="bgpic"><img class="img" src="" style=""></div>				
+		<div class='main'>
+			<div style="width:720px;margin:0px auto;margin-top:100px;text-align:center">
+		        	<input type="button" class="about" onclick="shou()" value="关于FollowMe">
+		         	<input type="button" class="registb" onclick="show()" value="注册">
+                    <div style="width:720px;"><a href="<{$app}>" title="返回FollowMe首页"><div class="logo"></div></a></div>			
+		          	<div class="input">
+                                        <form action='<{$url}>/login' name="frm" method='post'>
+		            		<div style="float:left"><input type='text' name='u_name' value='请输入用户名' border=0 class="unr"></div>
+		          		<div style="float:left"><input type='password'  name='password' value='请输入密码' class='pwr password0'></div>
+		         		<div style="float:left"><input type='submit' name='sub' value='' class="button"></div>
+		        		</form>	
+		         	</div>
+		     	</div>
+		</div>
+		<div class='main1'>
+                        <div style="width:558px;margin:0px auto;margin-top:100px;text-align:center">			
+				<input type="button" class="loginb" onclick="show2()" value="登陆">
+                <a href="<{$app}>" title="返回FollowMe首页"><div class="logo1"></div></a>			
+				<div class="input2">
+                                        <form action='<{$url}>/register' name="frm1" method='post' onsubmit="return yanz(true)">
+					<div style="float:left"><input type='text' name='u_name' value='请输入用户名' border=0 class="unr"></div>
+					<div style="float:left"><input type='password' name='password' value='' class='pwr'></div>
+					<div style="float:left;margin-top:10px"><input type='text' name='email' value='请输入邮箱' border=0 class="unr"></div>
+					<div style="float:left;margin-top:9px;margin-left:40px;"><input type='submit' name='sub' value='' class="button1"></div>
+                                        </form>	
+                                        <span class="spanerror" style="display:none"><b style="display:block"></b></span>
+                                </div>
+                                
+				
+                        </div>
+                        
+		</div>
+	</div>
+			
+	<div class="div2" style="display:none;text-align:center;text-align:center;margin:0px auto;width:100%">
+		
+		<div class="input1bg">
+			<div class="input1" style="margin-top:20px;">
+				<form action='<{$url}>/login' name="frm" method='post'>
+				<div style="float:left"><input type='text' name='u_name' value='请输入用户名' border=0 class="unr"></div>
+				<div style="float:left"><input type='password' name='password' value='' class='pwr'></div>
+				<div style="float:left"><input type='submit' name='sub' value='' class="button"></div>
+				<input type="button" class="shang" onclick="shou2()" value="">
+				</form>	
+			</div>
+                        
+                </div>
+                <img src="<{$res}>/images/about.png">
+		
+		
+	</div>
+
+
+        
+	</body>
+        <script>
+                $(".div").fadeIn("slow");
+                var x = 20;     
+                var y = 1;     
+                var im = parseInt(Math.random() * (x - y) + y);  
+		var width=document.body.clientWidth;
+                var height=document.body.clientHeight;
+                var u_name0=document.getElementsByName("u_name")[0];
+                var password0=document.getElementsByName("password")[0];
+                var u_name=document.getElementsByName("u_name")[1];
+		var password=document.getElementsByName("password")[1];
+                var email=document.getElementsByName("email")[0];
+                var span;
+		$(".img").css("width",width);
+		$(".img").css("height",height);
+		$(".bgpic").css("width",width);
+		$(".bgpic").css("height",height);
+		$(".main").css("width",width);
+		$(".main").css("height",height);
+		$(".main1").css("width",width);
+		$(".main1").css("height",height);		
+
+            	$(window).resize(function() {
+             		var width=document.body.clientWidth;
+            		var height=document.body.clientHeight;
+             		$(".img").css("width",width);
+          	    	$(".img").css("height",height);
+          	     	$(".bgpic").css("width",width);
+         	    	$(".bgpic").css("height",height);
+            		$(".main").css("width",width);
+			        $(".main").css("height",height);
+         	    	$(".main1").css("width",width);
+             		$(".main1").css("height",height);
+		});
+		$(".img").attr("src","<{$res}>/images/loginimg/"+im+".jpg");
+                setInterval(function(){
+                        
+			im++;
+			if(im>20){
+				im=1;
+                        }
+                        $(".img").fadeTo("slow","0");
+                        $(".img").attr("src","<{$res}>/images/loginimg/"+im+".jpg");
+                        $(".img").fadeTo("slow","1");
+		},5000);
+
+                $(".button").hover(
+                        function () {
+                              $(this).addClass("hover");
+                        },
+                        function () {
+                              $(this).removeClass("hover");
+                        }
+		);
+                $(".button1").hover(
+                        function () {
+                              $(this).addClass("hover1");
+                        },
+                        function () {
+                              $(this).removeClass("hover1");
+                        }
+		);
+                $(".loginb").hover(
+                        function () {
+                              $(this).addClass("hoverb");
+                        },
+                        function () {
+                              $(this).removeClass("hoverb");
+                        }
+		);
+                $(".registb").hover(
+                        function () {
+                              $(this).addClass("hoverb");
+                        },
+                        function () {
+                              $(this).removeClass("hoverb");
+                        }
+		);
+         	function shou(){
+ 		setTimeout( function(){ 
+			$(".div").slideToggle("slow");
+			$(".div2").css("display","block");
+	       	}, 200);
+
+        	}
+         	function shou2(){
+ 		setTimeout( function(){ 
+			$(".div").slideToggle("slow");
+			$(".div2").css("display","none");
+	       	}, 200);
+
+        }
+
+        function check(obj, mess, fun){
+        
+                var bg=true;
+                obj.onfocus=function(){
+                        $(".spanerror").slideUp("slow");
+                        obj.value="";
+                }
+
+                obj.onblur=function() {
+                        if(!fun(obj.value)){
+                                $(".spanerror > b").html(mess);
+                                $(".spanerror").slideDown("slow");
+                                bg=false;
+                        }else{					
+				bg=true;
+                        }               
+                }
+                if(bbj)
+			obj.onblur();
+		return bg;
+
+        }
+		function show(){
+		
+			$(".main").fadeTo("2000",0);
+			$(".main1").fadeTo("2000",1);
+		}
+
+		function show2(){
+			$(".main1").fadeTo("2000",0);
+			$(".main").fadeTo("2000",1);
+			$(".main1").css("display","none");
+			
+
+		}
+	function yanz(bj) {	
+		bbj=bj;
+		var one=check(u_name, "用户名长度必须为6-30之间", function(value){
+				if(value.length < 6 || value.length >30){
+					return false;
+				}else{
+					return true;
+				}
+				
+		});
+		var two=check(password, "用户密码必须在大于6位", function(value){
+				if(value.length <6) {
+					return false;
+				}else{
+					return true;
+				}
+		});
+
+		var three=check(email, "必须是EMAIL格式", function(value){
+				if(value.match(/\w{1,}@\w{1,}\.\w{2,5}/i)){
+					return true;
+				}else{
+					return false;
+				}
+		});
+		return one && two && three;
+	}
+
+	yanz();
+
+
+        u_name0.onfocus=function(){
+                u_name0.value="";
+        }
+        password0.onfocus=function(){
+                password0.value="";
+        }
+	</script>
+
+</html>
+
+

@@ -1,0 +1,46 @@
+<html>
+	<head>
+		<meta http-equiv="content" content-type="text/html" charset="utf-8">
+		<link rel="stylesheet" href="<{$res}>/css/pushpage.css" type="text/css" />
+
+		<title>文章</title>
+	</head>
+	<body class="look_body">
+		<div class="pagemain">
+	<!--左操作模块-->
+        <div class="titletab">
+            <div class="topleft">
+		    <div class="title">
+			    <div class="soundimg"></div>查看文章
+		    </div>
+        	    <div class="option">
+			    <a href="<{$app}>/article">返回列表</a>
+		     </div>
+	     </div>
+     </div>
+             <!--右 操作模块-->
+             <div class="topright">
+		     <div class="search">
+			     
+		     </div>
+	     </div>
+
+		<div id="MyDiv" class="white_content">
+          		<div class="close">
+				<span><a href="<{$app}>/article/">返回</a></span>
+			</div>
+			<div class="article_infro">
+				<div class="photo"><img src="<{$root}>/upload/normalico/<{$uico}>" /></div>
+				<div class="infro">
+					<div class="title">标题:<{$title}></div>
+					<div class="author">博主:<{$blogname}></div>
+					<div class="time">发表时间:<{$time|date_format:"%Y年%m月%d日"}></div>
+				</div>
+			</div>
+			<div class="article_content">
+				<textarea readonly><{$content}></textarea>
+			</div>
+		</div>
+	</body>
+</html>
+

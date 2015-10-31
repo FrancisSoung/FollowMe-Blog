@@ -1,0 +1,27 @@
+/*全局样式*/
+* {margin:0px;padding:0px;}
+body {background:url(../images/htmlbg.png)}
+li {list-style:none;}
+a {text-decoration:none;}
+img {border:0px;}
+/*主框体*/
+.findmain {display:none;width:900px;margin:0px auto;margin-bottom:60px;margin-top:20px;}
+
+/*图片墙*/
+.imgwall {width:900px;height:450px;border:1px solid #bbbbbb;border-radius:5px;behavior:url(../public/css/PIE.htc);overflow:hidden}
+.imgwall div {width:150px;height:150px;border:0px;float:left;}
+.top div span {display:block;width:60px;height:25px;position:relative;top:-25px;left:10px;color:#ffffff;background:#1b1b1b;opacity:80;filter:alpha(opacity=80);text-align:center;font-size:14px;line-height:25px;border-radius:2px;behavior:url(../public/css/PIE.htc);overflow:hidden;}
+/*博客,标签*/
+.moreblog {width:900px;margin-top:30px;background:#d6d9dc;border:1px solid #bbbbbb;border-radius:5px;behavior:url(../public/css/PIE.htc);}
+.moreblog .search {width:400px;height:40px;line-height:40px;margin:10px auto;text-indent:10px;background:#f7f8f8;border:1px solid #cccccc;border-radius:5px;behavior:url(../public/css/PIE.htc);}
+.moreblog .search span {background:url(../images/sidemenu.png) -1153px -51px;width:34px;height:38px;}
+.moreblog .search input {width:350px;border:0px;background:#f7f8f8;font-size:16px;border-radius:5px;behavior:url(../public/css/PIE.htc);}
+.moreblog .blogtab {width:900px;}
+.moreblog .bloginfo {width:900px;text-align:center;}
+.moreblog .bloginfo th {width:150px;height:50px;border-bottom:1px solid #cccccc;background:#ffffff;font-size:16px;}
+.moreblog .bloginfo td {width:150px;height:40px;border-bottom:1px solid #cccccc;background:#f6f6f6;font-size:15px;}
+.moreblog .bloginfo td div div {margin-right:20px;}
+.moreblog .bloginfo a {color:#000000;}
+.moreblog .bloginfo div {float:left;line-height:23px;}
+.moreblog .bloginfo #blogimg {margin:0px 12px;}
+

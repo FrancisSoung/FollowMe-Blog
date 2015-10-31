@@ -1,0 +1,86 @@
+<!DOCTYPE html
+PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="zh-CN"><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Follow me后台登陆系统</title>
+<link rel="stylesheet" id="login-css" href="<{$res}>/css/login.css" type="text/css" media="all">
+<link rel="stylesheet" id="colors-fresh-css" href="<{$res}>/css/colors-fresh.css" type="text/css" media="all">
+<script src="<{$res}>/js/jquery.js"></script>
+<style type="text/css" media="screen">
+    * { font: 12px Segoe UI,Tahoma,Arial,Verdana,simsun,sans-serif,"Microsoft YaHei"; }
+</style>
+<meta name="robots" content="noindex,nofollow">
+<script>
+		function yanz() {
+			if(document.loginform.log.value==""){
+				$(".error1").css("display","block");
+				show();
+				return false;
+			}
+
+			if(document.loginform.pwd.value=="") {
+				$(".error2").css("display","block");
+				show();
+				return false;
+			}
+			
+
+			return true;
+
+
+		}
+</script>
+</head>
+<body class="login">
+        <div id="login" ><h1><a href="<{$root}>/index.php" title="返回首页"><img src="<{$res}>/images/logo-b.png"></a></h1>
+<div id="login_error" class="error1" style="display:none">	<strong>错误</strong>：用户名一栏为空。<br></div>
+<div id="login_error" class="error2" style="display:none">	<strong>错误</strong>：密码一栏为空。<br></div>
+<div id="login_error" class="error3" style="display:none">	<strong>错误</strong>：无效用户名。<a href="http://localhost/wordpress/wp-login.php?action=lostpassword" title="找回丢失的密码">忘记密码</a>？<br></div>
+<div id="login_error" class="error4" style="display:none">	<strong>错误</strong>：<strong>April_2nd</strong> 的密码不正确。<a href="http://localhost/wordpress/wp-login.php?action=lostpassword" title="找回密码">忘记密码了</a>？<br></div>
+<div class="login1" style="margin-left:100px;position:relative;width:320px">
+	<form name="loginform" id="loginform" action="<{$url}>/login"  onsubmit="return yanz()"  method="post">
+	<p>
+		<label>用户名<br>
+		<input type="text" name="log" id="user_login" class="input" size="20" tabindex="10"></label>
+	</p>
+	<p>
+		<label>密码<br>
+		<input type="password" name="pwd" id="user_pass" class="input" size="20" tabindex="20"></label>
+	</p>
+	<p class="forgetmenot"><label><input name="rememberme" type="checkbox" id="rememberme" value="forever" tabindex="90"> 记住我的登录信息</label></p>
+	<p class="submit">
+		<input type="submit" name="wp-submit" id="wp-submit" class="button-primary" value="登录" tabindex="100">
+		<input type="hidden" name="redirect_to" value="">
+		<input type="hidden" name="testcookie" value="1">
+	</p>
+
+
+</form>
+</div>
+
+<p id="backtoblog"><a href="<{$root}>/index.php" title="不知道自己在哪？">← 回到 首页</a></p>
+	</div>
+
+
+
+
+</body>
+<script type="text/javascript">
+	
+               function show(){
+                      $(".login1").animate({left: '+25px'}, "fast");
+		      $(".login1").animate({left: '-25px'}, "fast");
+		      $(".login1").animate({left: '+25px'}, "fast");
+		      $(".login1").animate({left: '-25px'}, "fast");
+		      $(".login1").animate({left: '+25px'}, "fast");
+		      $(".login1").animate({left: '-0px'}, "fast");
+               };
+
+
+	
+</script>
+</html>
+
+
+

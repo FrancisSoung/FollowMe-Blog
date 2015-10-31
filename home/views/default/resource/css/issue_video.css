@@ -1,0 +1,56 @@
+*{margin:0px;padding:0px}
+body {margin:0px;padding:0px;background:url(../images/htmlbg.png) repeat;}
+.main {display:none;width:900px;margin:0px auto;margin-top:20px}
+.right {width:662px;float:left}
+.left {margin-top:10px;width:238px;height:631px;float:right}
+.right_top {float:left;width:662px;height:10px;background:url(../images/fabu_right_top.png)}
+.right_bottom {float:left;width:662px;height:10px;background:url(../images/fabu_right_bottom.png) }
+.right_middle {float:left;width:662px;background:url(../images/fabu_right_middle.png) repeat-y;}
+.left_top {float:left;width:238px;height:10px;background:url(../images/fabu_left_top.png) }
+.left_bottom {float:left;width:238px;height:10px;background:url(../images/fabu_left_bottom.png) }
+.left_middle {float:left;width:238px;height:611px;background:url(../images/fabu_left_middle.png) repeat-y;}
+.wenzi {float:left;width:662px;height:50px;border-bottom:1px solid #E1E1E1}
+.wenzi b{font-size:18px;float:left;color:#124062;margin-top:10px;margin-left:30px;}
+.form {width:606px;float:left;margin-left:26px;margin-top:30px;}
+.upload {width:606px;height:50px;}
+.upload input {cursor:pointer;font-size:30px;left:0px;opacity:0;filter:alpha(opacity=0);float:left;width:80px;height:39px;}
+.upload b{font-size:13px;font-weight:normal;color:#8E8E8E;line-height:40px;margin-left:20px;}
+.uploadleft {background-image:url(../images/button-bg.png);background-position:left -600px;width:10px;height:39px;float:left;}
+.uploadright {background-image:url(../images/button-bg.png);background-position:right -600px;width:10px;height:39px;float:left;}
+.uploadcenter {background-image:url(../images/button-bg.png);background-position:center -600px;height:39px;float:left;line-height:39px}
+.uploadzi {background:url(../images/uploadvid.png);height:39px;width:60px;margin-left:13px;}
+
+.title {float:left;width:606px;height:30px}
+.title2 {margin-top:30px;width:600px;float:left;width:606px;height:30px}
+.b1 {font-size:18px;color:#5C5C5C;font-weight:normal}
+
+.input {float:left;width:606px;height:48px;}
+.content {float:left;width:606px;height:30px;margin-top:25px}
+.content b{font-size:18px;color:#5c5c5c;font-weight:normal}
+.input input {line-height:48px;font-size:18px;background:url(../images/input.png) no-repeat;border:0px;width:606px;height:48px}
+.textarea {float:left;display:none;width:606px;height:333px;}
+.button {float:left;width:606px;height:50px;margin-top:10px;}
+
+.cancle {float:left;height:37px;background:url(../images/cancle.png);width:75px}
+.cancle:hover {cursor:pointer;float:left;height:37px;background:url(../images/cancleh.png);width:75px;}
+.caogao {float:left;width:100px;height:37px;margin-left:325px}
+.caogao input {width:100px;height:37px;background:url(../images/caogao.png);border:0px}
+.caogao input:hover {width:100px;height:37px;background:url(../images/caogaoh.png);cursor:pointer;border:0px}
+.submit {float:right;width:75px;height:39px;}
+.submit input {width:75px;height:39px;background:url(../images/fabu.png);border:0px;}
+.submit input:hover {width:75px;height:39px;background:url(../images/fabuh.png);border:0px;cursor:pointer}
+.tag {width:200px;float:left;margin-top:10px;margin-left:17px;}
+.taga {width:200px;float:left;}
+.taga button {background:url(../images/xtag.png);width:200px;height:40px;border:0px}
+.tagb {width:200px;height:102px;float:left;margin-top:20px;background:url(../images/zitag.png);}
+.tagb input {border:0px;margin-top:5px;margin-left:2px}
+.ul li{list-style:none;background:#2C93D9;float:left;margin-top:5px;margin-left:5px;color:white}
+.ul a {text-decoration:none;color:white;margin-left:5px;}
+.tandi {position:fixed;left:0px;top:0px;width:100%;height:100%;background:black;opacity:0.3;filter:alpha(opacity=30);display:none}
+.tanshang {
+	shadow:0px 0px 10px #ffffff;border-radius:5px;position:fixed;background:#F6F6F6;width:406px;height:112px;display:none;border:1px solid #616C75; box-shadow:0px 0px 10px #616C75;behavior:url(../public/css/PIE.htc)
+}
+.close {background:url(../images/enter.png);width:60px;height:27px;cursor:pointer;margin-top:35px;margin-left:300px;}
+.close:hover {background:url(../images/enterh.png);width:60px;height:27px;cursor:pointer;margin-top:35px;margin-left:300px;}
+.xitag {border-radius:5px;position:fixed;margin-left:15px;margin-top:200px;background:#F6F6F6;width:200px;height:200px;display:none;border:1px solid #616C75; box-shadow:0px 0px 10px #616C75;behavior:url(../public/css/PIE.htc);}
+.xitag a {border-radius:5px;position:relative;text-decoration:none;margin-left:15px;margin-top:200px;background:#F6F6F6;border:1px solid #616C75; box-shadow:0px 0px 10px #616C75;background:#144466;color:white;top:15px;behavior:url(../public/css/PIE.htc);}

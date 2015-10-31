@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <title>Right</title>
+        <link rel="stylesheet" href="<{$res}>/css/right.css" type="text/css"  charset="utf-8">
+        <script src="<{$res}>/js/jquery.js"></script>
+        <script src="<{$res}>/js/jquery.masonry.min.js"></script>
+        <script src="<{$res}>/js/jquery.infinitescroll.min.js"></script>
+    </head>
+    <body>
+        <div class="main">
+            <div class="helpt">傻瓜都会用 是吧？</div>
+            <hr  style="color:#ccc;" size="0">
+            <div class="top">
+                <div class="tu"></div>
+                <b>控制板</b>
+                <a href="javascript:;"><div class="help"><b>帮助</b><div></div></div></a>                
+            </div>
+            <div class="survey">
+                <div class="surtop"><b>系统概况</b></div>
+                <div class="admin">
+                    <b>管理员</b>
+                    <table  width=100%>
+                        <tr><td width=23%>用户名</td><td>admin</td></tr>
+                        <tr><td>上次登录时间</td><td>2012-05-29 22:01</td></tr>
+                        <tr><td>上次登录IP</td><td>192.168.80.35</td></tr>
+                        <tr><td>本次登录IP</td><td><{$ip}></td></tr>
+                    </table>
+                </div>
+                <div class="server">
+                    <b>系统信息</b>
+                    <table  width=100%>
+                        <tr><td width=23%><a href="">文字</a></td><td>0</td></tr>
+                        <tr><td><a href="">图片</a></td><td>0</td></tr>
+                        <tr><td><a href="">音乐</a></td><td>0</td></tr>
+                        <tr><td><a href="">视频</a></td><td>0</td></tr>
+                        <tr><td><a href="">链接</a></td><td>0</td></tr>
+                    </table>
+                    
+                </div>
+            </div>
+            <div class="survey1">
+                <div class="surtop"><b>近期博客</b></div>
+                <div id="container">
+                    <{section loop=$data name="ls"}>
+                    <a href="<{$root}>/index.php/user/index/uid/<{$data[ls].u_id}>" target="_parent"><div class="item"><div class="photo"><img class="img" src="<{$root}>/upload/microico/<{$data[ls].u_ico}>"></div><div class="name"><{$data[ls].u_name}></div></div></a>
+                    <{/section}>
+
+                </div>
+            </div> 
+            <div class="ksfb">
+                <div class="ksfb1"><a class="ksfbbutton" href="javascript:;"><img src="<{$res}>/images/ksfb.png" border=0></a></div>
+                <div class="survey2">
+                    <div class="surtop"><b>快速发布站点通知</b></div>
+                    <form action="<{$url}>/insert" method="post">
+                            <table>
+                                <tr><td>内容</td><td><textarea  name="content" cols=70 rows=5></textarea></td></tr>
+                                <tr><td colspan=2 style="text-align:right"><input type="submit" name="sub" value="发布"></td></tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        $(".help").click( function () { 
+            $(".helpt").slideToggle("fast");
+        });
+        $(".ksfbbutton").click(function(){
+            $(".survey2").slideToggle("normal");
+        });
+    </script>
+    		    <script>
+$(function(){
+  $('#container').masonry({
+    // options
+	  itemSelector : '.item',
+		  
+      columnWidth : 10,
+      isAnimated : true,
+          animationOptions:{
+            //jquery animate属性 渐变效果  Object { queue: false, duration: 500 }
+          },
+          gutterWidth:0,//列的间隙 Integer
+          isFitWidth:true,// 适应宽度   Boolean
+          isResizableL:true,// 是否可调整大小 Boolean
+          isRTL:false,//使用从右到左的布局 Boolean
+
+  });
+});
+var $container = $('#container');
+$container.imagesLoaded(function(){
+  $container.masonry({
+    itemSelector : '.item',
+    columnWidth : 0
+  });
+});
+
+			    
+</script>
+</html>

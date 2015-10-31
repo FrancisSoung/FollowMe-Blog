@@ -1,0 +1,28 @@
+<title>Follow Me轻博客</title>
+</head>
+<body>
+    		<div class="head">
+			<div class="headmain">
+				<div class="logo" title="FollowMe 轻博客 追求简单而极致"></div>
+				<div class="name">
+					<ul>
+                        <li><a href="<{$app}>" title="回到Followie首页">首&nbsp;页</a></li>
+                        <li><a href="<{$app}>/article/" title="用户"><{$session.blogname}></a></li>
+
+					</ul>
+				</div>
+                                <div class="biao">
+                                <{if $session.isLogin==1 }>
+                                <a href="<{$app}>/wall" title="转至图片墙"><div class="biao0" href=""></div></a>
+                                <a href="<{$app}>/find" title="发现更多博客"><div class="biao1" href=""></div></a>
+                                <a href="<{$app}>/message/mess/uid/<{$session.u_id}>"><div class="biao2" href=""></div></a>
+                                <a href="<{$app}>/userset/index/u_id/<{$session.u_id}>" title="博客设置"><div class="biao3" href=""></div></a>
+                                <a href="<{$app}>/login/logout" title="退出"><div class="biao4" href=""></div></a>
+                                <{/if}>
+                                <{if $session.isLogin!=1 }>
+                                <a href="<{$app}>/wall" title="转至图片墙"><div class="biao0" href=""></div></a>
+                                <a href="<{$app}>/find" title="发现更多博客"><div class="biao1" href=""></div></a>
+                                <{/if}>
+				</div>
+			</div>
+		</div>

@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+        <head>
+                <meta http-equiv="content-type" content="text/html; charset=utf-8">
+                <title>Right</title>
+                <link rel="stylesheet" href="<{$res}>/css/tagsadd.css" type="text/css"  charset="utf-8">                
+                <script type="text/javascript" src="<{$res}>/js/miaov.js"></script>
+                <script type="text/javascript" src="<{$res}>/js/ajax3.0.js"></script>
+        </head>
+        <body>
+                <div class="main"> 
+                        <div class="top">
+                                <div class="left">
+                                        <div class="tu"></div>
+                                        <b>添加标签</b>
+                                        <!--显示全部div-->
+                                        <div class="batch"><a href="<{$url}>/">返回列表</a></div>
+                                        <!--批量操作的div-->
+                                        <div class="all">
+                                                <form action="" method="">
+                                                        <div>
+                                                                <select>
+                                                                        <option value="">批量操作</option>
+                                                                        <option value="">批量操作</option>
+                                                                </select>
+                                                        </div>
+                                                        <div><input type="submit" class="app" name="" value="应用"></div>
+                                                </form>
+                                        </div>
+                                </div>
+                                <div class="right">
+                                        <form action="" method="">
+                                                <div id="search">
+                                                        <div><input type="text" class="search" name="" value=""></div>
+                                                        <div><input type="submit" class="searchb" name="" value="搜索标签"></div>
+                                                </div>
+                                        </form>
+                                </div>
+                        </div>
+                        <!--添加新标签位置-->
+                        <div class="add">
+                                <div class="addform">
+                                        <table width=80% cellspacing="0">
+                                                <form action="<{$url}>/update" method="post">
+                                                        <tr><td width=40px;><b>名称</b></td></tr>
+                                                        <tr><td><input class="name" type="text" name="systag_name" value="<{$systag.systag_name}>"></td></tr>
+                                                        <tr><td><b>排序</b></td></tr>
+                                                        <input type="hidden" name="systag_id" value="<{$systag.systag_id}>">
+                                                        <tr><td><input class="level" type="text" name="sort" value="<{$systag.sort}>"></td></tr>
+                                                        <tr><td><b>描述</b></td></tr>
+                                                        <tr><td><textarea class="describe" name="seque"><{$systag.seque}></textarea></td></tr>
+                                                        <tr><td><input type="submit" name="sub" class="addsub" value="修改标签"></td></tr>
+                                                </form>
+                                        </table>
+                                </div>
+                                <div class="yun">
+                                        <div id="div1">
+                                                <{section loop=$data name="ls"}>
+                                                <a href="<{$url}>/mod/id/<{$data[ls].systag_id}>"><{$data[ls].systag_name}></a>
+                                                <{/section}>
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+        </body>
+</html>
+

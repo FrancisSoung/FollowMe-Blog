@@ -1,0 +1,33 @@
+/************
+ * 全局样式**
+ ************/
+* {margin:0px;padding:0px;}
+body {background:url("../images/htmlbg.png");}
+a {text-decoration:none;color:#41474E;}
+img {border:0px;}
+/************
+ * 内容部分**
+ ************/
+.attention_content {width:900px;height:800px;margin:0 auto;margin-top:20px;}
+
+/*关注标签部分*/
+.attention_content_top {float:left;width:900px;background:#D6D9DC;margin-bottom:30px;border-radius:5px;behavior: url(../public/css/PIE.htc);}
+.attention_content_top li {float:left;height:25px;margin:5px 25px;text-align:center;line-height:25px;font-size:15px;display:block;border-radius:5px;behavior: url("../public/css/PIE.htc");}
+.attention_content_top li:hover {background:#FFFFFF;color:#144466;}
+
+/*关注内容部分*/
+.attention_content_down {float:left;width:900px;height:660px;border-radius:5px;behavior: url("../public/css/PIE.htc");}
+.attention_content_down_person {float:left;width:900px;height:660px;}
+.attention_content_down_person_b {float:left;width:900px;height:200px;margin-top:50px;text-align:center;color:#144466;font-size:14px;font-weight:bold;}
+
+/*个人头像*/
+.attention_content_down_personleft {float:left;width:433px;height:164px;border:1px solid #cccccc;margin-bottom:20px;border-radius:5px;behavior: url("../public/css/PIE.htc");margin-left:10px;background:#FFFFFF}
+.attention_content_down_photo {float:left;width:215px;height:162px;border:1px solid #cccccc;border-radius:5px;behavior: url("../public/css/PIE.htc");}
+/*个人信息*/
+.attention_content_down_infro {float:left;width:200px;height:164px;font-size:14px;margin-left:12px;color:#144466;}
+.attention_content_down_infro span {float:left;width:200px;height:50px;line-height:50px;}
+.attention_content_down_infro_intro {float:left;width:200px;height:64px;overflow:hidden;}
+.attention_content_down_infro .attention {cursor:pointer;float:left;width:63px;height:28px;background:url(../images/attention.png);color:#ffffff;text-align:center;line-height:28px;margin-top:10px;}
+.attention_content_down_infro .attention_b {float:left;width:63px;height:28px;font-weight:bold;color:#144466;text-align:center;line-height:28px;margin-top:10px;}
+.attention_content_down_infro_image {float:left;width:63px;height:28px;}
+

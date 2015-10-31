@@ -1,0 +1,77 @@
+<{include file="public/header.htm"}>
+<{include file="public/head.htm"}>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" type="text/css" href="<{$res}>/css/find.css">
+        <script src="<{$res}>/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+	<title>发现更多好博客-FollowMe</title>
+</head>
+<body>
+	<!--发现页主框体-->
+	<div class="findmain" >
+		<!--图片墙-->
+                <div class="imgwall">
+                    <div class="top" style="width:900px;position:relative;">
+                        <{section loop=$blog name=ls }>
+                        <div><a href="<{$app}>/user/index/uid/<{$blog[ls].u_id}>"><img src="<{$root}>/upload/bigico/<{$blog[ls].u_ico}>" /><span><{$blog[ls].systag_name}></span></a></div>
+                        <{/section}>
+                        </div>
+                </div>
+		<!--更多博客,标签-->
+		<div class="moreblog">
+			<!--搜索-->
+			<div class="search">
+				<ul>
+					<a href="#"><span>　 </span></a><input type="text" name="searchtag" value="" />
+				</ul>
+			</div>
+			<!--博客框体-->
+			<div class="blogtab">
+				<!--博客信息-->
+				<table class="bloginfo" cellspacing=0>
+					<tr><th>热门标签</th><th>相关标签</th><th>活跃度</th><th>最近推荐</th><th>杰出博客</th></tr>
+                    <!--博客信息列表-->
+                    <{section loop=$bloginfo name=ls }>
+                    <{section loop=$bloginfo[ls] name=als }>
+                    <tr><td><div><div><img src="<{$res}>/images/new.png" /></div><a href="<{$app}>/actioned/attention/id/<{$bloginfo[ls][als].systag_id}>"><{$bloginfo[ls][als].systag_name}></a></div></td><td><a><{$bloginfo[ls][als].tags}></a></td><td>活跃度| <{$bloginfo.hot[ls]}></td><td><div id="blogimg"><img src="<{$root}>/upload/microico/<{$bloginfo[ls][als].u_ico}>" /></div><div><a href="<{$app}>/user/index/uid/<{$bloginfo[ls][als].u_id}>"><{$bloginfo[ls][als].blogname}></a></div></td><td><div id="blogimg"><img src="<{$root}>/upload/microico/<{$bloginfo.blog[ls].u_ico}>" /></div><div><a href="<{$app}>/user/index/uid/<{$bloginfo.blog[ls].u_id}>"><{$bloginfo.blog[ls].blogname}></a></div></td></tr>
+                    <{/section}>
+                    <{/section}>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" charset="utf-8">
+        $(".findmain").fadeIn("slow");
+        var begin
+        var begin= -150;
+        var height=-150;
+        var b=0;
+        var scroll=<{$num}>;
+        var num=Math.ceil(scroll / 6) - 3;
+
+        setInterval(function() {
+                        
+                        
+                        if(b>=0 && height > (-150 * num)){
+                                var hello=$(".top").html();
+                                $(".top").animate({top:height}, "slow");
+                                height=height - 150;
+                                b=b+1;
+                        }else{
+                                if(b>0){
+                                        b=-b-1;
+                                }else{
+                                        b=b;
+                                }
+                                var hello=$(".top").html();
+                                $(".top").animate({top:height}, "slow");
+                                height=height+150;
+                                b=b+1;
+                        }
+                        
+                },5000);
+        
+</script>
+</html>

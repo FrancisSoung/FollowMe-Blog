@@ -1,0 +1,44 @@
+/***********
+ * 全局样式*
+ **********/
+* {margin:0px;padding:0px;}
+a {text-decoration:none;color:#433941;}
+li {list-style:none;}
+body {background:url("../images/htmlbg.png");}
+/***********
+ * 内容部分*
+ ***********/
+.attentionnum_content {width:900px;height:600px;margin:0px auto;margin-top:20px;}
+/*内容左边部分*/
+.attentionnum_content_left {float:left;width:625px;border:1px solid #CCC;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;behavior: url("../public/css/PIE.htc");}
+.attentionnum_content_left_search {float:left;width:625px;height:67px;background:#E0E1E3;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;behavior: url("../public/css/PIE.htc");}
+.attentionnum_content_left_search_word {float:left;width:270px;height:50px;font-size:15px;margin-left:25px;margin-top:10px;}
+.attentionnum_content_left_search_word_title {float:left;width:270px;font-size:14px;font-weight:bold;color:#144466;height:22px;line-height:22px;}
+.attentionnum_content_left_search_word span {float:left;width:20px;height:20px;background:url("../images/sidemenu.png") -370px -49px;margin-right:8px;}
+.attentionnum_content_left_search_word_content {float:left;text-indent:20px;margin-top:5px;color:#433941;}
+.attentionnum_content_left_search_word_content a {color:#144466;}
+.attentionnum_content_left_search_form {float:right;width:257px;height:38px;background:#FFF;margin-right:20px;margin-top:10px;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;behavior: url("../public/css/PIE.htc");}
+.attentionnum_content_left_search_form_button {float:left;width:30px;height:30px;margin-top:5px;}
+#attentionnum_content_left_search_form_button {float:left;width:25px;height:25px;margin-top:5px;margin-left:5px;border:0px;background:url("../images/sidemenu.png") -1154px 0px;font-size:14px;}
+#attentionnum_content_left_search_form_text {float:left;width:225px;height:30px;margin-top:5px;border:1px;line-height:30px;}
+
+/*用户列表*/
+.attentionnum_content_left_search_attention {float:left;width:625px;background:#EFEFEF;margin-top:3px;border:1px solid #CCC;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;behavior: url("../public/css/PIE.htc");}
+.attentionnum_user {float:left;width:623px;height:100px;border:1px solid #CCCCCC;}
+.user_left {float:left;width:620px;height:100px;}
+.user_ico {float:left;width:60px;height:60px;border:1px solid #CCCCCC;margin:15px 15px;}
+.user_name {float:left;width:520px;height:30px;line-height:30px;border-bottom:1px dashed #CCCCCC;margin-top:15px;overflow:hidden;}
+.user_info {float:left;width:520px;height:30px;line-height:30px;overflow:hidden;}
+
+/*访问统计页*/
+.visited {float:left;width:623px;height:300px;border:1px solid #CCCCCC;}
+.visited .total {float:left;width:580px;height:50px;margin-left:20px;border-bottom: 1px dashed #CCCCCC;}
+.visited .total span {float:left;margin-top:15px;margin-left:20px;font-size:20px;font-weight:bold;}
+.visited .date {float:left;width:580px;height:200px;margin-left:20px;border-bottom: 1px dashed  #CCCCCC;}
+.visited .date .day {float:left;width:580px;height:48px;line-height:48px;font-size:14px;font-weight:bold;}
+.visited .date .week {float:left;width:580px;height:48px;line-height:48px;font-size:14px;font-weight:bold;}
+.visited .date .month {float:left;width:580px;height:48px;line-height:48px;font-size:14px;font-weight:bold;}
+.visited .date .year {float:left;width:580px;height:48px;line-height:48px;font-size:14px;font-weight:bold;}
+
+
+

@@ -1,0 +1,32 @@
+.main{width:100%;height:100%;float:left;}
+.top {width:100%;height:31px;height:115px;border-top:1px solid #cccccc;margin-top:8px;}
+.left{width:400px;height:115px;float:left}
+.right{width:250px;height:115px;float:right;}
+.tu {background:url(../images/icons32.png) -554px -7px no-repeat;width:30px;height:40px;float:left;margin-top:10px;}
+.top b {float:left;margin-top:7px;font-size:18px;margin-left:5px;margin-top:20px;}
+.batch {float:left;width:100%;float:left;}
+.batch a {font-size:13px;color:#21759B;text-decoration:none}
+.batch a:hover {font-size:13px}
+.all {width:100%;float:left;margin-top:15px;}
+.all select {width:120px;border:1px solid #DFDFDF}
+.all div {float:left;}
+.app {background:url(../images/bubg.png);width:42px;height:21px;border-style:none;margin-left:10px;}
+.app:hover {background:url(../images/bubgh.png);width:42px;height:21px;border-style:none;margin-left:10px;color:#21759B}
+#search {float:left;height:25px;margin-top:50px;}
+#search div {float:left;margin-left:10px;}
+.search {width:140px;border:1px solid #DFDFDF;}
+.searchb {background:url(../images/bubgl.png);width:66px;height:21px;border:0px;}
+.searchb:hover {background:url(../images/bubglh.png);width:66px;height:21px;border:0px;color:#21759B}
+.add{width:600px;height:400px;margin:0px auto;}
+.addform {width:300px;height:400px;margin-top:70px;float:left;}
+.addform table {margin:0px auto;margin-top:50px;}
+.addform b {font-size:13px;font-weight:normal}
+.name {width:250px;border:1px solid #ccc}
+.level {width:50px;border:1px solid #ccc}
+.describe {width:250px;border:1px solid #ccc}
+.addsub {background:url(../images/bubgl.png);width:66px;height:21px;border:0px}
+.addsub:hover {background:url(../images/bubglh.png);width:66px;height:21px;border:0px}
+.yun {width:300px;height:400px;float:left;}
+#div1 {position:relative; width:100%; height:100%;}
+#div1 a {position:absolute; top:0px; left:0px;color:black; font-weight:bold; text-decoration:none;}
+#div1 a:hover {border: 1px solid #eee;background:black;color:white}

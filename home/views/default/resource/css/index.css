@@ -1,0 +1,130 @@
+/*全局*/
+* {margin:0px;padding:0px;}
+body {background:url(../images/htmlbg.png) repeat;}
+a {text-decoration:none;cursor:pointer;}
+li {list-style:none;}
+img {border:0px;}
+/*内容主题框*/
+.indexmain {width:900px;margin:5px auto;}
+
+/*左侧内容列表框*/
+.lefttab {float:left;width:635px;}
+.lefttab .usertab,.pubtab {width:635px;float:left;margin-top:15px;}
+.lefttab .pubtab .ucontent {width:540px;height:75px;line-height:80px;float:right;margin-right:14px;background:url(../images/pub-center.png) repeat-y;}
+.lefttab .pubtab .ucontent li {width:100px;height:74px;float:left;margin-left:6px;}
+.lefttab .pubtab .ucontent .text {background:url(../images/publisher.png) -0px -0px;}
+.lefttab .pubtab .ucontent .texta {background:url(../images/publisher.png) -0px -74px;}
+.lefttab .pubtab .ucontent .img {background:url(../images/publisher.png) -100px -0px;}
+.lefttab .pubtab .ucontent .imga {background:url(../images/publisher.png) -100px -74px;}
+.lefttab .pubtab .ucontent .music {background:url(../images/publisher.png) -200px -0px;}
+.lefttab .pubtab .ucontent .musica {background:url(../images/publisher.png) -200px -74px;}
+.lefttab .pubtab .ucontent .move {background:url(../images/publisher.png) -300px -0px;}
+.lefttab .pubtab .ucontent .movea {background:url(../images/publisher.png) -300px -74px;}
+.lefttab .pubtab .ucontent .link {background:url(../images/publisher.png) -400px -0px;}
+.lefttab .pubtab .ucontent .linka {background:url(../images/publisher.png) -400px -74px;}
+.lefttab .pubtab .top,.bottom {width:540px;float:right;height:13px;margin-right:14px;}
+.lefttab .pubtab .top {background:url(../images/pub-top.png) no-repeat;}
+.lefttab .pubtab .bottom {background:url(../images/pub-bottom.png) no-repeat;}
+.lefttab .arrows {position:relative;float:left;top:20px;left:12px;width:15px;height:15px;background:url(../images/feed-icons.png) 0px -150px;}
+.lefttab .usertab .userico,.pubtab .userico {width:61px;height:61px;float:left;position:relative;}
+.lefttab .usertab .userico .imgtab {width:61px;height:61px;float:left;position:relative;z-index:3;}
+.lefttab .usertab .showinfo {position:absolute;top:0px;left:0px;display:none;cursor:pointer;width:22px;height:22px;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;behavior:url(../resource/css/PIE.htc);opacity:80;filter:alpha(opacity=80);z-index:4;background:url(../images/feed-icons.png) -72px -150px;width:22px;height:22px;}
+.lefttab .usertab .showtab {display:none;width:61px;height:122px;position:absolute;float:left;}
+.lefttab .usertab .message {display:none;width:61px;height:59px;float:left;position:absolute;top:61px;left:0px;margin-top:5px;}
+.lefttab .usertab .message a {color:#333333;}
+.lefttab .usertab .message a:hover {color:#144466;}
+.lefttab .usertab .message .topico {width:61px;height:9px;background:url(../images/feed-icons.png) -315px -76px;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;behavior:url(../resource/css/PIE.htc);}
+.lefttab .usertab .message .messtab {width:61px;height:36px;background:#ffffff;border-bottom:1px solid #cccccc;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;behavior:url(../resource/css/PIE.htc);text-align:center;font-size:15px;}
+.lefttab .usertab .message .messtab hr {width:61px;color:#cccccc;}
+.lefttab .ucontent {width:563px;float:left;border:0px;}
+.lefttab .contitle {width:536px;height:50px;float:left;background:url(../images/content-head.png);border:0px;text-indent:30px;line-height:67px;font-size:12px;color:#144466;}
+.lefttab .cont {float:left;width:500px;height:25px;line-height:25px;text-align:center;color:#144466;overflow:hidden;}
+.lefttab .moreico {width:27px;height:50px;float:right;background:url(../images/content-head-ico.png);line-height:25px;}
+.lefttab .contenttab,.conbottom {width:563px;float:right;background:url(../images/content-center.png) repeat-y;border:0px;}
+.lefttab .contenttab .content {float:right;width:500px;margin-right:24px;margin-bottom:5px;border:0px;font-size:13px;}
+.lefttab .contenttab .content a {color:#144466;}
+.lefttab .contenttab .content .links:hover {background:#144466;color:#ffffff;}
+.lefttab .conbottom .contag {width:320px;float:left;margin-left:36px;font-size:13px;border:0px;}
+.lefttab .conbottom .contag div {float:left;height:18px;line-height:18px;}
+.lefttab .conbottom .contag .tagleft,.tagright {width:4px;}
+.lefttab .conbottom .contag .tagleft {background:url(../images/button-bg.png) -0px -1578px;width:4px;height:18px;}
+.lefttab .conbottom .contag .tags {color:#ffffff;background:url(../images/button-bg.png) -5px -1578px;height:18px;}
+.lefttab .conbottom .contag .tagright {background:url(../images/button-bg.png) -296px -1578px;width:4px;height:18px;}
+.lefttab .conbottom .contag .tags a {color:#ffffff;}
+.lefttab .conbottom .contag .tags a:hover {color:#00bfff;}
+.lefttab .conbottom .contag tt a {color:#252525;margin-left:5px;}
+.lefttab .conbottom .contag tt a:hover {background:#4682b4;color:#ffffff;}
+.lefttab .conbottom .conhot {width:200px;float:right;font-size:13px;border:0px;text-align:center;}
+.lefttab .conbottom .conhot div {width:65px;height:15px;float:right;}
+.lefttab .conbottom .conhot a {cursor:pointer;color:#888888;margin-right:3px;}
+.lefttab .conbottom .conhot i a {background:url(../images/sidemenu.png) -70px -50px;width:15px;height:15px;}
+.lefttab .conbottom .conhot i a:hover {background:url(../images/feed-icons.png) -90px -60px;width:15px;height:15px;}
+.lefttab .confooter{width:563px;height:13px;float:right;background:url(../images/content-bottom.png) repeat-y;border:0px;}
+    /*热度 回应*/
+.lefttab .ucontent .hottab,.commenttab {width:538px;margin-left:18px;float:left;border-left:1px solid #cccccc;border-right:1px solid #cccccc;border-bottom:1px solid #cccccc;border-radius:3px;behavior: url(../resource/css/PIE.htc);background:#d6d9dc;display:none;position:relative;z-index:4;}
+.lefttab .hottab .comtab,.commenttab .comtab {width:538px;height:36px;line-height:36px;border-bottom:1px solid #cccccc;font-size:13px;}
+.lefttab .hottab .comtab .commentico,.commenttab .comtab .commentico {width:30px;float:left;margin-left:10px;margin-top:8px;}
+.lefttab .hottab .comtab .commenter {width:470px;height:25px;float:left;overflow:hidden;}
+.lefttab .hottab .comtab .commenter tt {float:right;color:#888888;margin-right:15px;}
+.lefttab .commenttab .comtab .commenter {width:375px;height:25px;float:left;overflow:hidden;}
+.lefttab .hottab  .comtab .commenter a {color:#888888;}
+.lefttab .hottab .comtab .ico{width:15px;height:15px;float:right;margin-right:8px;font-size:13px;}
+.lefttab .commenttab .comtab .ico {width:115px;float:right;margin-right:3px;font-size:12px;text-align:center;}
+.lefttab .hottab .comtab .ico span {width:15px;height:15px;}
+.lefttab .hottab .comtab .ico .revico {background:url(../images/feed-icons.png) -29px 0px;}
+.lefttab .hottab .comtab .ico .repico {background:url(../images/feed-icons.png) 0px 0px;}
+.lefttab .hottab .comtab .ico .likico {background:url(../images/feed-icons.png) -59px 0px;}
+.lefttab .hottab .combottom,.commenttab .combottom {width:538px;height:30px;line-height:30px;font-size:13px;}
+.lefttab .hottab .combottom a,.commenttab a {color:#888888;}
+.lefttab .hottab .combottom .morehot,.commenttab .combottom .morehot {width:200px;float:left;text-align:left;margin-left:20px;}
+.lefttab .hottab .combottom .morehot span,.commenttab .combottom .morehot span {background:url(../images/sidemenu.png) -199px -50px;}
+.lefttab .hottab .combottom .packup,.commenttab .combottom .packup {width:200px;float:right;text-align:right;margin-right:20px;}
+.lefttab .hottab .combottom .packup span,.commenttab .combottom .packup span {background:url(../images/sidemenu.png) -233px -50px;}
+.lefttab .reviewtab {width:537px;height:30px;float:left;background:#efefef;border:1px solid #cccccc;display:none;}
+.lefttab .reviewtab_a {width:537px;height:30px;float:left;background:#d6d9dc;}
+.lefttab .reviewtab .blogico,.blogico_a {width:27px;float:left;height:30px;margin-left:5px;margin-top:3px}
+.lefttab .reviewtab .intext,.intext_a {width:450px;float:left;height:30px;text-align:center;}
+.lefttab .reviewtab .intext input {width:450px;height:29px;line-height:29px;font-size:12px;border:0px;color:#144466;}
+.lefttab .reviewtab .intext tt,.intext_a tt {width:450px;height:29px;line-height:29px;font-size:13px;border:0px;color:#666666;}
+.lefttab .reviewtab .intext tt a {color:#144466;}
+.lefttab .reviewtab .intext_a tt a {cursor:pointer;color#144466;}
+.lefttab .reviewtab .intext tt a:hover {color:#144466;font-weight:bold;}
+.lefttab .reviewtab .send {cursor:pointer;width:52px;float:right;height:30px;text-align:center;}
+.lefttab .reviewtab .send img {margin-top:1px;}
+.lefttab .reviewtab .send:hover {background:#cccccc;}
+.close {opacity:0;filter:alpha(opacity=0);display:none;position:fixed;top:0px;left:0px;background:#d9d9d9;z-index:1;}
+
+/*右侧登录注册,发现,标签,推荐框*/
+.righttab {float:right;width:250px;}
+.righttab .loginreg {width:250px;height:50px;margin:30px 0px;}
+.righttab .loginreg a {font-size:16px;font-weight:bold;text-align:center;line-height:50px;color:#ffffff;float:left;background:url(../images/startpage-1231.png) -33px -252px;width:210px;height:50px;margin-left:20px;}
+.righttab .loginreg a:hover {color:#144466;background:url(../images/startpage-1231.png) -33px -187px;width:210px;height:50px;}
+.righttab .findblog {width:250px;height:60px;background:#d6dadd;border:1px solid #cccccc;-moz-border-radius:5px;-webkit-border-radius:5px;border-top-left-radius:5px;border-top-right-radius:5px;behavior:url(../resource/css/PIE.htc);margin:30px auto;font-size:14px;}
+.righttab .findblog li {width:250px;height:30px;line-height:30px;}
+.righttab .findblog li:hover {background:#eeeeee;}
+.righttab .findblog span {margin-left:15px;}
+.righttab .findblog a {color:#144466;}
+.righttab .attention {border-bottom:1px solid #cccccc;}
+.righttab .attention span {background:url(../images/sidemenu.png) 0px -50px;width:16px;height:16px;}
+.righttab .findmore  span {background:url(../images/sidemenu.png) -35px -50px;width:16px;height:16px;}
+.righttab .systag,.recblog {background:#d6dadd;border:0px;}
+.righttab .systag li:hover {background:#eeeeee;}
+.righttab .systag .search {width:250px;height:38px;background:#d6dadd;border:1px solid #cccccc;-moz-border-radius:5px;-webkit-border-radius:5px;border-top-left-radius:5px;border-top-right-radius:5px;behavior:url(../resource/css/PIE.htc);}
+.righttab .systag .search li a {margin-left:10px;line-height:38px;background:url(../images/sidemenu.png) -1155px -51px;width:38px;height:38px;}
+.righttab .systag .search  li input {width:205px;height:20px;font-size:18px;border:0px;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;behavior:url(../resource/css/PIE.htc);}
+.righttab .systag .tag li,#moretag {text-indent:18px;line-height:38px;font-size:13px;}
+.righttab .systag li span {width:38px;height:38px;background:url(../images/sidemenu.png) -104px -51px;width:40px;height:40px;}
+.righttab .systag .tag a li {width:250px;height:38px;border-bottom:1px solid #cccccc;border-left:1px solid #cccccc;border-right:1px solid #cccccc;}
+.righttab .systag #moretag {cursor:pointer;width:250px;height:38px;border-left:1px solid #cccccc;border-right:1px solid #cccccc;border-bottom:1px solid #cccccc;-moz-border-radius:5px;-webkit-border-radius:5px;border-bottom-left-radius:5px;border-bottom-right-radius:5px;behavior:url(./public/css/PIE.htc);}
+.righttab .systag a {color:#232323;}
+.righttab .recblog {width:250px;border:1px solid #cccccc;border-radius:5px;behavior:url(../resource/css/PIE.htc);margin-top:30px;font-size:14px;}
+.righttab .recblog .blogtab {width:250px;height:38px;cursor:pointer;}
+.righttab .recblog a li:hover ,.blogtab:hover {background:#eeeeee;}
+.righttab .blogimg {float:left;}
+.righttab .bloglink {width:212px;height:35px;float:right;margin-top:2px;font-size:13px;border-bottom:1px solid #cccccc;text-indent:1em;}
+.righttab .recblog a {color:#144466;}
+.righttab .bloglink div {height:15px;width:210px;color:#b1b1b1;text-indent:3px;overflow:hidden;}
+.righttab .recblog a {color:#000000;}
+.righttab .recblog a li {width:250px;height:30px;line-height:30px;text-indent:10px;border-bottom-left-radius:5px;border-bottom-right-radius:5px;behavior:url(../resource/css/PIE.htc);}
+.righttab .recblog a li span {width:35px;height:30px;background:url(../images/sidemenu.png) -33px -50px;width:35px;height:30px;}
+

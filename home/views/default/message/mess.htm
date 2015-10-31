@@ -1,0 +1,118 @@
+	<{include file="public/header.htm"}>
+        <link rel="stylesheet" href="<{$res}>/css/message.css" type="text/css" />
+        <link rel="stylesheet" href="<{$res}>/css/list.css" type="text/css" />
+        <script src="<{$res}>/js/list.js"></script>
+        <script src="<{$res}>/js/ajax3.0.js"></script>
+        <{include file="public/head.htm"}>
+        <!--主框体-->
+        <div class="messmain">
+            <!--消息框体-->
+            <div class="listmain">
+
+                <div class="info">您的消息列表</div>
+                <{if $mess!="" }>
+                <!--左-消息列表-->
+                <{section loop=$mess name=ls }>
+                <{if $mess[ls].type==1 }>
+                <div class="messlist" id="sysmess<{$mess[ls].bro_id}>">
+                    <div class="acttab">
+                        <div class="messtype">
+                            <img src="<{$res}>/images/system.png">
+                        </div>
+                        <div class="action"><a onclick="closesys('<{$mess[ls].bro_id}>','<{$session.u_id}>')">屏蔽</a></div>
+                        <div class="time"><{$mess[ls].time|date_format:"%Y-%m-%d %H:%M:%S"}></div>
+                    </div>
+                    <div class="content">
+                        <{$mess[ls].content}>
+                    </div>
+                </div>
+                <{elseif $mess[ls].type==2 }>
+                <div class="messlist" id="mess<{$mess[ls].bro_id}>">
+                    <div class="acttab">
+                        <div class="messtype">
+                            <img src="<{$res}>/images/systema.png">
+                        </div>
+                        <div class="action"><a onclick="closesyssx('<{$mess[ls].bro_id}>','<{$session.u_id}>')">屏蔽</a></div>
+                        <div class="time"><{$mess[ls].time|date_format:"%Y-%m-%d %H:%M:%S"}></div>
+                    </div>
+                    <div class="content">
+                        <p><{$mess[ls].content}></p>
+                    </div>
+                </div>
+                <{else}>
+                <div class="messlist" id="<{$mess[ls].mes_id}>">
+                    <div class="acttab">
+                        <div class="messtype">
+                            <a href="<{$app}>/user/index/uid/<{$mess[ls].su_id}>"><img src="<{$root}>/upload/normalico/<{$mess[ls].u_ico}>"></a>
+                        </div>
+                        <div class="action"><a onclick="closeu('<{$mess[ls].mes_id}>')">删除</a>|<a href="<{$app}>/message/index/uid/<{$session.u_id}>/guid/<{$mess[ls].su_id}>">回信</a></div>
+                        <div class="time"><{$mess[ls].time|date_format:"%Y-%m-%d %H:%M:%S"}></div>
+                    </div>
+                    <div class="content">
+                        <{$mess[ls].content}>
+                    </div>
+                </div>
+                <{/if}>
+                <{/section}>
+                <{else}>
+                    <div class="null">
+                            <img src="<{$res}>/images/null.png">
+                            <p>您还没有收到任何消息!<br/><br/>去逛逛别的地方吧!</p>
+                    </div>
+
+                <{/if}>
+
+            </div>
+            <!--右-菜单列表-->
+            <div class="blacklist_content_right">
+                <{ include file="public/list.htm"}>
+            </div>
+
+        </div>
+        <script>
+            //屏蔽用户私信
+            function closeu(id){
+                var mess={id:id}
+                Ajax().post('<{$url}>/closeu',mess,function(data){
+                    switch(data){
+                        case '1':
+                        $('#'+id).remove();
+                        break;
+                        case '2':
+                        alert('屏蔽失败!未知错误,请刷新稍后再试!');
+                    }
+            });
+        }
+            //屏蔽系统广播
+            function closesys(sid,uid){
+                var mess={r_id:sid,ru_id:uid}
+                Ajax().post('<{$url}>/closesys',mess,function(data){
+                        switch(data){
+                            case '1':                           
+                            $('#sysmess'+sid).remove();
+                        break;
+                        case '2':
+                        alert('屏蔽失败!未知错误,请刷新稍后再试!');
+                        }
+                    
+                    }
+                );
+            }
+              //屏蔽系统私信
+            function closesyssx(sid,uid){
+                var mess={bro_id:sid,uid:uid}
+                Ajax().post('<{$url}>/closesysmess',mess,function(data){
+                        switch(data){
+                            case '1':
+                            $('#mess'+sid).remove();
+                        break;
+                        case '2':
+                        alert('屏蔽失败!未知错误,请刷新稍后再试!');
+                        }
+                    
+                    }
+                );
+            }
+        </script>
+    </body>
+    </html>
